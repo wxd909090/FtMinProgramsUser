@@ -1,0 +1,372 @@
+<view class="container">
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <!--<view class="kind-list">
+    <view class="kind-list-item">-->
+  <view class="page-body">
+    <view class="page-section reviewsBox">
+      <!--<block wx:if="{{orderType==1}}">-->
+      <view class="weui-cell__bd">
+        <view class="content-item" wx:if="{{orderInfo.status == 0 || orderInfo.status == 5}}">
+          <view class="time">
+            <!--<image class="img" src="/image/time.png"></image>-->
+            <view class="time_view">
+              <text class="payTime" wx:if="{{payOverTime > 0}}">{{timeText}}</text>
+              <text class="overTimeTxt" wx:if="{{payOverTime <= 0}}">支付超时</text>
+            </view>
+          </view>
+        </view>
+        <view class="content-item">
+          <view class="orderInfo">
+            <view class="storeNameWrap">
+              <view class="storeImgWrap">
+                <image class="storeImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/storeImg.png"></image>
+              </view>
+              <view class="storeName">
+                {{orderInfo.store_name}}
+              </view>
+            </view>
+            <view class="orderFilmInfo" style="{{orderInfo.status == 4 ? loseStyle : ''}}">
+              <view class="orderFilmInfoLeft">
+                <image class="filmImg" src="{{orderInfo.image ? orderInfo.image : filmInfo.image}}"></image>
+              </view>
+              <view class="orderFilmInfoRight">
+                <view class="filmName">{{orderInfo.film_name}}</view>
+                <view class="orderFilmInfoP roomName">{{orderInfo.room_name}}（包间）</view>
+                <view class="orderFilmInfoP orderTime">{{orderInfo.date ? orderInfo.date: orderInfo.turnReserve_time}} {{orderInfo.turnDuration_time}}</view>
+                <view class="orderFilmInfoP adress">{{orderInfo.address}}</view>
+                <view class="orderFilmInfoP" wx:if="{{fromPage != 'room'}}">支付金额 
+                    <!-- <block wx:if="{{orderInfo.pay_type == 0}}">￥{{ (orderInfo.price - couponPrice) < 0 ? 0 : (orderInfo.price - couponPrice)}}</block> -->
+                    <block wx:if="{{orderInfo.pay_type == 0}}">￥{{orderInfo.pay_price}}</block>
+                    <block wx:if="{{orderInfo.pay_type == 8}}">￥{{orderInfo.pay_price}}</block>
+                    <block wx:if="{{orderInfo.pay_type == 1}}">￥{{orderInfo.pay_price}}</block>
+                    <block wx:if="{{orderInfo.pay_type == 0}}">（微信支付<text wx:if="{{couponPrice}}">, 优惠￥{{couponPrice}}</text>）</block>
+                    <block wx:if="{{orderInfo.pay_type == 8}}">（体验码支付）</block>
+                    <block wx:if="{{orderInfo.pay_type == 1}}">（会员卡支付）</block>
+                </view>
+                <view class="orderFilmInfoP" wx:if="{{fromPage == 'room'}}">订单价格<block>￥{{orderInfo.price}}</block></view> 
+              </view>
+            </view>
+          </view> 
+        </view>
+        <!--<view class="content-item">
+          <view class="warning_title">购买须知</view>
+          <view class="warning_item">1：请确认场次和包间无误，购买成功后将不予退还</view>
+          <view class="warning_item">2：购买后由于自身原因未到本店消费，不予退改</view>
+          <view class="warning_item">3：下单即代表同意购买须知</view>
+        </view>-->
+        <view>
+            <button class='refundOrder' type="primary" plain="true" wx:if="{{orderInfo.status == 1 && orderInfo.pay_price > 0 && orderInfo.getOutTime > 0}}"  data-order_info="{{orderInfo}}" bindtap="refundOrder">取消预约</button>
+        </view>
+        <view class="coupon-wrap" wx:if="{{orderInfo.status == 0 && hasCoupon.length > 0 && !activeForbidCoupon}}">
+          <view class="coupon-title" bindtap="changeCouponStatus">
+            <view class="coupon-left coupon-hot"><image class="coupon_icon" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/coupon_icon.png"></image>红包抵用券</view>
+            <view class="coupon-right">
+              选择使用
+              <image wx:if="{{coupon_status == 0}}" class="title_img" src="{{san_title_top}}"></image>
+              <image wx:if="{{coupon_status == 1}}" class="title_img" src="{{san_title_bottom}}"></image>
+            </view>
+          </view>
+          <view class="coupon-wrap" wx:if="{{coupon_status == 1}}">
+            <view class="coupon-title coupon-info" data-coupon="{{item}}" data-index="{{index}}" bindtap="chooseCoupon" wx:for-index="index" wx:for="{{couponList}}" wx:key="item" wx:for-item="item">
+              <view class="coupon-left" wx:if="{{item.is_used == 0}}"> <text class="price_text">{{item.price}}元</text> 红包抵用券</view>
+              <view class="coupon-right" wx:if="{{item.is_used == 0}}">
+                <image class="choose_img" wx:if="{{item.chooseStatus == 1}}" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/choose_icon.png"></image>
+                <image class="choose_img" wx:if="{{item.chooseStatus == 0}}" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/no_choose_icon.png"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 选择支付方式 -->
+        <view class='setdiscount' bindtap='showPayType' wx:if="{{orderInfo.status == 0 }}">
+            <image src='/image/triangle.png' class='img'></image>
+            <view class='left'>支付方式</view>
+            <view class='right' bindtap='displaypayment'>
+                <view class="showChoosed" wx:if="{{currentchecked == 1}}">微信支付</view>
+                <view class="showChoosed" wx:if="{{currentchecked == 2}}">会员卡支付</view>
+                <image src='/image/dont.png'></image>
+            </view>
+        </view>
+        <!-- 选择优惠券 -->
+        <view class='setdiscount' style='margin-bottom:100rpx' wx:if="{{orderInfo.status == 0 }}">
+            <image src='/image/triangle.png' class='img'></image>
+            <view class='left'>优惠</view>
+            <view class='right' bindtap='optionDiscount'>
+                <view class="showChoosed" wx:if="{{choosedCoupon.price <= 0}}">不使用优惠</view>
+                <view class="showChoosed" wx:if="{{choosedCoupon.price > 0}}">{{choosedCoupon.price}}元优惠券</view>
+                <image src='/image/dont.png'></image>
+            </view>
+        </view>
+
+
+      </view>
+      <view class="weui-cell__bd">
+        <!--<view class="sub">
+              <view class="price">待支付：{{roomInfo.roomPrice}}￥</view>
+              <view class="btn">
+              <button type="primary" size="5"  plain=""
+                bindtap="postOrder"> 提交订单 </button>
+               </view>
+        </view>-->
+        <view class="priceTitle" wx:if="{{(orderInfo.status == 0 || orderInfo.status == 5) && payOverTime > 0 && !isShowCode}}">
+          <text style="color:#8f8f8f;">
+            <text style="margin-left:30rpx">订单￥{{orderInfo.price}}</text>
+            <text style="margin-left:30rpx">优惠￥{{couponPrice}}</text>
+          </text>
+          <text style="font-weight:500;margin-left:30rpx">待支付￥{{ (orderInfo.price - couponPrice) < 0 ? 0 : (orderInfo.price - couponPrice)}}</text>
+        </view>
+        <view class='pay' wx:if="{{orderInfo.status == 0 || orderInfo.status == 5}}">
+          <button wx:if="{{payOverTime > 0 && !isShowCode}}" type="primary" plain="" bindtap="pay" loading="{{loading}}"> 确认支付 ￥{{(orderInfo.price - couponPrice < 0)?0 : (orderInfo.price - couponPrice)}}</button>
+          <button wx:if="{{payOverTime <= 0 && !isShowCode}}" type="primary" disabled="true" bindtap="pay" loading="{{loading}}"> 确认支付 ￥{{(orderInfo.price - couponPrice < 0)?0 : (orderInfo.price - couponPrice)}}</button>
+          <button wx:if="{{payOverTime > 0 && isShowCode}}" type="primary" disabled="" bindtap="activityCodePay" loading="{{loading}}">提交</button>
+          <button wx:if="{{payOverTime <= 0 && isShowCode}}" type="primary" disabled="true" bindtap="" loading="{{loading}}">提交</button>
+        </view>
+      </view>
+
+      <view class="weui-cell__bd" class="reviewsWrap">
+        <view class="content-item" wx:if="{{orderInfo.reviews}}">
+          <view class="reviewsStar">
+            <view class="reviewsStarTitle">
+              评分详情
+            </view>
+            <view class="reviewsStarTextWrap">
+              <view class="reviewsStarText">
+                <view class="reviewsLeft">卫生清洁
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.health <= 1}}">(极差)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.health > 1 && orderInfo.reviews.health <= 2}}">(较差)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.health > 2 && orderInfo.reviews.health <= 3}}">(一般)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.health > 3 && orderInfo.reviews.health <= 4}}">(不错)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.health > 4 && orderInfo.reviews.health <= 5}}">(很棒)</text>
+                </view>
+                <view class="reviewsRight">
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.health >= 1}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.health < 1}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.health >= 2}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.health < 2}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.health >= 3}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.health < 3}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.health >= 4}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.health < 4}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.health >= 5}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.health < 5}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                </view>
+              </view>
+              <view class="reviewsStarText">
+                <view class="reviewsLeft">影音效果
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.av <= 1}}">(极差)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.av > 1 && orderInfo.reviews.av <= 2}}">(较差)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.av > 2 && orderInfo.reviews.av <= 3}}">(一般)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.av > 3 && orderInfo.reviews.av <= 4}}">(不错)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.av > 4 && orderInfo.reviews.av <= 5}}">(很棒)</text>
+                </view>
+                <view class="reviewsRight">
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.av >= 1}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.av < 1}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.av >= 2}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.av < 2}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.av >= 3}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.av < 3}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.av >= 4}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.av < 4}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.av >= 5}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.av < 5}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                </view>
+              </view>
+              <view class="reviewsStarText">
+                <view class="reviewsLeft">舒适程度
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.comfy <= 1}}">(极差)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.comfy > 1 && orderInfo.reviews.comfy <= 2}}">(较差)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.comfy > 2 && orderInfo.reviews.comfy <= 3}}">(一般)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.comfy > 3 && orderInfo.reviews.comfy <= 4}}">(不错)</text>
+                  <text class="desInfo" wx:if="{{orderInfo.reviews.comfy > 4 && orderInfo.reviews.comfy <= 5}}">(很棒)</text>
+                </view>
+                <view class="reviewsRight">
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.comfy >= 1}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.comfy < 1}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.comfy >= 2}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.comfy < 2}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.comfy >= 3}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.comfy < 3}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.comfy >= 4}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.comfy < 4}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.comfy >= 5}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                  </view>
+                  <view class="starWrap" wx:if="{{orderInfo.reviews.comfy < 5}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cell__bd" class="reviewsInfoBox reviewsWrap">
+        <view class="content-item reviews-content" wx:if="{{orderInfo.reviews}}">
+          <view class="reviewsInfo">
+            <view class="reviewsInfoTitle">
+              评论详情
+              <view class="addReviewsOpen" wx:if="{{orderInfo.reviews.reply1 && !orderInfo.reviews.add_info}}" bindtap="addReviewsOpen">
+              <image class="addReviewsBtnImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/add_reviews_btn.png"></image>
+              追加评论</view>
+            </view>
+            <view class="reviewsInfoWrap">
+              <view class="reviewsInfoWrapBox">
+                <view class="reviewsInfoText">
+                  {{orderInfo.reviews.info}}
+                </view>
+                <view class="reviewsDate">
+                  {{orderInfo.reviews.create_time}}
+                </view>
+              </view>
+              <view class="storeReplay" wx:if="{{orderInfo.reviews.reply1}}">
+                <view class="storeReplayTitle">店家回复：{{orderInfo.reviews.reply1}}</view>
+              </view>
+              <view class="infoContent" wx:if="{{addReviewsTextarea}}">
+                <view class="section">
+                  <textarea bindinput="confirmInfo" cursor-spacing="100" placeholder-class="textAreaBoxPlaceholder" class="textAreaBox" auto-height placeholder="{{placeHolderText}}"  value="{{reviewsInfo}}"/>
+                </view>
+                <button class="primary addReviewsBtn" type="primary" bindtap="addReviewsSub">提交</button>
+              </view>
+              <view class="reviewsInfoWrapBox" wx:if="{{orderInfo.reviews.add_info}}">
+                <view class="reviewsInfoText">
+                  {{orderInfo.reviews.add_info}}
+                </view>
+                <view class="reviewsDate">
+                  {{orderInfo.reviews.add_info_time}}
+                </view>
+              </view>
+              <view class="storeReplay" wx:if="{{orderInfo.reviews.reply2}}">
+                <view class="storeReplayTitle">店家回复：{{orderInfo.reviews.reply2}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view wx:if="{{(orderInfo.status == 3 || orderInfo.status == 7 || orderInfo.status == 2) && orderInfo.reviews == null}}" class="reviews" style="margin-top:100rpx;margin-top:50rpx;padding:0 0.6em">
+        <button type="primary" bindtap="gotoReviews" class="reviewBtn">我要评论</button>
+      </view>
+      <view wx:if="{{(orderInfo.real_damage != '0.00' && orderInfo.real_damage && !orderInfo.c_order_sn)}}" class="damage-wrap">
+          <view class="classname">赔偿说明:</view>
+          <view class="damage-info">
+            {{orderInfo.damage_info}}
+          </view>
+          <view class="damage-imgs-wrap">
+            <block wx:for="{{orderInfo.damage_image_urls}}">
+              <image src="{{item}}" class="damage-imgs" bindtap="previewImage" data-url="{{item}}"></image>
+            </block>
+          </view>
+          <view>
+          <button class="pay-real-damage" type="primary" bindtap="gotoPayCompensate">支付赔偿金{{orderInfo.real_damage}}</button>
+      </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <!--<view class="mycode_title">可用的体验码</view>-->
+  <view wx:if="{{codeListLen > 0}}" class="mycode_list">
+    <view class="th">
+      <view class="mycode">体验码</view>
+      <view class="mycode_time">截止日期</view>
+      <view class="mycode_btn">操作</view>
+    </view>
+    <block wx:for="{{codeList}}" wx:for-index="idx" wx:for-item="item" wx:key="key">
+      <view class="tr">
+        <view class="mycode">{{item.code}}</view>
+        <view class="mycode_time">{{item.date}}</view>
+        <view class="mycode_btn mycode_btn_color" data-code="{{item.code}}" bindtap="useCode">立即使用</view>
+      </view>
+    </block>
+  </view>
+  <block wx:if="{{codeListLen == 0}}">
+      <view class="no_code_data">
+        没有可用的体验码
+      </view>
+    </block>
+</view>
+  <!-- 支付方式弹窗 -->
+<view class='mask' wx:if="{{maskdisplay==1}}">
+    <view class='masktop' bindtap='hiddenpayment'></view> 
+    <view class='maskcontent'>
+        <view class='maskcontentone'>
+            <view class='left'>微信支付</view>
+            <view bindtap='clickimg' data-id='1' class='right'>
+                <image src='/image/notselect.png' wx:if="{{currentchecked!=1}}" class='icon'></image>
+                <image src='/image/selectcl.png' wx:if="{{currentchecked==1}}" class='icon'></image>
+            </view>
+        </view>
+        <view class='maskcontenttwo'>
+            <view class='left'>
+                <view>会员卡支付</view>
+                <view class='leftone'> 余额:{{cardBlance}} 持卡人:{{cardUserName}}</view>
+            </view>
+            <view bindtap='clickimg' data-id='2' class='right'>
+                <image src='/image/notselect.png' wx:if="{{currentchecked!=2}}" class='icon'></image>
+                <image src='/image/selectcl.png' wx:if="{{currentchecked==2}}" class='icon'></image>
+            </view>
+        </view>
+        <view class='maskfooter' bindtap='hiddenpayment'></view>
+    </view>
+</view>

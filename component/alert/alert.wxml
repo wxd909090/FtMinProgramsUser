@@ -1,0 +1,18 @@
+<template name="alert">
+<block>
+  <view class="alert" wx:if="{{alertShow}}">
+    <view class="alertTopImgWrap" >
+      <image class="alertTopImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/bearAlert.png"></image>
+    </view>
+    <view class="alertInfoWrap">
+      <view class="alertTitle">感谢您的评价！</view>
+      <view class="alertInfo">赠予信誉积分 <text class="infoNum">1</text> 分</view>
+      <!-- <view  class="alertTitle">电影评价每天限制最多1分</view> -->
+      <view class="alertCloseWrap">
+        <image class="success_title_img" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/success_title.png"></image>
+         <!-- <button class="primary closeBtn" type="primary" bindtap="closeAlert">确 定</button> -->
+      </view>
+    </view>
+  </view>
+</block> 
+</template>

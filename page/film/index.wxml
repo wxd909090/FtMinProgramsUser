@@ -1,0 +1,164 @@
+<view class="index">
+  <view class="vourchersWrap" wx:if="{{isShowVouchers}}">
+    <view wx:if="{{isShowGetVouchers}}">
+      <!-- <image class="close-btn-x" bindtap="closeVouchers" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/close.png"></image> -->
+      <image class="getVouchersImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/film/getVouchers3.png"></image>
+      <view class="vouchers-btn-wrap">
+        <image class="vouchers-btn-img" bindtap="getVouchersBtn" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/appUI/film/vouchers_btn.png"></image>
+        <view class="vouchers-btn-text" bindtap="getVouchersBtn">拆开红包</view>
+      </view>
+    </view>
+    <view wx:if="{{isShowVouchersInfo}}">
+      <view class="vouchers-info-wrap">
+        <view class="vouchers-view">
+          <view class="vouchers-scroll">
+            <view class="single-vouchers-info" wx:for="{{couponList}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+              <view class="single-vouchers-left">
+                <view class="vouchers-price">{{item.price}}</view>
+                <view class="vouchers-text">元</view>
+              </view>
+              <view class="single-vouchers-right">
+                红包抵用券
+              </view>
+            </view>
+          </view>
+          <view class="title">
+            注：详情请在"我的优惠"里面查看
+          </view>
+          <view class="close-btn" bindtap="closeVouchers">
+            马上去使用
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="vourchersWrap" wx:if="{{showLoveActive}}">
+    <view class="loveActiveWrap">
+        <image class="loveImg loveImg1" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/ghost_left.png"></image>
+<image class="loveImg loveImg2" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/ghost_right.png"></image>
+        <image class="loverCloseBtn" bindtap="closeLover" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/close_btn.png"></image>
+        <image class="loverImg" bindtap="goToActive" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/zy_active2.png"></image>
+    </view>
+  </view>
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="body-head" wx:if="{{isShowStore}}">
+    <view>
+      <view class="showStoreLeft" style="width:70%;float:left">
+        <view class="store_nameShow" data-storeinfo="{{storeInfo}}" bindtap="openLocation">{{storeInfo.store_name}}</view>
+        <view class="addressShow" data-storeinfo="{{storeInfo}}" bindtap="openLocation">{{storeInfo.address}}</view>
+      </view>
+      <view class="showStoreRight" style="float:right;text-align:right;margin-top:4px;" bindtap="chooseStore" bindtap="chooseStore">
+        <image class="line" src="../../image/line.png"></image>
+        <!--<image class="closeBtn" data-storeinfo="{{storeInfo}}" bindtap="clearStore" src="../../image/closeBtn.png"  data-index="{{idx}}" binderror="imgae_err"></image>-->
+        <text class="choose-store">切换</text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{isShowStore}}" class="topTohead"></view>
+  <view class="movie-xf-wrap {{isShowStore ? 'movie-xf-wrap-top' : ''}}" wx:if="{{showMovieXfSrc}}">
+    <view class="showXfImgWrap" bindtap="hideImg" wx:if="{{showMovieXfImg}}">
+      <view class="blackView"></view>
+      <image src="{{posterImg}}" class="movieXfImg"></image>
+      <image src="/image/play_btn.png" class="plat_btn"></image>
+    </view>
+    <video class="movie-xf" src="{{movieXfSrc}}" autoplay="true" wx:if="{{!showMovieXfImg}}" objectFit="fill" controls poster="{{posterImg}}"></video>
+  </view>  
+  <view class="weui-search-bar {{showMovieXfSrc || isShowStore ? 'weui-search-bar-top' : ''}}"> 
+      <view class="weui-search-bar__form" style="box-sizing:border-box;">
+        <view class="up_box" bindtap="jumpsearch"></view>  
+        <view class="weui-search-bar__box input-wrap">     
+          <icon  class="weui-icon-search_in-box"  color="#fff" style="left:91.5%;top:16rpx;" type="search" size="14"></icon>     
+          <input type="text" class="weui-search-bar__input"    style="height:100%;" value="{{searchName}}" maxlength="20" placeholder="" focus="{{focus}}"/>
+        </view>     
+      </view> 
+      <view class="weui-search-bar__form_dowm" bindtap="allFilms">
+          
+          <text>全部电影</text>
+          <image src="/image/hit-movies/right.png" class="all-films"></image> 
+      </view>
+    </view>
+  <!-- 热映 -->
+  <view class="hit-movies">
+    <view class="top-hit-movies">
+      <view class="top-hit-movies-text">
+        <view class="top-hit-movies-text-pic"></view>
+        <text class="top-hit-movies-text-txt" style="font-size:26rpx;">热映电影</text>
+      </view>
+      <view class="top-hit-movies-more" bindtap="jumpMoreFilms" data-name='1'>
+        <image class="top-hit-movies-more-img" src="/image/hit-movies/right.png"></image>
+        <text class="top-hit-movies-more-txt" style="font-size:26rpx;">更多</text> 
+      </view>
+    </view>
+     <view class="bottom-hit-movies"  wx:if="{{hotFilms.length > 0}}">
+      <scroll-view class="scroll-view-one" scroll-x="true" style=" white-space: nowrap; display: block;height: 370rpx;">
+      <block wx:for="{{hotFilms}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+        <view id="{{key}}" style=" width: 220rpx; height: 370rpx; display: inline-block;margin-right:20rpx; position:relative"  data-film_info="{{item}}" bindtap="gotoDetailFilm">
+          <view class="little_score_box" style="position:absolute;top:275rpx;left:0rpx;width:60rpx;height:40rpx;background:rgba(0,0,0,0.4);line-height:40rpx;text-align:center;font-size:24rpx;color:#ffa71d;" wx:if="{{item.grade != '0.0'}}">{{item.grade}}</view>
+          <view class="little_score_box" style="position:absolute;top:275rpx;left:0rpx;width:60rpx;height:40rpx;background:rgba(0,0,0,0.4);line-height:40rpx;text-align:center;font-size:24rpx;color:#ffa71d;" wx:if="{{item.grade == '0.0'}}">暂无评分</view>
+          <image binderror="getHotFilmPic"  data-pic="{{item.image}}" src="{{item.image}}" class="bottom-hit-movies-view-img" ></image>
+          <text class="bottom-hit-movies-view-txt">{{item.film_name}}</text>
+        </view>
+      </block>
+      </scroll-view>
+
+    </view>
+    <view wx:if="{{hotFilms.length == 0}}"  class="noDataTitle">
+        <view>{{hasNoHotFilm}}</view>
+        <button type="primary" bindtap="allFilms" size="mini" style="font-size:26rpx;">全部电影</button>
+      </view>
+  </view> 
+  <!-- 最近更新 -->
+  <view class="hit-movies">
+    <view class="top-hit-movies">
+      <view class="top-hit-movies-text">
+        <view class="top-hit-movies-text-pic"></view>
+        <text class="top-hit-movies-text-txt" style="font-size:26rpx;">最近更新</text>
+      </view>
+      <view class="top-hit-movies-more" bindtap="jumpMoreFilms"  data-name='2'>
+        <image class="top-hit-movies-more-img" src="/image/hit-movies/right.png"></image>
+        <text class="top-hit-movies-more-txt" style="font-size:26rpx;">更多</text> 
+      </view>
+    </view>
+      <view class="bottom-hit-movies"  wx:if="{{getNewFilmList.length > 0}}">
+        <scroll-view class="scroll-view-one" scroll-x="true" style="white-space: nowrap; display: block;height: 370rpx;">
+        <block wx:for="{{getNewFilmList}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+        <view id="{{key}}" bindtap="gotoDetailFilm" data-film_info="{{item}}" style=" width: 220rpx; height: 370rpx;display: inline-block;margin-right:20rpx;position:relative" >
+           <view class="little_score_box" style="position:absolute;top:275rpx;left:0rpx;width:60rpx;height:40rpx;background:rgba(0,0,0,0.4);line-height:40rpx;text-align:center;font-size:24rpx;color:#ffa71d;" wx:if="{{item.grade != '0.0'}}">{{item.grade}}</view>
+           <view class="little_score_box" style="position:absolute;top:275rpx;left:0rpx;width:60rpx;height:40rpx;background:rgba(0,0,0,0.4);line-height:40rpx;text-align:center;font-size:24rpx;color:#ffa71d;" wx:if="{{item.grade == '0.0'}}">暂无评分</view>
+          <image binderror="getNewFilmListPic" data-pic="{{item.image}}" src="{{item.image}}" class="bottom-hit-movies-view-img" style=""></image>
+          <text class="bottom-hit-movies-view-txt">{{item.film_name}}</text>
+        </view>
+        </block>
+      </scroll-view>
+    </view>     
+    <view wx:if="{{getNewFilmList.length == 0}}" class="noDataTitle">
+        <view>{{hasNoAddFilm}}</view>
+        <button type="primary" bindtap="allFilms" size="mini">全部电影</button>
+    </view>  
+  </view>
+
+   <!-- 专题合集 -->
+  <view class="hit-movies" style="height:310rpx;">
+    <view class="top-hit-movies">
+      <view class="top-hit-movies-text">
+        <view class="top-hit-movies-text-pic" style="background-image:url({{baseMap}});background-size:220rpx 305rpx;"></view>
+        <text class="top-hit-movies-text-txt" style="font-size:26rpx;">专题合集</text>
+      </view>
+    </view>
+    <view class="bottom-hit-movies" wx:if="{{getSpecialList.length > 0}}" style="height:240rpx; background:#fff;">
+      <scroll-view class="scroll-view-one" scroll-x="true" style=" white-space: nowrap; display: block;height: 370rpx;" >
+        <block wx:for="{{getSpecialList}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+        <view data-film_info="{{item}}" bindtap="gotoSpecialList" style=" width: 280rpx; height: 240rpx; display: inline-block;margin-right:20rpx;" >
+          <image id="{{key}}" binderror="getSpecialListPic"  data-pic="{{item.image}}" src="{{item.image}}" class="bottom-hit-movies-view-img" style="width:280rpx;height:174rpx; border-radius:20rpx;background-image:url({{baseMap}});background-size:280rpx 174rpx;"></image>
+          <text class="bottom-hit-movies-view-txt" style="width:280rpx;height:66rpx;text-align:center">{{item.special_name}}</text>
+        </view>
+        </block>
+      </scroll-view>
+    </view>
+    <text wx:if="{{getSpecialList.length == 0}}" class='noSpecialList'>
+        {{hasNoSpecial}}
+    </text>   
+  </view>
+</view>

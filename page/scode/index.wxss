@@ -1,0 +1,33 @@
+@import "../common/lib/weui.wxss";
+.index {
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  background-color: #fff;
+}
+.top{
+  margin-top: 100px;
+}
+
+.weui-cell__bd{
+  min-height: 48rpx;
+  word-break: break-all;
+}
+
+.view-margin{
+  margin: 20px;
+}
+
+.text-info{
+  margin: 0 auto;
+  text-align:center;
+  margin-top: 30px;
+}
+
+.img{
+  margin: 0 auto;
+  display:block;
+  width: 125px;
+  height: 175px; 
+}
+.btn-area button{
+  width: 90%;
+}

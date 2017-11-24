@@ -1,0 +1,60 @@
+<!--playContro.wxml-->
+<view class="playControWrap">
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="imgWrap" style="background:{{bg_image}}"></view>
+  <view class="blackView">
+    <image src="{{image}}" class="filmImg" data-errorimg="{{image}}"></image>
+    <view class="filmNameWrap">
+      {{film_name}}
+    </view>
+  </view>
+
+  <view class="btnWrap">
+    <view class="top">
+      <!-- <view class="btn-play">
+        <image wx:if="{{play_ctl == 0}}" data-status="0" bindtap="forbidPlay" src="/image/playing_btn3.png" class="img-btn play-btn"></image>
+        <image wx:if="{{play_ctl == 1}}" data-status="1" bindtap="clickPlay" src="/image/playing_btn.png" class="img-btn play-btn"></image>
+        <image wx:if="{{play_ctl == 2}}" data-status="2" bindtap="clickPlay" src="/image/playing_btn2.png" class="img-btn play-btn"></image>
+        <image wx:if="{{play_ctl == 3}}" data-status="3" bindtap="forbidPlay" src="/image/playing_btn3.png" class="img-btn play-btn"></image>
+        <image wx:if="{{!play_ctl && play_ctl != 0}}" data-status="0" bindtap="forbidPlay" src="/image/playing_btn3.png" class="img-btn play-btn"></image>
+      </view> -->
+      <view class="btn-play" wx:if="{{play_ctl == 0}}">
+        <image data-status="0" bindtap="forbidPlay" src="/image/playing_btn3.png" class="img-btn play-btn"></image>
+      </view>
+      <view class="btn-play" wx:if="{{play_ctl == 1}}">
+        <image data-status="1" bindtap="clickPlay" src="/image/playing_btn.png" class="img-btn play-btn"></image>
+      </view>
+      <view class="btn-play" wx:if="{{play_ctl == 2}}">
+        <image data-status="2" bindtap="clickPlay" src="/image/playing_btn2.png" class="img-btn play-btn"></image>
+      </view>
+      <view class="btn-play" wx:if="{{play_ctl == 3}}">
+        <image data-status="3" bindtap="forbidPlay" src="/image/playing_btn3.png" class="img-btn play-btn"></image>
+      </view>
+      <view class="btn-play" wx:if="{{!play_ctl && play_ctl != 0}}">
+        <image data-status="0" bindtap="forbidPlay" src="/image/playing_btn3.png" class="img-btn play-btn"></image>
+      </view>
+
+      <!-- 灯光 -->
+      <view class="btn-light" wx:if="{{light_ctl == 1}}">
+        <image data-status="1" bindtap="clickLight" src="/image/light-btn.png" class="img-btn light-btn"></image>
+      </view> 
+      <view class="btn-light" wx:if="{{light_ctl == 2}}">
+        <image data-status="2" bindtap="clickLight" src="/image/light-btn2.png" class="img-btn light-btn"></image>
+      </view> 
+
+      <!-- 评论 -->
+      <view class="btn-reviews" wx:if="{{reviews_ctl == 1}}">
+        <image data-status="1" bindtap="clickReviews" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/reviews_btn.png" class="img-btn light-btn"></image>
+      </view> 
+    </view>
+    <view class="section section_gap bottom">
+      <view class="body-view voiceWrap">
+        <image src="/image/voice-icon1.png" class="light-icon-left"></image>
+        <slider bindchange="slider3change" value="{{volume}}" class="sliderVoice" bindchange="sliderChange"/>
+        <image src="/image/voice-icon2.png" class="light-icon-right"></image>
+      </view>
+    </view>
+  </view>
+</view>

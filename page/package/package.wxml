@@ -1,0 +1,24 @@
+<block wx:for="{{allPackages}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+<view class="templateView" id="{{key}}">
+  <view class="selectedView">
+    <image data-film_info="{{item}}" data-index="{{idx}}" data-src="{{selectedView[idx]}}" class="selectedViewPic" src="{{selectedView[idx]}}"  bindtap='selectedPackage'></image>
+  </view>
+  <view class="contentView">
+    <view class="mainPic">
+      <image class="mainPicImage" src="{{item.cover_url}}"></image>
+    </view>
+    <view class="mainText">
+      <view class="mainText_one"><text class="mainText_one_lef">{{item.name}}</text>
+       <text class="mainText_one_rig" wx:if="{{idx<2}}">荐</text> 
+      </view>
+      <view class="mainText_two"><text>{{item.goodsString}}</text></view>
+        <view class="mainText_three">
+          <view class="mainText_three_lef"><text>￥{{item.pay_price}}</text><text>原价￥{{item.total_price}}</text></view>
+          <!-- <view  class="mainText_three_rig"><image  data-index="{{idx}}" bindtap='addPackageNum' src="{{addNum[idx].add}}" style="float:right;"></image><text style="float:right;" wx:if="{{addNum[idx].reduceImgShow}}">{{addNum[idx].num}}</text><image data-index="{{idx}}" bindtap='reducePackageNum' wx:if="{{addNum[idx].reduceImgShow}}" src="{{addNum[idx].reduce}}" style="float:right;"></image></view> -->
+      </view> 
+    </view>
+  </view>
+</view>
+</block>
+
+<view class="viewButton" bindtap='sureButton'>确定</view>

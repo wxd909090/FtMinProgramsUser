@@ -1,0 +1,383 @@
+@import "../../common/lib/weui.wxss";
+@import "../../common/index.wxss";
+.index {
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+button {
+  margin-top: 0rpx;
+  margin-bottom: 0rpx;
+}
+
+.head {
+  margin: 7px 5px 9px 10px;
+  height: auto;
+  position: absolute;
+  left: 5px;
+  top:2px;
+  z-index: 1000;
+}
+
+.body-head {
+  width: 96%;
+  height: auto;
+  background: #fff;
+  z-index: 900;
+  color:#3d4145;
+  padding:2% 2%;
+  overflow:hidden;
+  border-bottom: 2rpx solid #e8e8e8;
+}
+
+.index-bd {
+  /*margin-top: 50px;*/
+}
+
+.topTohead {
+  /* margin-top: 4.1em; */
+}
+
+.serarch_view {
+  /*position: relative;*/
+  display: -webkit-box;
+  display: -webkit-flex;
+  /*display: flex;*//*box-sizing: border-box;*/
+  margin: 0px 5px 0px 2px;
+  /*background-color: #efeff4;*/
+  height: 30px;
+  line-height: 30px;
+  background: #fff;
+  border-radius: 20px;
+}
+
+.serarch_view_text {
+  width: 600rpx;
+  font-size: 0.9em;
+  color: #696969;
+  margin-left: 8px;
+}
+
+.search-input {
+  /*box-sizing: content-box;*/
+  width: 100%;
+  height: 30px;
+  display: inline-block;
+  /*border: none;*//*-webkit-appearance: none;*//*appearance: none;*//*font-family: inherit;*/
+  color: #3d4145;
+  font-size: 0.9em;
+  /*font-weight: normal;*//*padding: 0 5px;*/
+  background-color: #fff;
+  /*border: 1px solid #04be02;*/
+  border: 1px solid #fff;
+  /*opacity: 0.9;*//*box-sizing: content-box;*/
+  border-radius: 20px;
+  text-align: center;
+}
+
+.search-icon {
+  margin-top: 8rpx;
+  margin-left: 2%;
+  height: 20px;
+  width: 30px;
+}
+
+.search_icon_view {
+  height: 30px;
+  line-height: 30px;
+  background-color: #1aad19;
+  width: 70px;
+  text-align: center;
+}
+
+/*mystyle*/
+.index-bd{
+  padding:0
+}
+
+.flex-wrap{
+  display: flex;
+  margin:0 auto;
+  border-bottom:1px solid #ddd;
+  padding:12px 2%
+}
+
+.film_image{
+  width:60px;
+  height:80px;
+  display: block;
+}
+
+.filmInfo{
+  width:65%;
+  margin:0 0 0 3%;
+}
+.film_name{
+  font-size:16px
+}
+.class_describe{
+  font-size:12px;
+  color:rgb(136, 136, 136);
+}
+.director{
+  font-size:12px;
+  color:rgb(136, 136, 136);
+}
+.protagonist{
+  font-size:12px;
+  color:rgb(136, 136, 136);
+  width:100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.star{
+  display: block;
+  width: 70px;
+  height: 15px;
+  background-color: #eeeeee;
+}
+.starNumber{
+  font-size:14px;
+  color:rgb(247, 186, 42);
+  text-align: right;
+}
+.star_text{
+  font-size:10px;
+}
+.orderBtn{
+  font-size:12px;
+  margin-top:15px;
+  background-color: #5fbe51;
+  color:#fff;
+  padding:4px 0;
+  text-align: center;
+  width:92%;
+  float:right;
+  border-radius:2px
+}
+.loadMore {
+  margin: 10px 0px 5px 0px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #696969;
+}
+.store_nameShow{
+  font-size:30rpx;
+  font-weight: 700;
+}
+.addressShow{
+  font-size:12px;
+  color:#a6a5ad;
+}
+.line{
+  width:3px;
+  height:32px;
+  /* margin-right:8px; */
+  vertical-align: top;
+}
+.closeBtn{
+  width:30px;
+  height:30px;
+  margin-right:2px;
+}
+.movie-xf-wrap{
+  position: relative;
+  overflow: hidden;
+}
+.movie-xf-wrap-top{
+  margin-top: 115rpx;
+}
+.movie-xf{
+  width: 100%;
+  height: 320rpx;
+}
+.play-img{
+  width: 32px;
+  height: 32px;
+}
+.showXfImgWrap{
+  position:relative;
+  width:100%;
+  height: 320rpx;
+}
+.blackView{
+  position:absolute;
+  width:100%;
+  height:320rpx;
+  z-index:99;
+  background:#000;
+  opacity:0.4
+}
+.movieXfImg{
+  width:100%;
+  height:320rpx
+}
+.plat_btn{
+  position:absolute;
+  top:110rpx;
+  left:43%;
+  width:100rpx;
+  height:100rpx;
+  z-index:100
+}
+.movie-xf-wrap{
+  height: 320rpx;
+}
+.choose-store{
+  line-height: 32px;
+  font-size: 30rpx;
+  color: #5fbe51;
+  margin-left: 50rpx;
+}
+.showStoreRight{
+    width: 160rpx;
+}
+
+/* 选择条件 */
+.change-options{
+  width:98%;
+  height:230rpx;
+  border-bottom:3rpx solid #ededed;
+  padding: 20rpx 0 12rpx 2%;
+}
+.change-options .change-options-scroll-one{
+  height:60rpx;
+  width:100%;
+  background:#fff;
+  display:flex;
+  flex-direction:row;
+  white-space: nowrap;
+}
+.change-options .change-options-scroll-one .lef-view{
+  height:58rpx;
+  width:146rpx;
+  border:1rpx solid #5fbe51;
+  border-radius:25rpx;
+  line-height:60rpx;
+  box-sizing:border-box;
+  text-align:center;
+  background:#fff;
+  color:#7fcb74;
+  display:inline-block;
+  margin-right:28rpx;
+  margin-top:1rpx;
+}
+.change-options .change-options-scroll-one .rig-view{
+  width:146rpx;
+  line-height:60rpx;
+  text-align:center;
+  background:#fff;
+  color:#000;
+  display:inline-block;
+  height:58rpx;
+  margin-top:1rpx;
+}
+ .change-options .change-options-scroll-one .rig-view{
+  height:58rpx;
+  width:146rpx;
+  /* border:1rpx solid #5fbe51; */
+  border-radius:25rpx;
+  line-height:60rpx;
+  box-sizing:border-box;
+  text-align:center;
+  background:#fff;
+  /* color:#7fcb74; */
+  display:inline-block;
+  margin-right:0rpx;
+} 
+ .change-options .change-options-scroll-one .rig-view:nth-child(9){
+  width:165rpx;
+} 
+/* 修改 */
+
+.weui-search-bar .weui-search-bar__form_dowm{
+  margin:0px 10px;
+  margin-right:0px;
+  float:right;
+  padding-left:10px;
+  padding-right:20px;
+  border-radius:10px;
+  background:#FFFFFF;
+  border:1rpx solid #1aad19;
+  font-family:UICTFontTextStyleBody;
+  color:#1aad19;
+  line-height:56rpx;
+  height:56rpx;
+  text-align:center;
+  position:relative;
+}
+.weui-search-bar__form_dowm .all-films{
+  position:absolute;
+  top:18rpx;
+  right:16rpx;
+  width:15rpx;
+  height:20rpx
+}
+/* 热映 */
+.hit-movies{
+  background:#fff;
+  width:720rpx;
+  padding:0 15rpx;
+  padding-top:20rpx;
+}
+
+
+.hit-movies  .bottom-hit-movies-box-view{
+  height:370rpx;
+  background:red;
+  width:230rpx;
+  display:inline-block;
+  margin-right:15rpx;
+}
+.hit-movies  .bottom-hit-movies-box-view:nth-child(3n+3){
+  margin-right:0rpx;
+}
+.hit-movies  .bottom-hit-movies-box-view .bottom-hit-movies-view-img{
+  height:305rpx;
+  width:230rpx;
+  background:#fff;
+  float:left;
+}
+.hit-movies  .bottom-hit-movies-box-view .bottom-hit-movies-view-txt{
+  height:66rpx;
+  width:230rpx;
+  background:#fff;
+  float:left;
+  text-align:center;
+  line-height:66rpx;  
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -o-text-overflow:ellipsis;
+  white-space:nowrap;
+}
+/* 展示条件 */
+.showConditions-view{
+  width:100%;
+  height:84rpx;
+  position:fixed;
+  top:0px;
+  left:0px;
+  z-index:100;
+  background:#f3f3f3;
+}
+.showConditions-view text{
+  float:left;
+  margin-top:12rpx;
+  border-radius:25rpx;
+  margin-right:30rpx;
+  width:146rpx;
+}
+.showConditions-view text:nth-child(1){
+  margin-left:10rpx;
+}
+.showConditions-view text:nth-child(3){
+  width:165rpx;
+}
+.showStore{
+    overflow: hidden;
+}
+
+
+

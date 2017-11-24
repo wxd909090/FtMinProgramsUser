@@ -1,0 +1,27 @@
+<view class="container">
+
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="head">
+    <image class="guide_image" src="/image/guide.png"></image>
+  </view>
+  <view class="page-body">
+    <view class="page-section">
+      <view class="weui-cell__bd">
+        <!--<view class="title">需要交纳押金，可全退</view>-->
+        <view class="content-item">
+          <view class="recharge">
+                <text>{{depositNum}}</text>元
+          </view>
+          <view class="title">需要交纳押金，可全额退还</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class='pay'>
+            <button type="primary" plain="" bindtap="chargeDeposit" loading="{{loading}}"> 确认支付 ￥{{depositNum}}</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

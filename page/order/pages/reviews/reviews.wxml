@@ -1,0 +1,121 @@
+<view class="reviewsContainer">
+  <view class="top">
+    <view class="starTitle">点击星星评分</view>
+    <view class="health">
+      <view class="typeWrap">
+        <view class="title">卫生清洁</view>
+        <view class="starChoose">
+          <image src="{{healthStarNum >= 1?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="1" bindtap="clickHealth"></image>
+          <image src="{{healthStarNum >= 2?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="2" bindtap="clickHealth"></image>
+          <image src="{{healthStarNum >= 3?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="3" bindtap="clickHealth"></image>
+          <image src="{{healthStarNum >= 4?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="4" bindtap="clickHealth"></image>
+          <image src="{{healthStarNum >= 5?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="5" bindtap="clickHealth"></image>
+        </view>
+        <!-- <view class="reviewPro" wx:if="{{healthStarNum > 0}}">
+          <block wx:if="{{healthStarNum == 1}}">
+            非常不满意
+          </block>
+          <block wx:if="{{healthStarNum == 2}}">
+            不满意
+          </block>
+          <block wx:if="{{healthStarNum == 3}}">
+            感觉一般
+          </block>
+          <block wx:if="{{healthStarNum == 4}}">
+            满意
+          </block>
+          <block wx:if="{{healthStarNum == 5}}">
+            非常满意
+          </block>
+        </view> -->
+      </view>
+    </view>
+    <view class="av">
+      <view class="typeWrap">
+        <view class="title">影音效果</view>
+        <view class="starChoose">
+          <image src="{{avStarNum >= 1?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="1" bindtap="clickAv"></image>
+          <image src="{{avStarNum >= 2?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="2" bindtap="clickAv"></image>
+          <image src="{{avStarNum >= 3?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="3" bindtap="clickAv"></image>
+          <image src="{{avStarNum >= 4?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="4" bindtap="clickAv"></image>
+          <image src="{{avStarNum >= 5?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="5" bindtap="clickAv"></image>
+        </view>
+        <!-- <view class="reviewPro" wx:if="{{avStarNum > 0}}">
+        <block wx:if="{{avStarNum == 1}}">
+          非常不满意
+        </block>
+        <block wx:if="{{avStarNum == 2}}">
+          不满意
+        </block>
+        <block wx:if="{{avStarNum == 3}}">
+          感觉一般
+        </block>
+        <block wx:if="{{avStarNum == 4}}">
+          满意
+        </block>
+        <block wx:if="{{avStarNum == 5}}">
+          非常满意
+        </block>
+      </view> -->
+      </view>
+    </view>
+    <view class="comfy">
+      <view class="typeWrap">
+        <view class="title">舒适程度</view>
+        <view class="starChoose">
+          <image src="{{comfyStarNum >= 1?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="1" bindtap="clickComfy"></image>
+          <image src="{{comfyStarNum >= 2?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="2" bindtap="clickComfy"></image>
+          <image src="{{comfyStarNum >= 3?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="3" bindtap="clickComfy"></image>
+          <image src="{{comfyStarNum >= 4?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="4" bindtap="clickComfy"></image>
+          <image src="{{comfyStarNum >= 5?reviews_star1_src:reviews_star0_src}}" class="starImg" data-starNum="5" bindtap="clickComfy"></image>
+        </view>
+        <!-- <view class="reviewPro" wx:if="{{comfyStarNum > 0}}">
+          <block wx:if="{{comfyStarNum == 1}}">
+            非常不满意
+          </block>
+          <block wx:if="{{comfyStarNum == 2}}">
+            不满意
+          </block>
+          <block wx:if="{{comfyStarNum == 3}}">
+            感觉一般
+          </block>
+          <block wx:if="{{comfyStarNum == 4}}">
+            满意
+          </block>
+          <block wx:if="{{comfyStarNum == 5}}">
+            非常满意
+          </block>
+        </view> -->
+      </view>
+    </view>
+    <view class="startDecWrap">
+      <view class="startDec startDecFirst">极差</view>
+      <view class="startDec">较差</view>
+      <view class="startDec">一般</view>
+      <view class="startDec">不错</view>
+      <view class="startDec">很棒</view>
+    </view>
+  </view>
+
+  <view class="bottom">
+    <view class="info">
+      <view class="infoHeader">评价内容</view>
+      <view class="infoContent">
+        <view class="section">
+          <textarea bindinput="confirmInfo" cursor-spacing="100" placeholder-class="textAreaBoxPlaceholder" disabled="{{disabled}}" class="textAreaBox" auto-height placeholder="{{placeHolderText}}"  value="{{reviewsInfo}}"/>
+        </view>
+      </view>
+    </view>
+    <view class="info">
+      <view class="infoHeader">想看电影</view>
+      <view class="infoContent">
+        <view class="section">
+          <textarea bindinput="confirmMovieInfo" cursor-spacing="80" placeholder-class="textAreaBoxPlaceholder" class="movieInfo textAreaBox" disabled="{{disabled}}" auto-height placeholder="{{placeHolderText2}}"  value="{{reviewsInfo}}"/>
+        </view>
+      </view>
+    </view>
+    <button type="primary" bindtap="reviews"  class="sureBtn">提交</button>
+  </view>
+</view>
+<import src="../../../../component/alert/alert.wxml"/>
+<template is="alert" data="{{alertShow : alertShow,closeAlert : closeAlert}}"/>

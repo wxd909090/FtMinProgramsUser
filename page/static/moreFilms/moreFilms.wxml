@@ -1,0 +1,54 @@
+
+  <loading wx:if="{{b}}"  hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="search-view">
+    
+      <view class="search-view-box">
+        <form action="">
+          <icon class="search-view-box-icon" bindtap="" color="#5fbe51" type="search" size="16"></icon>
+          <input bindconfirm="searchFilm"  type="search" value="{{inputValue}}" class="search-view-box-input" bindinput="bindKeyInput" focus type="text" placeholder="请输入电影名"/>
+          <!-- <icon class="search-view-box-icon-two" style="display:{{bindInputValue}};background:#bdbdbd;border-radius:100rpx;" bindtap="cancel" color="#fff" type="cancel" size="20"></icon> -->
+          <image  class="search-view-box-icon-two" style="display:{{bindInputValue}};" bindtap="cancel" src="/image/moreFilms/cancel.png"></image>
+        </form>
+      </view>
+    
+    <view class="search-view-txt" bindtap="backIndex">
+      <text>取消</text>
+    </view>
+  </view>
+  <!-- 热sou -->
+  <view class="hot-search" style="display:{{hot_words}}">
+    <view class="hot-search-title">
+      <text>热门搜索</text>
+    </view>
+    <view class="hot-search-content-box">
+      <block wx:for="{{hotName}}" wx:for-index="key">
+        <view id="{{key}}" class="hot-search-content" bindtap="gotoDetailFilm" data-film_info="{{item}}">
+          <view class="hot-search-content-up">
+            <text style="color:#fff;font-size:16rpx;">{{key+1}}</text>
+          </view>
+          <view  class="hot-search-content-down">
+            <text>{{item.film_name}}</text>
+          </view>
+        </view>
+      </block>
+      </view>
+  </view>
+   <!-- 热映 -->
+  <view class="hit-movies" style="display:{{display_view}}">
+      <block wx:for="{{filmsList}}" wx:for-index="key">
+        <view data-film_info="{{item}}"  bindtap="gotoDetailFilm" class="bottom-hit-movies-box-view" style="" style="position:relative;">
+           <view class="little_score_box" style="position:absolute;top:264rpx;left:0rpx;width:60rpx;height:40rpx;background:rgba(0,0,0,0.4);line-height:40rpx;text-align:center;font-size:24rpx;color:#ffa71d">{{item.grade}}</view>  
+          <image  binderror="getfilmsListPic"  data-pic="{{item.image}}" id="{{key}}"  src="{{imageBaseUrl?imageBaseUrl+item.image:item.image}}" class="bottom-hit-movies-view-img" style="background-image:url({{baseMap}});background-size:230rpx 305rpx;"></image>
+          <text class="bottom-hit-movies-view-txt">{{item.special_name?item.special_name:item.film_name}}</text>
+        </view>
+      </block>
+  </view> 
+  <view style="display:{{searchData}}; text-align:center;width:100%;height:100%;background:#fff;"><image style="width:100%;height:400px;" src="/image/moreFilms/noFilm.jpg"></image></view>
+  
+
+   
+
+
+  

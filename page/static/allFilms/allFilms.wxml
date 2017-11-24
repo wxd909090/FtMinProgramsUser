@@ -1,0 +1,75 @@
+
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="body-head" wx:if="{{isShowStore}}">
+    <view class="showStore">
+      <view class="showStoreLeft" style="width:75%;float:left">
+        <view class="store_nameShow" data-storeinfo="{{storeInfo}}" bindtap="openLocation">{{storeInfo.store_name}}</view>
+        <view class="addressShow" data-storeinfo="{{storeInfo}}" bindtap="openLocation">{{storeInfo.address}}</view>
+      </view>
+      <view class="showStoreRight" style="float:right;margin-top:4px;">
+        <image class="line" src="../../../image/line.png"></image>
+        <!--<image class="closeBtn" data-storeinfo="{{storeInfo}}" bindtap="clearStore" src="../../image/closeBtn.png"  data-index="{{idx}}" binderror="imgae_err"></image>-->
+        <text class="choose-store" bindtap="chooseStore">切换</text>
+      </view>
+    </view>
+  </view>
+   <view bindtap="backView" class="showConditions-view" wx:if="{{showConditionView}}">
+    <block wx:for="{{showConditions}}" wx:for-index="key" wx:for-item="item" wx:key="key">
+      <text style="line-height:60rpx; text-align:center; background:#fff;color:#7fcb74;display:inline-block;height:58rpx;border:1rpx solid #5fbe51;">{{item.name}}</text>
+    </block>
+  </view> 
+  <view class="change-options" wx:if="{{changeOptions}}" style="background:#fff; border-bottom:1px solid #e8e8e8;">
+    <scroll-view class="change-options-scroll-one" scroll-x="true" style="margin-bottom:20rpx; white-space: nowrap; display: block;">
+      <!-- <view  class="lef-view">
+        <text>评分榜</text>
+      </view> -->
+      <block wx:for="{{condition3}}" wx:for-index="key" wx:for-item="item" wx:key="key">
+        <view id="{{key}}" bindtap="changeCondition3"  class="rig-view" style="border:{{item.border}};color:{{item.color}}">
+          <text>{{item.name}}</text>
+        </view> 
+      </block>
+    </scroll-view>
+
+    <scroll-view class="change-options-scroll-one" scroll-x="true" style="margin-bottom:20rpx;white-space: nowrap; display: block;">
+      <!-- <view  class="lef-view">
+        <text>全部类型</text>
+      </view> -->
+      <block wx:for="{{condition1}}" wx:for-index="key" wx:for-item="item" wx:key="key">
+        <view id="{{key}}" data-item="{{item.name}}" class="rig-view" bindtap="changeCondition1" style="border:{{item.border}};color:{{item.color}}">
+          <text>{{item.name}}</text>
+        </view>
+      </block>
+      
+    </scroll-view>
+
+    <scroll-view class="change-options-scroll-one" scroll-x="true" style="white-space: nowrap; display: block;">
+      <!-- <view  class="lef-view">
+        <text>全部年份</text>
+      </view> -->
+      <block wx:for="{{condition2}}" wx:for-index="key" wx:for-item="item" wx:key="key">
+        <view id="{{key}}" data-item="{{item.name}}" class="rig-view"  bindtap="changeCondition2" style="border:{{item.border}};color:{{item.color}}">
+          <text style="display:block;">{{item.name}}</text>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+
+  <!-- 热映 -->
+  <view class="hit-movies">
+      <block wx:for="{{getFilmlList}}" wx:for-index="key" wx:for-item="item" wx:key="key">
+        <view id="{{key}}" class="bottom-hit-movies-box-view" style="position:relative;" data-film_info="{{item}}" bindtap="gotoDetailFilm">
+          <view class="little_score_box" style="position:absolute;top:265rpx;left:0rpx;width:60rpx;height:40rpx;background:rgba(0,0,0,0.4);line-height:40rpx;text-align:center;font-size:24rpx;color:#ffa71d;">{{item.grade}}</view>
+          <image binderror="getFilmlListPic"  data-pic="{{item.image}}" src="{{item.image}}" class="bottom-hit-movies-view-img" style="background-image:url({{baseMap}});background-size:230rpx 305rpx;"></image>
+          <text class="bottom-hit-movies-view-txt" style="text-align:left;">{{item.film_name}}</text>
+        </view>
+      </block>
+  </view> 
+
+  
+
+   
+
+
+  

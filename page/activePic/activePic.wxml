@@ -1,0 +1,53 @@
+<!--activePic.wxml-->
+<view class="activeWrap">
+    <view class="activeTopImg">
+        <image              src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/top_Img_title.jpg" class="love_active_top"></image>
+    </view>
+    <view class="activeTextDes">
+        <view class="movieWrap">
+            <view class="movieBox">
+                <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/jc81.jpg" class="movieInfo"></image>
+                <view class="movieName">《京城81号2》</view>
+                <view class="movieDes">前世债，今世还</view>
+            </view>
+            <view class="movieBox">
+                <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/anbe2.jpg" class="movieInfo"></image>
+                <view class="movieName">《安娜贝尔》</view>
+                <view class="movieDes">开启招魂(恐怖)宇宙</view>
+            </view>
+            <view class="movieBox">
+                <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/gey.jpg" class="movieInfo"></image>
+                <view class="movieName">《孤儿怨》</view>
+                <view class="movieDes">诡秘少女带来深层恐惧</view>
+            </view>
+            <view class="movieBox">
+                <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/gld.jpg" class="movieInfo"></image>
+                <view class="movieName">《鬼来电》</view>
+                <view class="movieDes">半夜不要开手机</view>
+            </view>
+            <view class="movieBox">
+                <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/gy.jpg" class="movieInfo"></image>
+                <view class="movieName">《鬼影》</view>
+                <view class="movieDes">不能不看的泰国恐怖片</view>
+            </view>
+            <view class="movieBox">
+                <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/lgjy.jpg" class="movieInfo"></image>
+                <view class="movieName">《厉鬼将映》</view>
+                <view class="movieDes">前所未有的电影院惊魂</view>
+            </view>
+            <view class="movieBox">
+                <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/sj.jpg" class="movieInfo"></image>
+                <view class="movieName">《死寂》</view>
+                <view class="movieDes">木偶世界中的异样恐怖</view>
+            </view>
+            <view class="movieBox">
+                <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/yx.jpg" class="movieInfo"></image>
+                <view class="movieName">《异形：契约》</view>
+                <view class="movieDes">怪兽来袭，在劫难逃</view>
+            </view>
+        </view>
+    </view>
+    <view class='bottom_btn'>
+        <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zy_active/go_to_film.png" class="bottom_btn_img" bindtap="goToFilm"></image>
+    </view>
+</view>

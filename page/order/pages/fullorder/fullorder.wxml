@@ -1,0 +1,125 @@
+
+<view>
+    <loading hidden="{{hidden}}">
+        加载中...
+    </loading>
+    <view class='container'>
+        
+        <image wx:if="{{orderListaData.length <= 0}}" class="bearTitle" style="" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/noOrderBack.png"></image>
+        <view wx:if="{{orderListaData.length<=0}}" class="textalign">暂无订单。赶快去选购吧！</view>
+        <view wx:for="{{orderListaData}}" wx:key="{{item}}" wx:index="{{index}}" wx:for-item="item" class='orderListContent'>
+            <!-- 电影订单 -->
+            <view wx:if="{{!item.ft_order}}">
+                <view class='top'>
+                    <view class='topmiddle'>
+                        <image src='/image/storeone.png' class='topleft'></image>
+                        <block>
+                            {{item.store_name}}
+                        </block>
+                    </view>
+                    <!-- 未支付、已支付、待评价 -->
+                    <!-- 支付倒计时{{item.create_time - 0 + 300 - nowTime}}秒  -->
+                    <view class='topright' wx:if="{{turnFlag == 1 && item.newStatus != 5}}" style="color:#5fbe51">{{item.timer}}</view>
+                    <view class='topright' wx:if="{{turnFlag == 1 && item.newStatus == 5}}" style="color:#5fbe51">支付过期</view>
+                    <!-- <view class='topright' wx:if="{{turnFlag == 2}}">已支付</view> -->
+                    <!-- <view class='topright' wx:if="{{turnFlag == 3}}">待评价</view> -->
+
+                    <!-- 全部订单 -->
+                    <!-- 0:未支付，1:已预约，2:使用中，3:已完成，4:已退款，5:已作废,6:超时未观影,7:超时未打扫' -->
+                    <!-- <view class='topright' wx:if="{{turnFlag == 4 && item.status == 0}}">支付中</view> -->
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 0 && item.newStatus != 5}}" style="color:#5fbe51">{{item.timer}}</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 0 && item.newStatus == 5}}" style="color:#5fbe51">支付过期</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 1}}">已支付</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 2}}">播放中</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 3}}">已完成</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 4}}">已退款</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 5}}">已过期</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 6}}">已过期</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 7}}">已过期</view>
+                </view>
+                <view class='content' bindtap='goOrderInfo' data-order_info='{{item}}'>
+                    <view class='contentone'>
+                        <image src='{{item.image}}'></image>
+                    </view>
+                    <view class='contenttwo'>
+                        <view class='orderInfoTop'>
+                            {{item.film_name}}
+                            <view class='orderPrice' wx:if="{{turnFlag != 1}}">￥ {{item.price}}</view>
+                        </view>
+                        <view class='orderInfoMid'>
+                            {{item.room_name}}（包间） 
+                        </view>
+                        <view class='orderInfoMid'>
+                            {{item.turnReserve_time}}  {{item.turnDuration_time}}
+                            <!-- <view wx:if="{{turnFlag == 1}}" bindtap='goToPayOrder' class="payOrderBtn" data-order_info='{{item}}'>去支付</view> -->
+                            <view wx:if="{{turnFlag == 1}}" catchtap='goOrderInfo' class="payOrderBtn" data-order_info='{{item}}'>去支付</view>
+                        </view>
+                        <view class='orderInfoBottom'>{{item.address}}
+                          <!-- <view wx:if="{{(turnFlag != 1 && turnFlag != 2) && (item.status == 3 || item.status == 6 || item.status == 7) && (item.real_damage != '0.00' && !item.c_order_sn)}}" class="damageText">需缴纳罚金</view> -->
+                        </view>
+                    </view>
+                    <view wx:if="{{turnFlag != 1 && turnFlag != 2 && (item.status == 3 || item.status == 6 || item.status == 7) && (item.real_damage != '0.00' && !item.c_order_sn)}}" class='delOrderBtn' catchtap='goOrderInfo' data-index='{{index}}' data-order_sn="{{item.order_sn}}">缴纳罚金</view>
+                    <view wx:if="{{turnFlag != 1 && turnFlag != 2 && item.status != 1 && item.status != 2 && item.real_damage == '0.00'}}" class='delOrderBtn' catchtap='delOrder' data-index='{{index}}' data-order_sn="{{item.order_sn}}">删除订单</view>
+                    <!-- <view wx:if="{{(turnFlag != 1 && turnFlag != 2) && (item.status == 3 || item.status == 6 || item.status == 7) && (item.real_damage != '0.00' && !item.c_order_sn)}}" class='delOrderBtn'>
+                      缴纳罚金
+                    </view>  -->
+                </view>
+            </view>
+            <!-- 商品单 -->
+            <view wx:if="{{item.ft_order}}">
+                <view class='top'>
+                    <view class='topmiddle'>
+                        <image src='/image/storeone.png' class='topleft'></image>
+                        <block>
+                            {{item.ft_order.info.store_name}}
+                        </block>
+                    </view>
+                    <!-- 未支付、已支付、待评价 -->
+                    <view class='topright' wx:if="{{turnFlag == 1 && item.newStatus != 5}}" style="color:#5fbe51">{{item.timer}}</view>
+                    <view class='topright' wx:if="{{turnFlag == 1 && item.newStatus == 5}}" style="color:#5fbe51">支付过期</view>
+                    <!-- <view class='topright' wx:if="{{turnFlag == 2}}">已支付</view> -->
+                    <!-- <view class='topright' wx:if="{{turnFlag == 3}}">待评价</view> -->
+                    <!-- 全部订单 -->
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 1}}">未支付</view>
+                    <!-- <view class='topright' wx:if="{{turnFlag == 4 && item.status == 2}}">支付中</view> -->
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 2 && item.newStatus != 5}}" style="color:#5fbe51">{{item.timer}}</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 2 &&item.newStatus == 5}}" style="color:#5fbe51">支付过期</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 3}}">已支付</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 4}}">出库</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 5}}">已完成</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 6}}">已取消</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 7}}">退单中</view>
+                    <view class='topright' wx:if="{{turnFlag == 4 && item.status == 8}}">已退款</view>
+                </view>
+                <view class='content' bindtap='goOrderInfo' data-order_info='{{item}}'>
+                    <view class='contentone'>
+                        <image wx:if="{{item.order_goods.length > 0}}" src='{{item.order_goods[0].cover_url}}'></image>
+                        <image wx:if="{{item.order_goods.length == 0 || !item.order_goods.length}}" src='/image/order/Defaultgoods.png'></image>
+                    </view>
+                    <view class='contenttwo'>
+                        <view class='orderInfoTop'>{{item.ft_order.info.room_name}}（包间） 
+                            <view class='orderPrice' wx:if="{{turnFlag != 1}}">￥ {{item.ft_order.price}}</view>
+                        </view>
+                        <view class='orderInfoMid'>{{item.ft_order.turnReserve_time}}  {{item.ft_order.turnDuration_time}}</view>
+                        <view class='orderInfoMid'>
+                            {{item.ft_order.distribution_type==1?"店家配送":"前台自取"}}
+                            <view wx:if="{{turnFlag == 1}}" bindtap='goToPayOrder' class="payOrderBtn" data-order_info='{{item}}'>去支付</view>
+                        </view>
+                        <view class='orderInfoBottom'>
+                            <block wx:for="{{item.order_goods}}" wx:key="{{item}}" wx:for-item="items">{{items.name}}<block wx:if="{{(index + 1) < item.order_goods.length}}">+</block></block>等{{item.order_goods.length}}件商品
+                        </view>
+                        <view class='delOrderBtn'  data-index='{{index}}' wx:if="{{turnFlag != 1 && turnFlag != 2 && (item.status == 5 || item.status == 6 || item.status == 8)}}" catchtap='delGoodsOrder' data-item="{{item}}">删除订单</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 待支付 -->
+            <view wx:if="{{turnFlag == 1}}"  class="cancelOrder">
+                <view class="showPayPrice">
+                    <view class="showPayPriceText">支付金额</view>
+                    ￥{{item.goods_order.ft_order ? ((item.price - 0)*100 + (item.goods_order.ft_order.price - 0)*100)/100 : item.price}}
+                </view>
+                <view class="cancleOrderBtn" wx:if="{{item.newStatus != 5}}" bindtap='cancleOrder' data-order_info='{{item}}'>取消订单</view>
+            </view>
+        </view>
+    </view>
+</view>

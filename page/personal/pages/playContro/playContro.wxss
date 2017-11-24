@@ -1,0 +1,125 @@
+/* playContro.wxss */
+.imgWrap{
+  position: relative;
+  height: 700rpx;
+  overflow: hidden;
+  background:url('https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2398536635.jpg');
+  background-size:800px 1200px;
+  background-repeat:no-repeat;
+  background-position:center;
+  filter:blur(10px);
+}
+
+
+
+
+
+.filmImg{
+  width:50%;
+  height: 540rpx;
+  margin-left:25%;
+  margin-top:40rpx;
+}
+.filmNameWrap{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  text-align: center;
+  color: #fff;
+  background: rgba(95,190,81,0.7);
+  font-weight: 600;
+}
+.top{
+  margin-top: 90rpx;
+  display: flex;
+}
+.bottom{
+  margin-top: 20rpx;
+  overflow: hidden;
+}
+.btn-left{
+  display: inline-block;
+  overflow: hidden;
+  height: 300rpg;
+  text-align: right;
+  flex: 1;
+}
+.btn-play{
+  display: inline-block;
+  overflow: hidden;
+  height: 300rpg;
+  text-align: center;
+  flex: 1;
+}
+.btn-left2{
+  display: inline-block;
+  overflow: hidden;
+  height: 300rpg;
+  text-align: right;
+  margin-left: 17%;
+  flex: 1;
+}
+.btn-right{
+  display: inline-block;
+  overflow: hidden;
+  flex: 1;
+}
+.btn-light{
+  display: inline-block;
+  overflow: hidden;
+  flex: 1;
+  text-align: center;
+}
+.btn-reviews{
+  display: inline-block;
+  overflow: hidden;
+  flex: 1;
+  text-align: center;
+}
+.img-btn{
+  width: 140rpx;
+  height: 140rpx;
+}
+.play-btn{
+}
+.light-btn{
+  /* margin-left: 60rpx; */
+}
+.light-icon-left{
+  width:40rpx;
+  height:36rpx;
+  float:left;
+  margin-left:4%;
+  margin-right:1%;
+  vertical-align:middle;
+}
+.light-icon-right{
+  width:40rpx;
+  height:36rpx;
+  float:right;
+  margin-right:4%;
+  margin-left:1%;
+}
+.sliderVoice{
+  float:left;
+  width:76%;
+  margin:0 auto;
+}
+.blackView{
+  height: 700rpx;
+  width: 100%;
+  background-color: rgba(0,0,0,0.6);
+  position: absolute;
+  top: 0;
+}
+.voiceWrap{
+  overflow:hidden;
+  width:90%;
+  margin:0 auto;
+  padding: 15rpx 0;
+  vertical-align:middle;
+}

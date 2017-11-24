@@ -1,0 +1,20 @@
+<view class="container index">
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="page-body">
+    <!--<view class="text-info top">*****************温馨提示********************</view>-->
+    <view class="weui-cells__title view-margin text-info">
+      请对准包间的二维码，稍等片刻即可。
+    </view>
+    <view class="view-margin">
+      <image class="img" src="{{src}}"></image>
+    </view>
+    <view class="text-info">
+      祝您观影愉快!
+    </view>
+    <view class="btn-area">
+      <button type="primary" bindtap="scanCode">扫码观影</button>
+    </view>
+  </view>
+</view>

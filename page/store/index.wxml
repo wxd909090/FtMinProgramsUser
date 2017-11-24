@@ -1,0 +1,56 @@
+<view class="index">
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="index-bd">
+    <view class="kind-list">
+      <view class="kind-list-item store_list">
+        <!-- <view class="film_cell" wx:if="{{isShowFilm}}">
+          <view class="filmLeft" data-film_info="{{filmInfo}}" bindtap="gotoFilmDetail" hover-class="navigator-hover">
+            <image class="filmImg" src="{{imageUrl+filmInfo.image}}"></image>
+          </view>
+          <view class="filmCenter">
+            <view class="film_name_show">{{filmInfo.film_name}}</view>
+            <view class="director_show">导演: {{filmInfo.director}}</view>
+            <view class="protagonist_show">主演: {{filmInfo.protagonist}}</view>
+            <view class="grade_show">评分: <view class="gradeNum">{{filmInfo.grade}}</view></view>
+          </view>
+          <view class="filmRight">
+              <image class="closeBtn"  bindtap="clearFilm" src="../../image/closeBtn.png"></image>
+          </view>
+        </view>
+        <view class="blankView" wx:if="{{isShowFilm}}"></view> -->
+
+        <block class="store_list" wx:for="{{storeList}}" wx:key="key">
+            <view class="store_cell">
+                <view class="store_row1">
+                    <view class="store_row1_item1 store_name" data-storeinfo="{{item}}" bindtap="openLocation">{{item.store_name}}</view>
+                    <text class="stopBusiness" wx:if="{{item.status == 2}}">(暂停营业)</text>
+                    <view class="orderBtn"  data-store_info="{{item}}" bindtap="choose">选择</view>
+                </view>
+                <view class="store_row2">
+                    <view class="store_row2_item2 address" data-storeinfo="{{item}}" bindtap="openLocation">
+                    {{item.address}}
+                    <view class="distance">{{item.distance}}km</view>
+                </view>
+            </view>
+                <!-- <view class="store_row3">
+                <view class="activity">
+                    <view class="activityName">惠</view>超值红包大放送，登录可领，预约观影可抵用。
+                </view>
+                </view>  -->
+            </view>
+        </block>
+
+        <!--<view class="loadMore">{{loadText[loadTextIndx]}}</view>-->
+      </view>
+
+      <!--<view class="kind-list-item">
+        第一列
+      </view>
+      <view class="kind-list-item">
+        第一列
+      </view>-->
+    </view>
+  </view>
+</view>

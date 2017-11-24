@@ -1,0 +1,43 @@
+@import "../common/lib/weui.wxss";
+@import "../common/index.wxss";
+
+/* 热映 */
+page{ 
+    background: #fff;
+}
+.hit-movies{
+  background:#fff;
+  width:720rpx;
+  padding:0 15rpx;
+  padding-top:15rpx;
+}
+
+.hit-movies  .bottom-hit-movies-box-view{
+  height:380rpx;
+  width:230rpx;
+  display:inline-block;
+  margin-right:15rpx;
+}
+.hit-movies  .bottom-hit-movies-box-view:nth-child(3n+3){
+  margin-right:0rpx;
+}
+.hit-movies  .bottom-hit-movies-box-view .bottom-hit-movies-view-img{
+  height:315rpx;
+  width:230rpx;
+  background:#fff;
+  float:left;
+}
+.hit-movies  .bottom-hit-movies-box-view .bottom-hit-movies-view-txt{
+  height:66rpx;
+  width:230rpx;
+  float:left;
+  text-align:center;
+  line-height:66rpx;
+  display:block;
+  white-space:nowrap; 
+  overflow:hidden; 
+  text-overflow:ellipsis;
+}
+
+
+

@@ -1,0 +1,171 @@
+@import "../../common/lib/weui.wxss";
+@import "../../common/index.wxss";
+
+/* 搜索 */
+.search-view{
+  width:100%;
+  height:122rpx;
+  background:#f3f3f4;
+  border-bottom:2px solid #eeeeee;
+  box-sizing:border-box;
+  padding:30rpx 0rpx; 
+  padding-left:16rpx;
+  display:flex;
+  flex-direction:row;
+}
+.search-view .search-view-txt{
+  height:60rpx;
+  line-height:60rpx;
+  margin-left:30rpx;
+  color:#7dc972;
+}
+
+.search-view .search-view-box{
+ width:600rpx;
+ height:60rpx;
+ border:1rpx solid #5fbe51;
+ box-sizing:border-box;
+ border-radius:25rpx;
+ position:relative;
+ padding-left:60rpx;
+ padding-right:40rpx;
+}
+.search-view .search-view-box .search-view-box-icon{
+ position:absolute;
+ left:12rpx;
+ top:13.5rpx;
+}
+.search-view .search-view-box .search-view-box-icon-two{
+  position:absolute;
+  right:10rpx;
+  top:8rpx;
+  width:40rpx;
+  height:40rpx;
+}
+.search-view .search-view-box .search-view-box-input{
+ width:100%;
+ height:58rpx;
+ line-height:58rpx;
+ text-align:left;
+ font-size:24rpx;
+}
+
+/* 热映 */
+.hot-search{
+  padding-left:16rpx;
+}
+.hot-search .hot-search-title{
+  width:100%;
+  height:90rpx;
+  text-align:left;
+  line-height:90rpx;
+  font-weight:bold;
+  border-bottom:2rpx solid #ededed;
+}
+.hot-search .hot-search-content-box{
+  width:720rpx;
+  overflow:hidden;
+}
+.hot-search .hot-search-content{
+  width:360rpx;
+  height:30rpx;
+  text-align:left;
+  line-height:30rpx;
+  margin-bottom:40rpx;
+  display:flex;
+  flex-direction:row;
+  float:left;
+}
+.hot-search .hot-search-content:nth-child(1) {
+  margin-top:30rpx;
+}
+.hot-search .hot-search-content:nth-child(2){
+  margin-top:30rpx;
+}
+.hot-search .hot-search-content .hot-search-content-up{
+  display:inline-block;
+  width:30rpx;
+  height:30rpx;
+  text-align:center;
+  line-height:30rpx;
+}
+.hot-search .hot-search-content .hot-search-content-up text{
+  display:block;
+  width:30rpx;
+  height:30rpx;
+  background:#d3d3d3;
+  text-align:center;
+  line-height:30rpx;
+}
+.hot-search .hot-search-content:nth-child(1) .hot-search-content-up text{
+  display:block;
+  width:30rpx;
+  height:30rpx;
+  background:#ff6767;
+  text-align:center;
+  line-height:30rpx;
+}
+.hot-search .hot-search-content:nth-child(2) .hot-search-content-up text{
+  display:block;
+  width:30rpx;
+  height:30rpx;
+  background:#ff9967;
+  text-align:center;
+  line-height:30rpx;
+}
+.hot-search .hot-search-content:nth-child(3) .hot-search-content-up text{
+  display:block;
+  width:30rpx;
+  height:30rpx;
+  background:#ffdd83;
+  text-align:center;
+  line-height:30rpx;
+}
+.hot-search .hot-search-content .hot-search-content-down{
+  display:inline-block;
+  padding-left:10rpx;
+  font-size:25rpx;
+}
+.hot-search .hot-search-content .hot-search-content-down text{
+  display:inline-block;
+  width:288rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+
+
+/* 热映 */
+.hit-movies{
+  background:#fff;
+  width:720rpx;
+  padding:0 15rpx;
+  padding-top:15rpx;
+}
+
+.hit-movies  .bottom-hit-movies-box-view{
+  height:370rpx;
+  width:230rpx;
+  display:inline-block;
+  margin-right:15rpx;
+}
+.hit-movies  .bottom-hit-movies-box-view:nth-child(3n+3){
+  margin-right:0rpx;
+}
+.hit-movies  .bottom-hit-movies-box-view .bottom-hit-movies-view-img{
+  height:305rpx;
+  width:230rpx;
+  background:#fff;
+  float:left;
+}
+.hit-movies  .bottom-hit-movies-box-view .bottom-hit-movies-view-txt{
+  height:66rpx;
+  width:230rpx;
+  float:left;
+  text-align:center;
+  line-height:66rpx;
+  display:block;
+  white-space:nowrap; 
+  overflow:hidden; 
+  text-overflow:ellipsis;
+}

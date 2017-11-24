@@ -1,0 +1,55 @@
+
+  <loading wx:if="{{b}}"  hidden="{{hidden}}">
+    加载中...
+  </loading>
+
+  <!-- 热映 -->
+ <view class="box">
+
+  <view class="box-title">
+    <text>点击星星评分</text>
+  </view>
+
+  <view class="box-stars">
+    <block wx:for="{{store}}" wx:for-index="key">
+      <view id="{{key}}" data-sign="{{item.sign}}" class="box-stars-new" bindtap="setScore">
+        <image src="{{item.src}}"></image>
+        <text>{{item.name}}</text>
+      </view>
+    </block>
+     <!-- <view class="box-stars-new">
+      <image src="/image/star_white.png"></image>
+      <text>较差</text>
+    </view>
+     <view class="box-stars-new">
+      <image src="/image/star_white.png"></image>
+      <text>一般</text>
+    </view>
+     <view class="box-stars-new">
+      <image src="/image/star_white.png"></image>
+      <text>不错</text>
+    </view>
+     <view class="box-stars-new">
+      <image src="/image/star_white.png"></image>
+      <text>很棒</text>
+    </view>-->
+  </view> 
+
+  <view  class="box-textarea">
+    <textarea placeholder="{{placeText}}" bindinput="confirmInfo" cursor-spacing="100" placeholder-class="textAreaBoxPlaceholder" value="{{reviewsInfo}}"></textarea>
+  </view>
+
+  <view  class="box-input">
+    <button type="primary" bindtap="filmReviewsSub" class="filmReviewsSub">提交</button>
+  </view>
+
+ </view>
+<import src="../../../component/filmAlert/filmAlert.wxml"/>
+<template is="filmalert" data="{{alertShow : alertShow,closeAlert : closeAlert,showGrade:showGrade}}"/>
+
+  
+
+   
+
+
+  

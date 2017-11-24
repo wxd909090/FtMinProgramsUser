@@ -1,0 +1,123 @@
+/* page/login/index.wxss */
+@import "../../../common/lib/weui.wxss";
+@import "../../../common/index.wxss";
+.row{
+    margin-top: 50px;
+}
+.check_login{
+    padding: 10px;
+    margin-top: 50px;
+}
+#number{
+    width: 100%;
+}
+#code{
+    width: 65%
+}
+#sendCode{
+    padding: 0em;
+    width: 7em;
+    height: 2.1em;
+    line-height: 2.1em;
+    font-size: 0.9em;
+    margin-left:1em;
+    margin-right: 1em;
+}
+button{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.container{
+   font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+   padding: 0px;
+}
+
+.content-item{
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px 10px 20px 10px;
+
+}
+.head{
+    width: 100%;
+    height: 70px;
+    padding-top: 10px;
+    /*line-height: 80px;*/
+    /*background-color: gold;*/
+
+}
+.step1,.step2{
+    float: left;
+    width: 150px;
+    height: 50px;
+    /*background-color: gray;*/
+}
+.icons{
+    float: left;
+}
+
+.space{
+    height:30px;
+    float: left;
+    width: 100px;
+    line-height: 30px;
+    font-size: 34px;
+    color: gray;
+    /*background-color: red;*/
+    text-align: center;
+}
+.c2{
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+}
+.c3{
+    clear: both;
+}
+.stepTxt{
+    font-size: 12px;
+    padding-top: 10px;
+}
+.pay{
+    margin:50px auto;
+    width: 80%;
+    margin-top: 20%;
+    /*padding-left: 10%;
+    padding-right: 10%;*/
+    /*font-size: 24px;*/
+    text-align: center;
+}
+.pay button{
+    font-size: 20px;
+}
+.recharge{
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    
+}
+.recharge text{
+    font-size: 80px;
+    font-weight: bold;
+}
+.title{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.mobile{
+    margin: 50px 0px 20px 0px;
+}
+
+.inputLine{
+    height: 3em;
+}
+.changeLoginTypeBox{
+    padding-top: 1.5em;
+    margin: auto 0;
+    text-align: center;
+    color: #003366
+}

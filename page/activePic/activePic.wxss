@@ -1,0 +1,129 @@
+/* activePic.wxss */
+.activeWrap{
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  background-color: #284f3a;
+  font-family: "宋体";
+  overflow: hidden;
+}
+.love_active_top{
+  width: 750rpx;
+  height: 492rpx;
+}
+.circle{
+    display: inline-block;
+    width: 18rpx;
+    height: 18rpx;
+    border-radius: 50%;
+    background-color: #fff;
+    vertical-align:top;
+    margin-top:16rpx;
+    margin-right: 7rpx;
+}
+.activeTextDes{
+    overflow: hidden;
+}
+.activeTextDesTitle{
+    height: 50rpx;
+    line-height: 50rpx;
+    font-weight: 600;
+    font-size: 30rpx;
+    margin-top: 50rpx;
+    font-family: "微软雅黑";
+    overflow: hidden;
+}
+.activeTextDesInfo{
+    font-size: 26rpx;
+    margin-top: 15rpx;
+    margin-left: 32rpx;
+}
+.activeAward{
+    overflow: hidden;
+}
+.activeAwardLeft{
+    float: left;
+    font-size: 0;
+    width: 100rpx;
+    height: 142rpx;
+}
+.activeAwardRight{
+    float: left;
+    overflow: hidden;
+    margin-left: 30rpx;
+    line-height: 60rpx;
+    margin-top: 10rpx;
+    font-size: 30rpx;
+}
+.awardImgIpad{
+    width:100rpx;
+    height:142rpx;
+}
+.awardImgMoney{
+    width:100rpx;
+    height:100rpx;
+    margin-top: 21rpx;
+}
+.awardImgCoupon{
+    width:100rpx;
+    height:90rpx;
+    margin-top: 26rpx;
+}
+.awardSort{
+    display: block;
+}
+.activeAwardBox{
+    overflow: hidden;
+    margin-top: 30rpx;
+}
+.border{
+    width: 100%;
+    height: 5rpx;
+    margin: 50rpx 0;
+    background: #fff;
+}
+.qrcode{
+    text-align: center;
+}
+.qrcode_img{
+    width:300rpx;
+    height:380rpx;
+    margin: 60rpx 0 40rpx 0;
+}
+.activeTextDes{
+    padding: 0 18rpx;
+    margin:0 auto;
+    color:#fff;
+}
+.movieWrap{
+    display:flex; 
+    flex-wrap:wrap;
+    justify-content:space-around;
+}
+.movieInfo{
+    width:329rpx;
+    height:185rpx;
+}
+.movieName{
+    text-align: center;
+    color: #fff;
+    font-size: 32rpx;
+}
+.movieDes{
+    text-align: center;
+    color: #6f8a83;
+    font-size: 26rpx;
+}
+.movieBox{
+    margin-top: 40rpx;
+}
+.bottom_btn_img{
+    width:155px;
+    height:49px;
+    display:block;
+    overflow:hidden;
+    margin:0 auto;
+}
+.bottom_btn{
+    margin:60rpx 0;
+}

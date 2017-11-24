@@ -1,0 +1,48 @@
+<view>
+    <view class="section" style="overflow:hidden;">
+        <input  type="text" placeholder="请输入兑换码" bindinput='getCode' class="inputTop" placeholder-class="inputPlaceholder" value="{{code}}"/>
+        <view class="turnText" bindtap='Exchange'>兑换</view>
+    </view>
+</view>
+<view wx:if="{{couponList.length > 0}}" style="padding-bottom:110rpx;">
+    <view class='title' wx:if="{{canUse > 0}}">
+        <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" wx:for="{{items}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+            <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+        </label>
+        </radio-group>
+    </view>
+    <view wx:if="{{discountDisplay==true}}">
+        <view class='coupon' wx:for="{{couponList}}" wx:key="key" wx:for-index="idx" wx:for-item="item" wx:if="{{item.is_used == 0}}">
+        <view class='left'>
+            <image src='/image/couponback.png'></image>
+            <view class='myprice'>
+                <view class='priceone' wx:if="{{item.type == 1}}">代金券</view>
+                <view class='pricetwo' wx:if="{{item.type == 1}}">{{item.price}}
+                    <text>元</text>
+                </view>
+                <view class='tuan' wx:if="{{item.type == 2}}">
+                  <view>团</view>
+                  <view>购</view>
+                  <view>券</view>
+                </view>
+            </view>
+            <image src='/image/couponbackone.png' class='backimg'></image>
+        </view>
+        <view class='middle'>
+            <view class='titlem' wx:if="{{item.type == 1}}">青柠微影{{item.price}}元代金券</view>
+            <view class='titlem' wx:if="{{item.type == 2}}">青柠微影团购券</view>
+            <view class='date'>有限期至{{item.timeString}}</view>
+            <view class='area'>部分门店通用（只可抵包间费用）</view>
+        </view>
+        <view bindtap='clickimg' data-id='{{item.id}}' class='right' data-coupon="{{item}}">
+            <image src='/image/notselect.png' wx:if="{{currentchecked!=item.id}}" class='icon'></image>
+            <image src='/image/selectcl.png' wx:if="{{currentchecked==item.id}}" class='icon'></image>
+        </view>
+        </view>
+    </view>
+</view>
+<view class="viewButton" bindtap='sureButton'>确定</view>
+<import src="../../../../component/alertcoupon/alertcoupon.wxml" />
+<template is="alertcoupon" data="{{alertShow : alertShow,alertTitle:'选择优惠不能大于订单总额'}}" />
+

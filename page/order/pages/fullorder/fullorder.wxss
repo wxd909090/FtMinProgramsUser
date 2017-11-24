@@ -1,0 +1,142 @@
+page{
+    background: #f3f3f3;
+}
+.container{
+  /* margin-left: 20rpx; */
+}
+.container .top image {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+}
+.container .top {
+  color: #393939;
+  font-size: 32rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 2rpx solid #E2E1E1;
+}
+.topleft{
+    margin-left: 20rpx;
+}
+/* .container .top .topleft{
+  display: inline-block;
+  float: left;
+  width:30rpx;
+} */
+.container .top .topmiddle{
+  display: inline-block;
+  float: left;
+}
+.container .top .topright{
+  display: inline-block;
+  float: right;
+  margin-right: 20rpx;
+  color: #7c7c7c;
+  font-size: 25rpx;
+}
+.orderListContent{
+    margin-bottom: 20rpx;
+    background: #fff;
+}
+.container .content{
+    width: 100%;
+     /* margin: 31rpx 18rpx 31rpx 20rpx;  */
+    color: #6C6C6C;
+    overflow: hidden;
+    position: relative;
+    margin:31rpx 0;
+}
+.delOrderBtn{
+    position:absolute;
+    right:20rpx;
+    bottom:46rpx;
+    font-size:26rpx;
+    padding:10rpx 24rpx;
+    border:2rpx solid #5fbe51;
+    border-radius:10rpx;
+}
+.container .content image{
+    vertical-align: middle;
+    width: 120rpx;
+    height: 173rpx;
+    border: 1rpx solid #E2E1E1;
+}
+.container .content .contentone{
+  display: inline-block;
+  float: left;
+  width: 120rpx;
+  position: relative;
+  margin-left: 20rpx;
+}
+.container .content .contenttwo{
+  display: inline-block;
+  float: left;
+  margin-left: 24rpx;
+  font-size: 26rpx;
+  width: 580rpx;
+}
+.orderInfoTop{
+    font-weight: 600;
+    margin-top: 6rpx;
+}
+.orderInfoMid{
+    margin-top: 5rpx;
+}
+.orderInfoBottom{
+    margin-top: 5rpx;
+    font-size: 24rpx;
+    width: 70%;
+}
+.orderPrice{
+    display: inline;
+    float: right;
+    margin-right: 20rpx;
+    font-size: 34rpx;
+    color: #FCD246;
+}
+.payOrderBtn{
+    float:right;
+    background:#5fbe51;
+    color:#fff;
+    padding:10rpx 20rpx;
+    border-radius:12rpx;
+    font-size:24rpx;
+    margin-right:15rpx;
+}
+.cancelOrder{
+    padding:20rpx 18rpx 20rpx 18rpx;
+    border-top:2rpx solid #e2e2e2;
+    overflow:hidden;
+}
+.showPayPrice{
+    float:left;
+    color:#FCD246;
+    font-size:26rpx;
+}
+.showPayPriceText{
+    color:#9a9a98;
+    display:inline;
+}
+.cancleOrderBtn{
+    color:#5fbe51;
+    font-size:26rpx;
+    float:right;
+}
+.bearTitle{
+    width:340rpx;
+    height:225rpx;
+    margin: 0 auto;
+    margin-top: 400rpx;
+}
+.textalign{
+    text-align: center;
+    margin: 20rpx;
+    color: #ccc;
+    font-size: 28rpx;
+}
+.damageText{
+  float:right;
+  margin-right:20rpx;
+  color:red
+}

@@ -1,0 +1,24 @@
+<view class="container">
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="page-body">
+    <view class="page-section">
+      <view class="weui-cell__bd">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input mobile">
+            <input id="number" class="weui-input inputLine" type="password" placeholder="请输入新密码" bindinput="passWdInput" />
+          </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <input class="weui-input inputLine" type="password" id="number" placeholder="请确认密码" bindinput="passWdInputAgain" />
+          </view>
+        </view>
+      </view>
+      <view class="check_login">
+        <button class="primary" type="primary" bindtap="changePwd">修改</button>
+      </view>
+    </view>
+  </view>
+</view>

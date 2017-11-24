@@ -1,0 +1,62 @@
+
+/* msgList.wxss */
+page{
+  background: #fff;
+}
+.msg{
+  background:#fff;
+  height:100rpx;
+  width:100%;
+  padding:18rpx 0;
+  border-bottom: 16rpx solid #f4f4f4;
+}
+.msgListWrap{
+  font-family: "微软雅黑"
+}
+.msgLeft{
+  height:100rpx;
+  line-height:100rpx;
+  float:left;
+  width:130rpx;
+  text-align:center;
+  font-size: 0;
+}
+.msgCenter{
+  height:100rpx;
+  width: 460rpx;
+  overflow: hidden;
+  line-height:50rpx;
+  float:left;
+  font-size: 30rpx;
+}
+.msgRight{
+  height:100rpx;
+  line-height:100rpx;
+  float:right;
+  color: #5ebe52;
+  width: 150rpx;
+  text-align: center;
+  border-left: 2rpx solid #e1e1e1;
+  font-size: 30rpx;
+}
+.msgImg{
+  width: 60rpx;
+  height: 45rpx;
+  margin-top: 28rpx;
+}
+.msgDec{
+  display:-webkit-box;
+  font-size: 28rpx;
+  width:460rpx;
+  height:50rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-line-clamp:1;
+  -webkit-box-orient:vertical;
+  -webkit-box-pack:center;
+}
+.noMsg{
+  text-align: center;
+  color: #c2c2c2;
+  margin-top: 40%;
+}

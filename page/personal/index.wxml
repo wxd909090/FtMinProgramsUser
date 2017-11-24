@@ -1,0 +1,158 @@
+<view class="container">
+    <loading hidden="{{hidden}}">
+        加载中...
+    </loading>
+    <view class="page-body">
+        <view class="page-section">
+            <view class="weui-cell__bd">
+                <view class="head">
+                    <view class="avatar">
+                        <image src="{{wxUserInfo.avatarUrl}}"></image>
+                    </view>
+                    <view class="noLogin"  wx:if="{{hasLogin === false}}">未登录</view>
+                    <view class="nickName"  wx:if="{{hasLogin === true}}">{{wxUserInfo.nickName}}</view>
+                    <view class="grade"  wx:if="{{hasLogin === true}}">信誉：{{userInfo.grade}}分</view>
+                </view>
+            </view>
+        </view>
+      
+        <!-- <view wx:if="{{userInfo.deposit == 0}}">
+            <navigator class="navigator row lastRow "  bindtap="setDeposite">
+                <view class="navigator-text">充值押金</view>
+                <view class="navigator-arrow"></view>
+            </navigator>
+
+            <view class="mineNav_one" wx:if="{{hasLogin === true}}">        
+              <view class="mineNav_one_view"></view>
+            </view>
+        </view> -->
+
+        <navigator class="playing-film" url="/page/personal/pages/playContro/playContro?order_sn={{oneFilmOrderSn}}" wx:if="{{hasLogin === true && playingNum == 1}}">
+            <view class="pull-left">
+                正在播放<view class="playNum"> {{playingNum}} </view>
+                部电影
+            </view>
+            <view class="pull-right">
+                <image src="/image/play_list_btn2.png" class="play-btn"></image>
+            </view>
+        </navigator>
+        <navigator class="playing-film" url="pages/playControList/playControList" wx:if="{{hasLogin === true && playingNum > 1}}">
+            <view class="pull-left">
+                正在播放<view class="playNum"> {{playingNum}} </view>
+                部电影
+            </view>
+            <view class="pull-right">
+                <image src="/image/play_list_btn2.png" class="play-btn"></image>
+            </view>
+        </navigator>
+        <view class="mineNav_one"  wx:if="{{hasLogin === true}}">
+            <view class="mineNav_one_view" bindtap="jumpfullorder" data-sign="1">
+                <view class="mineNav_one_view_image"><image src="/image/mine/11.png"></image></view>
+                <view class="mineNav_one_view_txt"><text>待支付</text></view>
+            </view>
+            <view class="mineNav_one_view" bindtap="jumpfullorder" data-sign="2">
+                <view class="mineNav_one_view_image"><image src="/image/mine/22.png"></image></view>
+                <view class="mineNav_one_view_txt"><text>已支付</text></view>
+            </view>
+            <view class="mineNav_one_view" bindtap="jumpfullorder" data-sign="3">
+                <view class="mineNav_one_view_image"><image src="/image/mine/33.png"></image></view>
+                <view class="mineNav_one_view_txt"><text>待评价</text></view>
+            </view>
+            <view class="mineNav_one_view" bindtap="jumpfullorder" data-sign="4">
+                <view class="mineNav_one_view_image"><image src="/image/mine/44.png"></image></view>
+                <view class="mineNav_one_view_txt"><text>全部订单</text></view>
+            </view>
+        </view>
+
+        <view class="interval_view" wx:if="{{!playingNum}}"></view>
+        <view class="weui-cells middleWrap" style="background:#fff;">
+            <block wx:if="{{hasLogin === true}}">
+                <!-- 我的押金 --> 
+                 <view wx:if="{{userInfo.deposit > 0}}" class="navigator row lastRow" bindtap="getDeposite">
+                    <view  class="icon">
+                        <image src="{{my_deposit_icon}}" class="personIcon"></image>
+                    </view>
+                    <view class="navigator-text" >我的押金</view>
+                    <view class="navigator-arrow"></view>
+                </view> 
+                <!-- 我的优惠 -->
+                <navigator url="pages/coupon/coupon?page=personal" class="navigator row lastRow">
+                    <view  class="icon">
+                        <image src="{{my_coupon_icon}}" class="personIcon"></image>
+                    </view>
+                    <view class="navigator-text">我的优惠</view>
+                    <view class="navigator-arrow"></view>
+                </navigator>
+                <!-- 我的收藏 -->
+                <view wx:if="{{allCollectFilms.length > 0}}" class="navigator row lastRow" bindtap="toFilmsCollect">
+                    <view  class="icon">
+                        <image src="{{my_deposit_icon}}" class="personIcon"></image>
+                    </view>
+                    <view class="navigator-text" >我的收藏</view>
+                    <view class="navigator-arrow"></view>
+                </view>
+                <!-- 我的消息 -->
+                <navigator url="pages/msgList/msgList" class="navigator row lastRow noBottom">
+                    <view  class="icon">
+                        <image src="/image/myinfo.png" class="personIcon"></image>
+                    </view>
+                    <view class="navigator-text">我的消息
+                        <view class="msg-box" wx:if="{{msgNum > 0}}">
+                            {{msgNum}}
+                        </view>
+                    </view>
+                    <view class="navigator-arrow"></view>
+                </navigator> 
+                <view class="interval_view"></view>
+                <!-- 密码修改 -->
+                <navigator url="pages/changePwd/changePwd" class="navigator row lastRow">
+                    <view  class="icon">
+                        <image src="/image/mypass.png" class="personIcon"></image>
+                    </view>
+                    <view class="navigator-text">密码修改</view>
+                    <view class="navigator-arrow"></view>
+                </navigator>
+                <!-- 关于我们 -->
+                <navigator url="pages/about/about" class="navigator row lastRow">
+                    <view  class="icon">
+                        <image src="{{about_icon}}" class="personIcon"></image>
+                    </view>
+                    <view class="navigator-text">关于我们</view>
+                    <view class="navigator-arrow"></view>
+                </navigator>
+                <!-- 我的押金 -->
+                 <!-- <view wx:if="{{userInfo.deposit == 0}}">
+                    <navigator class="navigator row lastRow "  bindtap="setDeposite">
+                         <view  class="icon">
+                              <image src="{{about_icon}}" class="personIcon"></image>
+                         </view>
+                         <view class="navigator-text">充值押金</view><view class="labelTxt">￥{{userInfo.deposit}}</view>
+                        <view class="navigator-text">充值押金</view>
+                        <view class="navigator-arrow"></view>
+                    </navigator>
+                </view>  -->
+                <!-- <view class="mineDeposit">
+                    <navigator url="../order/pages/myOrder/myOrder?currentTab=0" class="navigator row lastRow">
+                        <view  class="icon">
+                            <image src="{{my_order_icon}}" class="personIcon"></image>
+                        </view>
+                        <view class="navigator-text"> 我的订单
+                            <view class="redWrap" wx:if="{{isShowRed.noPay == true || isShowRed.noReviews == true || isShowRed.noFine == true}}"></view>
+                        </view>
+                        <view class="navigator-arrow"></view>
+                    </navigator>
+                </view> -->
+            </block>
+        </view>
+        <view  wx:if="{{!hasLogin}}" class="bindMobile">
+            <view class="click_login">
+                <button class="primary" type="primary" bindtap="gotoLogin">登陆</button>
+            </view>
+        </view>
+        <view  wx:if="{{hasLogin}}" class="bindMobile">
+            <view class="click_login">
+                <button class="primary" type="primary" bindtap="LoginOut">退出</button>
+            </view>
+        </view>
+    </view>
+</view>

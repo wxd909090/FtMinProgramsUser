@@ -1,0 +1,174 @@
+/* page/login/index.wxss */
+@import "../common/lib/weui.wxss";
+@import "../common/index.wxss";
+
+.row {
+  margin-top: 50px;
+}
+
+.check_login {
+  padding: 10px;
+  margin-top: 50px;
+}
+
+.number {
+  width: 100%;
+}
+
+#code {
+  width: 65%;
+}
+
+#sendCode {
+  padding: 0em;
+  width: 7em;
+  height: 2.1em;
+  line-height: 2.1em;
+  font-size: 0.9em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+button {
+  padding: 0px;
+  margin: 0px;
+}
+
+.container {
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  padding: 0px;
+}
+
+.content-item {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px 10px 20px 10px;
+}
+
+.head {
+  width: 100%;
+  height: 70px;
+  padding-top: 10px;
+}
+
+.mobile {
+  margin: 3.5em 0em 1.25em 0em;
+}
+
+.inputLine {
+  height: 3em;
+}
+
+.changeLoginTypeBox {
+  padding-top: 1.5em;
+  margin: auto 0;
+  text-align: center;
+  color: #036;
+}
+
+.logo_image {
+  width: 5em;
+  height: 8em;
+  background-color: #fff;
+  border: 0.1em solid #fff;
+  border-radius: 10em;
+  margin-top: 0.5em;
+  padding: 0.5em 2em 0.5em 2em;
+}
+
+.logo_text {
+  width: 100%;
+  line-height: 2em;
+  text-align: center;
+  font-size: 0.95em;
+  color: #3d4145;
+  display: block;
+}
+
+.headbackground {
+  background-color: #48aa32;
+  height: 9.5em;
+  text-align: center;
+  line-height: 9.5em;
+  width: 100%;
+  background-position: center;
+  filter: blur(4em);
+  position: absolute;
+}
+
+.wrap {
+  position: absolute;
+  width: 100%;
+  height: 9.5em;
+  margin: auto 0;
+  text-align: center;
+}
+
+.head {
+  width: 100%;
+  height: 9.5em;
+}
+
+.phone {
+  margin-top: 5em;
+  text-align: center;
+  background-color: #fff;
+  height: 3em;
+  line-height: 3em;
+  /*padding: 0em 1em 0em 1em;*/
+}
+
+.pwd {
+  margin-top: 1.5em;
+  text-align: center;
+  background-color: #dcdcdc;
+  height: 3em;
+  line-height: 3em;
+}
+
+.title {
+  width: 20%;
+  height: 3em;
+  line-height: 3em;
+  text-align: left;
+  float: left;
+  padding-left: 4%;
+  background-color: #fff;
+}
+
+.phone_input,.code_input ,.code_send {
+  width: 76%;
+  /*background-color: #DCDCDC;*/
+  height: 3em;
+  line-height: 3em;
+  text-align: left;
+  background-color: #fff;
+  float: left;
+}
+.code_input{
+  width: 45%;
+}
+.code_send{
+  width: 25%;
+  margin-left: 2%;
+  text-align: center;
+  background-color: #dcdcdc;
+}
+.loginText{
+  text-decoration: underline;
+  font-size: 34rpx
+}
+.titleText{
+  text-align: center;
+  font-size: 28rpx;
+}
+.loginTipWrap{
+
+    margin: 0 auto;
+    font-size: 26rpx;
+    color: #bfbfbf;
+    text-align: center;
+}
+.protocal{
+    color: #5fbe51;
+}

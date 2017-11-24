@@ -1,0 +1,141 @@
+<!--page/merchandiseOrder/merchandiseOrder.wxml-->
+<view class='merchandiseOrder'>
+  <loading hidden="{{hiddenLoading}}">提交中</loading> 
+  <view class='title'>
+    <image src='/image/storeone.png'></image>
+    <view>
+      {{storeInfo.store_name}}
+    </view>
+  </view>
+  <view class='form'>
+    <view class='settop'>
+      <view class='setfloat'>
+        <image src='/image/storetwo.png'></image>/<view>配送包间</view>
+      </view>
+      <view class='setheight setfloat' bindtap="chooseSendRoom">
+        <view class='setcolor' >{{choosedSendRoom.room_name}}</view>
+        <image src='/image/selectbutton.png' class='selectbutton'></image>
+      </view>
+    </view>
+    <view class='settop'>
+      <view class='setfloat'>
+        <image src='/image/storefour.png'></image>/<view>到店时间</view>
+      </view>
+      <view class='setheight setfloat' bindtap="chooseSendTime">
+        <view class='setcolor setfloat sendTime'>{{displaytime}}</view>
+        <!-- <view class='setcolor setfloat sendTime'>{{compartmentName[index]}}</view>
+            <view class='setcolor setfloat sendTime'>{{compartmentName[index]}}</view> -->
+        <image src='/image/selectbutton.png' class='selectbutton'></image>
+      </view>
+    </view>
+    <view class='settop setborder'>
+      <view class='setfloat'>
+        <image src='/image/storethree.png'></image>/<view>服务方式</view>
+      </view>
+      <view class='setfloat' style='margin-left:31rpx;color:#393939'>
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio" wx:for="{{items}}" wx:key="key">
+            <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+  </view>
+  <view class='cartlist'>
+    <view class='rows' wx:for="{{orderinformation}}" wx:key="{{item}}" wx:for-item="item">
+      <view class='settitle'>{{item.name}}</view>
+      <view class='setnum'>×{{item.num}}</view>
+      <view class='setprice'>￥{{item.Singletotalprice}}</view>
+    </view>
+  </view>
+  <view class='setbackg'></view>
+  <view class='setdiscount'>
+    <image src='/image/triangle.png' class='img'></image>
+    <view class='left'>支付方式</view>
+    <view class='right' bindtap='displaypayment'>
+      <block wx:if="{{currentchecked==1}}">微信支付</block>
+      <block wx:if="{{currentchecked==2}}">会员卡支付</block>
+      <image src='/image/dont.png'></image>
+    </view>
+  </view>
+  <view class='setdiscount'>
+    <image src='/image/triangle.png' class='img'></image>
+    <view class='left'>优惠</view>
+    <view class='right prohibit' bindtap='optionDiscount' wx:if="{{myCoupon<=0}}">
+      不使用优惠
+      <image src='/image/dont.png'></image>
+    </view>
+    <view class='right' bindtap='optionDiscount' wx:if="{{myCoupon>0}}">
+      优惠￥{{myCoupon}}
+      <image src='/image/dont.png'></image>
+    </view>
+  </view>
+  <!-- <view class='totalprice'>
+    <view class='pay'>
+      待支付
+      <text>￥{{count}}</text>
+    </view>
+    <view class='totalcolor'>优惠 ￥{{myCoupon}}</view>
+    <view class='totalcolor'>订单 ￥{{count}}</view>
+  </view> -->
+  <view class='addview'></view>
+  <view class='footer'>
+    <view class='pay'>
+      待支付
+      <text>￥{{count}}</text>
+    </view>
+    <view class='footerone'>优惠 ￥{{myCoupon}}</view>
+    <!-- <view class='submit' bindtap='submit' disabled="{{clicksubmit}}">提交订单</view> -->
+    <form bindsubmit="submit" report-submit="true">
+      <!--<view formType="submit" class="submit">去结算</view>-->
+      <button class='submit' formType="submit" disabled="{{clicksubmit}}">提交订单</button>
+    </form>
+  </view>
+  <!-- 支付方式弹窗 -->
+  <view class='mask' wx:if="{{maskdisplay==1}}">
+    <view class='masktop' bindtap='hiddenpayment'></view>
+    <view class='maskcontent'>
+      <view class='maskcontentone'>
+        <view class='left'>微信支付</view>
+        <view bindtap='clickimg' data-id='1' class='right'>
+          <image src='/image/notselect.png' wx:if="{{currentchecked!=1}}" class='icon'></image>
+          <image src='/image/selectcl.png' wx:if="{{currentchecked==1}}" class='icon'></image>
+        </view>
+      </view>
+      <view class='maskcontenttwo' wx:if="{{RechargeInfo.surplus > 0}}">
+        <view class='left'>
+          <view>会员卡支付</view>
+          <view class='leftone'> 余额: {{RechargeInfo.surplus}} 持卡人: {{RechargeInfo.real_name}}</view>
+        </view>
+        <view bindtap='clickimg' data-id='2' class='right'>
+          <image src='/image/notselect.png' wx:if="{{currentchecked!=2}}" class='icon'></image>
+          <image src='/image/selectcl.png' wx:if="{{currentchecked==2}}" class='icon'></image>
+        </view>
+      </view>
+      <view class='maskfooter' bindtap='hiddenpayment'></view>
+    </view>
+  </view>
+
+  <view class='mask' wx:if="{{maskdisplay==2}}">
+    <view class='masktop' bindtap='hiddenpayment'></view>
+    <view class='maskcontent'>
+      <scroll-view class="date_box" scroll-x="true">
+        <block wx:for="{{dateList}}" item="{{item}}" wx:key="key" wx:for-index="idx">
+          <view wx:if="{{item.status == 1}}" class="date_cell date_cell_choosed">
+            {{item.m}}月{{item.d}}日-{{item.week}}
+          </view>
+          <view wx:if="{{item.status == 0}}" class="date_cell" bindtap="chooseDate" data-x="{{idx}}" data-choosed="{{item.status}}">
+            {{item.m}}月{{item.d}}日-{{item.week}}
+          </view>
+        </block>
+      </scroll-view>
+      <view class='maskcontentone timList' wx:for="{{timeList}}" wx:for-index="index" wx:key="key" bindtap='chooseTime' data-index="{{index}}">
+        <view class='left'>{{item.show_begin_time}} ({{item.show_end_time}}结束)</view>
+        <view bindtap='clickimg' data-id='1' class='right'>
+          <image src='/image/notselect.png' wx:if="{{item.choosed != 1}}" class='icon'></image>
+          <image src='/image/selectcl.png' wx:if="{{item.choosed == 1}}" class='icon'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

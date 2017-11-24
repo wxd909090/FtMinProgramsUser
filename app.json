@@ -1,0 +1,85 @@
+{
+    "pages": [
+        "page/film/index",
+        "page/film/pages/detailFilm/detailFilm",
+        "page/store/index",
+        "page/store/pages/storeDetail/storeDetail",
+        "page/personal/index",
+        "page/personal/pages/deposit/deposit",
+        "page/personal/pages/changePwd/changePwd",
+        "page/personal/pages/about/about",
+        "page/scode/index",
+        "page/login/index",
+        "page/room/index",
+        "page/order/index",
+        "page/order/pages/myOrder/myOrder",
+        "page/order/pages/reviews/reviews",
+        "page/personal/pages/playControList/playControList",
+        "page/personal/pages/playContro/playContro",
+        "page/personal/pages/coupon/coupon",
+        "page/personal/pages/msgList/msgList",
+        "page/activePic/activePic",
+        "page/static/searchFilms/searchFilms",
+        "page/static/scoreFilms/scoreFilms",
+        "page/static/moreFilms/moreFilms",
+        "page/static/allFilms/allFilms",
+        "page/static/collectionFilms/collectionFilms",
+        "page/room/chooseRoom/chooseRoom",
+        "page/order/pages/orderComplete/orderComplete",
+        "page/login/userArgument/userArgument",
+        "page/order/pages/optiondiscount/optiondiscount",
+        "page/order/pages/merchandiseOrder/merchandiseOrder",
+        "page/personal/pages/recharge/recharge",
+        "page/order/pages/fullorder/fullorder",
+        "page/allCollectFilms/allCollectFilms",
+        "page/package/package",
+        "page/order/pages/orderInfo/orderInfo",
+        "page/order/pages/createOrder/createOrder",
+        "page/order/pages/goodsInfo/goodsInfo"
+    ],
+    "window": {
+        "navigationBarTextStyle": "#ffffff",
+        "navigationBarTitleText": "演示",
+        "navigationBarBackgroundColor": "#5fbe51",
+        "backgroundColor": "#F8F8F8"
+    },
+    "tabBar": {
+        "color": "#999",
+        "selectedColor": "#5fbe51",
+        "borderStyle": "black",
+        "backgroundColor": "#F5F5F5",
+        "list": [
+            {
+                "pagePath": "page/film/index",
+                "iconPath": "image/film.png",
+                "selectedIconPath": "image/film_s.png",
+                "text": "影片"
+            },
+            {
+                "pagePath": "page/store/index",
+                "iconPath": "image/store.png",
+                "selectedIconPath": "image/store_s.png",
+                "text": "门店"
+            },
+            {
+                "pagePath": "page/personal/index",
+                "iconPath": "image/personal.png",
+                "selectedIconPath": "image/personal_s.png",
+                "text": "我的"
+            },
+            {
+                "pagePath": "page/scode/index",
+                "iconPath": "image/qr_code.png",
+                "selectedIconPath": "image/qr_code_s.png",
+                "text": "扫码"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "connectSocket": 10000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+    },
+    "debug": false
+}

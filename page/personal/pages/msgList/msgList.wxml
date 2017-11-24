@@ -1,0 +1,21 @@
+<view class="msgListWrap">
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="msgList">
+    <view class="msg" wx:for="{{msgListData}}" wx:key="item" wx:for-item="item" data-msg="{{item}}" bindtap="checkMsg">
+      <view class="msgLeft">
+        <image wx:if="{{item.read}}" class="msgImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/msg_readed.png" ></image>
+        <image wx:if="{{!item.read}}" class="msgImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/msg_no_read.png"></image>
+      </view>
+      <view class="msgCenter">
+        <view class="msgDec">{{item.title}}</view>
+        <view class="msgDec">有了新的回复...</view>
+      </view>
+      <view class="msgRight" >
+        查看
+      </view>
+    </view>
+    <view class="noMsg" wx:if="{{msgListData.length == 0}}">暂无消息</view>
+  </view>
+</view>

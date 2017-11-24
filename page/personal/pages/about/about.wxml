@@ -1,0 +1,54 @@
+<view class="aboutBody">
+  <view class="logo">
+    <image src="/image/logo.png" class="logoImg"></image>
+    <view class="textDes">青柠影咖</view>
+    <view class="textDes">v1.6</view>
+  </view>
+  <view class="item appName">
+    <view class="left">
+      微信公众号
+    </view>
+    <view class="right">
+      青柠影咖
+    </view>
+  </view>
+  <view class="item surport">
+    <view class="left surportLeft">
+      投诉及建议
+    </view>
+    <view class="right">
+      <view class="phoneFirst">
+        <view class="phoneFirstName inlineBlock">门店经理 : </view>
+        <view class="phoneFirstNum inlineBlock" data-phoneNum="15982375210" bindtap="makePhoneCall">159 8237 5210</view>
+      </view>
+      <view class="phoneTwo">
+        <view class="phoneTwoName inlineBlock">总经理 : </view>
+        <view class="phoneTwoNum inlineBlock" data-phoneNum="18628950832" bindtap="makePhoneCall">186 2895 0832</view>
+      </view>
+    </view>
+  </view>
+  <view class="item email">
+    <view class="left">
+      电子邮箱
+    </view>
+    <view class="right">
+      chaos.zhong@qnbar.com
+    </view>
+  </view>
+  <view class="item copy">
+    <view class="left">
+      政府及版权事务
+    </view>
+    <view class="right">
+      tom.han@qnbar.com
+    </view>
+  </view>
+  <view class="item webInter">
+    <view class="left">
+      官方网站
+    </view>
+    <view class="right">
+      www.qnbar.com
+    </view>
+  </view>
+</view>

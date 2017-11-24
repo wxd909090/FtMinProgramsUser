@@ -1,0 +1,5 @@
+<template name="msgTitle">
+    <block>
+        <view class="cptMsgTitleText" wx:if="{{msgData}}">{{msgData}}</view>
+    </block> 
+</template>

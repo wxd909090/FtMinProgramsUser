@@ -1,0 +1,275 @@
+@import "../common/lib/weui.wxss";
+@import "../common/index.wxss";
+
+.container {
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  padding: 0px;
+}
+
+.head {
+  width: 100%;
+  padding: 20rpx 0;
+  border-bottom: 0.5px solid #d9d9d9;
+  background-color: #5fbe51;
+  color: #fff;
+  overflow: hidden;
+}
+
+.avatar {
+  font-size:0;
+  border-radius:50%;
+  text-align: center;
+}
+
+.avatar image {
+  width:80px;
+  height:80px;
+  border:3px solid #fff;
+  border-radius:50%;
+}
+
+.text_view {
+  width: 50%;
+  height: 100px;
+  float: left;
+  padding-top: 24px;
+  margin-left: 28px;
+  /*background-color: #D9D9D9*/
+}
+
+.nickName {
+    margin-top: 16rpx;
+    line-height: 50rpx;
+    text-align: center;
+}
+.grade{
+    line-height: 50rpx;
+    text-align: center;
+}
+.h-30{
+  height: 30px;
+}
+
+.balance {
+  height: 40px;
+}
+
+.weui-cells {
+  clear: both;
+  margin-top: 30px;
+}
+
+.row {
+  border-bottom: 1rpx solid #d9d9d9;
+}
+.navigator{
+    background: #ffffff;
+    padding:20rpx 0rpx 20rpx;
+    margin-left:30rpx;
+}
+.navigator-text{
+    position: relative;
+    font-size:34rpx;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.login {
+    text-align: center;
+}
+
+.click_login {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.bindMobile {
+    margin-top: 20rpx;
+}
+
+.labelTxt {
+    margin-right: 100px;
+    color: #B22222;
+}
+
+.lastRow::before{
+    border-top: 0px
+}
+
+.redWrap{
+    display: inline-block;
+    width:10px;
+    height: 10px;
+    background: red;
+    border-radius:50%;
+    margin-right:37rpx;
+    float:right;
+    margin-top:6px;
+}
+
+.playing{
+    height: 100rpx;
+    width: 100%;
+    background: rgb(27,199,97);
+    line-height: 100rpx;
+    text-indent: 100rpx;
+    color : #fff;
+}
+.play-btn{
+    height: 50rpx;
+    width: 50rpx;
+    font-size: 0;
+    display:block;
+    float:right;
+    margin-top:25rpx;
+    margin-right:60rpx;
+}
+.playingArrow::after{
+    border-color:red;
+}
+.playNum{
+    display:inline;
+    font-size:16px;
+    font-weight: 600;
+}
+.playing-film{
+    height:90rpx;
+    line-height:90rpx;
+    background:rgb(254,242,124);
+    text-indent:32rpx;
+}
+.middleWrap{
+    margin-top: 0;
+    background: #f5f5f5;
+}
+.pull-left{
+    float:left
+}
+.pull-right{
+    float:right
+}
+.play-btn{
+    height:50rpx;
+    width:50rpx;
+    margin-top:20rpx;
+    margin-right:40rpx
+}
+.primary{
+    background: #5fbe51 !important;
+}
+.hot-icon-png-wrap{
+    float: right;
+    margin-right: 35rpx;
+    overflow: hidden;
+    font-size: 0;
+}
+.hot-icon-png{
+    height: 42rpx;
+    width: 42rpx;
+}
+.msg-box{
+    float: right;
+    margin-right: 40rpx;
+    overflow: hidden;
+    font-size:24rpx;
+    background:#f5667a;
+    height:40rpx;
+    width:40rpx;
+    line-height:40rpx;
+    text-align:center;
+    color:#fff;
+    border-radius: 50%;
+    text-indent: -4rpx;
+}
+.noLogin{
+    text-align: center;
+    font-size: 36rpx;
+    line-height: 120rpx;
+    font-family: "微软雅黑";
+}
+.personIcon{
+    height: 32rpx;
+    width: 32rpx;
+    margin-top: -4rpx;
+}
+.icon{
+    position:relative;
+    font-size:0;
+    margin-right: 20rpx;
+}
+.msgNav{
+    margin:15rpx 0;
+}
+
+.mineDeposit{
+ width:710rpx;
+ margin-left:40rpx;
+}
+
+/* mineNav_one */
+.mineNav_one{
+  width:100%;
+  height:70rpx;
+  background:#fff;
+  padding:36rpx 0rpx;
+}
+.mineNav_one .mineNav_one_view{
+  width:25%;
+  height:70rpx;
+
+  line-height:70rpx;
+  border-right:2rpx solid #e2e1e1;
+  box-sizing:border-box;
+  float:left;
+}
+.page-section{
+    margin-bottom: 0 !important;
+}
+.mineNav_one .mineNav_one_view .mineNav_one_view_image{
+  display:block;
+  width:100%;
+  height:33rpx;
+  line-height:33rpx;
+  position:relative;
+}
+.mineNav_one .mineNav_one_view .mineNav_one_view_image image{
+  display:block;
+  position:absolute;
+  width:35rpx;
+  height:32rpx;
+  top:50%;
+  left:50%;
+  margin-top:-16rpx;
+  margin-left:-17.5rpx;
+}
+.mineNav_one .mineNav_one_view .mineNav_one_view_txt{
+  display:block;
+  width:100%;
+  height:37rpx;
+  position:relative;
+}
+.mineNav_one .mineNav_one_view .mineNav_one_view_txt text{
+  display:block;
+  width:100%;
+  height:24rpx;
+  text-align:center;
+  line-height:24rpx;
+  font-size:24rpx;
+  color:#171717;
+  position:absolute;
+  bottom:0rpx;
+  left:0rpx;
+}
+.mineNav_one .mineNav_one_view:nth-child(4){
+  border-right:0rpx; 
+}
+.interval_view{
+  width:100%;
+  height:20rpx;
+  background:#f3f3f4;
+}
+.weui-cells::before{
+  border-top:0rpx;            
+}
+.noBottom{
+  border-bottom:0rpx;                 
+}

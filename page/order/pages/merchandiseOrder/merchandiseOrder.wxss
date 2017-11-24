@@ -1,0 +1,414 @@
+/* page/merchandiseOrder/merchandiseOrder.wxss */
+
+.title {
+  width: 100%;
+  height: 58rpx;
+  padding:  0 18rpx 25rpx 18rpx;
+  line-height: 94rpx;
+  color: #393939;
+  font-size: 32rpx;
+   border-bottom: 0.5rpx solid #ebebeb;
+}
+.merchandiseOrder{
+  background-color: white;
+}
+.title image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 17rpx;
+}
+.title view {
+  display: inline-block;
+  width: 90%;
+  position: relative;
+  top: -5rpx;
+}
+.form {
+  padding-left: 17rpx;
+  margin-top: 30rpx;
+}
+
+.form view {
+  color: #8b8989;
+  height: 74rpx;
+}
+
+.form view image {
+  margin-right: 10rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.form view view {
+  display: inline-block;
+  color: #8b8989;
+  font-size: 28rpx;
+  height: 74rpx;
+  line-height: 74rpx;
+}
+
+.settop {
+  margin-top: 18rpx;
+}
+
+.pickerone {
+  margin-left: 35rpx;
+}
+
+.setfloat {
+  float: left;
+}
+
+.setpicker {
+  width: 180rpx;
+  float: left;
+  text-align: center;
+}
+
+.form view .setheight {
+  width: 485rpx;
+  border: 2rpx dashed #c7c6c6;
+  border-radius: 20rpx;
+  margin-left: 31rpx;
+  position: relative;
+}
+
+.sendTime {
+  width: 90% !important;
+}
+
+.form view .setcolor {
+  width: 200rpx;
+  color: #393939;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-indent: 15rpx;
+}
+
+.form view .setheight .selectbutton {
+  position: absolute;
+  right: 15rpx;
+  top: 31rpx;
+  z-index: 999;
+  width: 18rpx;
+  height: 10rpx;
+}
+
+picker {
+  height: 75rpx;
+}
+
+radio {
+  transform: scale(0.8);
+}
+
+.setborder {
+  border-bottom: 0.5rpx solid #ebebeb;
+}
+
+.cartlist {
+  padding: 21rpx 17rpx 0 17rpx;
+}
+
+.cartlist .rows {
+  height: 64rpx;
+  line-height: 64rpx;
+}
+
+.cartlist .rows .settitle {
+  width: 460rpx;
+  height: 64rpx;
+  text-align: left;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+}
+
+.cartlist .rows .setnum {
+  font-size: 25rpx;
+  color: #949292;
+  width: 90rpx;
+  text-align: left;
+  height: 64rpx;
+  line-height: 64rpx;
+  display: inline-block;
+  float: left;
+}
+
+.cartlist .rows .setprice {
+  text-align: right;
+  height: 64rpx;
+  line-height: 64rpx;
+  display: inline-block;
+  float: right;
+}
+
+.cartlist .rows view {
+  font-size: 30rpx;
+  color: #292929;
+  display: inline-block;
+}
+.setbackg {
+  height: 38rpx;
+  margin-left: 17rpx;
+  border-bottom: 0.5rpx solid #f3f3f4;
+}
+
+.setdiscount {
+  height: 100rpx;
+  line-height: 100rpx;
+  position: relative;
+  border-bottom: 2rpx solid #ebebeb;
+  background-color: white;
+}
+
+.setdiscount .img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.setdiscount view {
+  display: inline-block;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+}
+
+.setdiscount .left {
+  color: #343434;
+  margin-left: 18rpx;
+}
+
+.setdiscount .right {
+  color: #969595;
+  float: right;
+  margin-right: 18rpx;
+}
+
+.setdiscount .right image {
+  width: 12rpx;
+  height: 23rpx;
+  margin-left: 51rpx;
+}
+
+.totalprice {
+  height: 120rpx;
+  line-height: 104rpx;
+  font-size: 25rpx;
+}
+
+.addview {
+  height: 140rpx;
+  background-color: white;
+}
+
+.totalprice .totalcolor {
+  color: #939292;
+}
+
+.totalprice view {
+  height: 104rpx;
+  line-height: 104rpx;
+  display: inline-block;
+  padding: 0 21rpx;
+  float: right;
+}
+
+.totalprice .pay {
+  color: #393939;
+  font-size: 30rpx;
+}
+
+.totalprice .pay text {
+  color: #ffcd2b;
+}
+
+.footer {
+  height: 92rpx;
+  line-height: 92rpx;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 2rpx solid #ebebeb;
+  background: white;
+}
+
+.footer .pay {
+  color: #393939;
+  font-size: 30rpx;
+}
+
+.footer .pay text {
+  color: #ffcd2b;
+}
+
+.footer view {
+  display: inline-block;
+}
+
+.footer .footerone {
+  font-size: 25rpx;
+  color: #939292;
+}
+
+.footer .pay, .footerone {
+  padding: 0 20rpx;
+}
+
+.footer .submit {
+  width: 190rpx;
+  height: 92rpx;
+  line-height: 92rpx;
+  color: white;
+  font-weight: 600;
+  font-size: 30rpx;
+  background: #4bb73b;
+  float: right;
+  text-align: center;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.mask {
+  /* display: none; */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.masktop {
+  height: 40%;
+  width: 100%;
+}
+
+.maskfooter {
+  height: 470rpx;
+  width: 100%;
+}
+
+.maskcontent {
+  height: 60%;
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.maskcontent image {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+
+.maskcontentone, .maskcontenttwo {
+  height: 118rpx;
+  color: #1f1f1f;
+  font-weight: 400;
+  font-size: 30rpx;
+  padding: 0 18rpx;
+  border-bottom: 0.5rpx solid #ebebeb;
+}
+
+.maskcontentone {
+  line-height: 118rpx;
+}
+
+.timList {
+  height: 90rpx !important;
+  line-height: 90rpx !important;
+  border-bottom: 2rpx solid #f4f4f4;
+}
+
+.maskcontenttwo {
+  line-height: 59rpx;
+}
+
+.maskcontentone .left {
+  display: inline-block;
+  width: 75%;
+  float: left;
+}
+
+.maskcontentone .right {
+  display: inline-block;
+  float: right;
+}
+
+.maskcontenttwo .left {
+  display: inline-block;
+  width: 80%;
+  float: left;
+}
+
+.maskcontenttwo .left .leftone {
+  font-size: 22rpx;
+  color: #6a6a6a;
+}
+
+.maskcontenttwo .right {
+  line-height: 118rpx;
+  display: inline-block;
+  float: right;
+}
+
+/* 日期相关 */
+
+.date_box {
+  white-space: nowrap;
+  width: 100%;
+  height: 85rpx;
+  background-color: #fff;
+  padding: 15rpx 0 0 0;
+}
+
+.date_cell {
+  display: inline-block;
+  width: 29%;
+  height: 2.5em;
+  text-align: center;
+  line-height: 2.5em;
+  background-color: #fff;
+  color: #000;
+  font-size: 26rpx;
+  /*border: 1px solid #fff;*/
+  border-bottom: 1px solid #ddd;
+}
+
+.date_cell_choosed {
+  color: #1aad19;
+  border-bottom: 1px solid #1aad19;
+}
+
+.room_info_wrap {
+  position: absolute;
+  top: 304rpx;
+  z-index: 999;
+  overflow: hidden;
+  width: 100%;
+  padding: 7rpx 0;
+  font-size: 28rpx;
+  color: #fff;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.9) 98%, #fff 100%);
+}
+
+.show_begin_time {
+  display: inline-block;
+  font-size: 32rpx;
+}
+
+.show_end_time {
+  display: inline-block;
+  font-size: 26rpx;
+  color: #bdbdbd;
+  margin-left: 4rpx;
+  /* position: relative; */
+}

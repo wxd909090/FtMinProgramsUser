@@ -1,0 +1,17 @@
+/* page/login/userArgument/userArgument.wxss */
+.wrap{
+    width: 710rpx;
+    margin:0 auto;
+    padding-bottom: 20rpx;
+}
+.title{
+    text-align:center;
+    margin:26rpx 0;
+    font-size:40rpx;
+    font-weight:600;
+}
+.page-next{
+    font-size: 24rpx;
+    color: #8c8c8c;
+    text-indent: 40rpx;
+}

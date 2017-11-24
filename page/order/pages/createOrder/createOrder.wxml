@@ -1,0 +1,313 @@
+<!--page/merchandiseOrder/merchandiseOrder.wxml-->
+<view class='merchandiseOrder'>
+    <view class='timer' wx:if="{{orderInfo.create_time}}">
+      <view wx:if="{{orderInfo.newStatus != 5}}">{{orderInfo.timer}}</view>
+      <view wx:if="{{orderInfo.newStatus == 5}}">支付超时</view>
+    </view>
+    <view wx:if="{{!orderInfo.ft_order}}">
+        <view class='title'>
+            <image src='/image/storeone.png'></image>
+            <view>
+                {{orderInfo.store_name}}
+            </view>
+        </view>
+        <view class="content-item">
+            <view class="orderInfo">
+                <view class="orderFilmInfo" style="{{orderInfo.status == 4 ? loseStyle : ''}}">
+                    <view class="orderFilmInfoLeft">
+                        <image class="filmImg" src="{{orderInfo.film_image ? orderInfo.film_image : orderInfo.image}}"></image>
+                    </view>
+                    <view class="orderFilmInfoRight">
+                    <view class="filmName">
+                        {{orderInfo.film_name}}
+                        <view class='orderPrice'>￥ {{orderInfo.price}}</view>
+                    </view>
+                    <view class="orderFilmInfoP roomName">{{orderInfo.room_name}}（包间）</view>
+                    <view class="orderFilmInfoP orderTime">{{orderInfo.date}} {{orderInfo.duration_time}}</view>
+                    <view class="orderFilmInfoP adress">{{orderInfo.address}}</view>
+                </view>
+            </view>
+            </view> 
+        </view>
+        <view class='setbackg'></view>
+        <view class='triangleWrap overHidden' wx:if="{{comboList.length > 0 && !cantUserComb && fromPage != 'fullorder'}}">
+            <view class='setdiscount'>
+                <image src='/image/triangle.png' class='img'></image>
+                <view class='left'>推荐套餐</view>
+                <view class='right moreTriangleText' bindtap='morePackages'>
+                    更多
+                    <image src='/image/dont.png'></image>
+                </view>
+            </view>
+            <view class='triangleList overHidden'>
+                <view class='triangleInfo' wx:for="{{comboList}}" wx:key="key" wx:if="{{index < 2 || item.num > 0}}">
+                    <view class='chooseIcon' bindtap="selectComboSingle" data-comboList='{{comboList}}' data-index='{{index}}'>
+                        <image src='/image/notselect.png' class='icon' wx:if="{{!item.num || item.num <= 0}}"></image>
+                        <image src='/image/package/selected.png' class='icon' wx:if="{{item.num > 0}}"></image>
+                    </view>
+                    <view class='triangleInfoLeft'>
+                        <view class='triangleName'>
+                            {{item.name}}
+                        </view>
+                        <view class='triangleDes'>
+                            {{item.goodsString}}
+                        </view>
+                    </view>
+                    <view class='triangleInfoRight'>
+                        <view>
+                            <view class='realPrice'>￥{{item.pay_price}}</view>
+                        </view>
+                        <view class="price_no">
+                            <view class='showPrice'> 原价￥{{item.total_price}} </view>
+                        </view>
+                        <!-- <view class="addTriangleCountBtn" bindtap='addTriangleNum' data-comboList='{{comboList}}' data-index='{{index}}'>
+                            +
+                        </view>
+                        <view  class="addTriangleCountBtn triangleCountNum" wx:if="{{item.num > 0}}">
+                            {{item.num}}
+                        </view>
+                        <view class="addTriangleCountBtn" wx:if="{{item.num > 0}}" bindtap='reduceTriangleNum' data-index="{{index}}" data-comboList='{{comboList}}'>
+                            -
+                        </view> -->
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='triangleWrap overHidden'>
+            <view wx:if="{{orderInfo.goods_order.order_goods.length > 0}}">
+                <view class='setdiscount'>
+                    <image src='/image/triangle.png' class='img'></image>
+                    <view class='left'>订单套餐</view>
+                </view>
+                <view class='triangleList overHidden'>
+                    <view class='triangleInfo' wx:for="{{orderInfo.goods_order.ft_order.info.combo_info_list}}" wx:key="key">
+                        <view class='chooseIcon'>
+                            <image src='/image/package/selected.png' class='icon'></image>
+                        </view>
+                        <view class='triangleInfoLeft'>
+                            <view class='triangleName'>
+                                {{item.combo_name}}
+                            </view>
+                            <view class='triangleDes'>
+                                {{item.goodsString}}
+                            </view>
+                        </view>
+                        <view class='triangleInfoRight'>
+                            <view>
+                                <view class='showPrice'> 原价￥{{item.total_price}} </view>
+                                <view class='realPrice'>￥{{item.pay_price}}</view>
+                            </view>
+                            <view class="addTriangleCountBtn">
+                                +
+                            </view>
+                            <view  class="addTriangleCountBtn triangleCountNum">
+                                {{item.total_amount}}
+                            </view>
+                            <view class="addTriangleCountBtn">
+                                -
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='setbackg'></view>
+        <view class='setdiscount' bindtap='showPayType'>
+            <image src='/image/triangle.png' class='img'></image>
+            <view class='left'>支付方式</view>
+            <view class='right' bindtap='displaypayment'>
+                <view class="showChoosed" wx:if="{{currentchecked == 1}}">微信支付</view>
+                <view class="showChoosed" wx:if="{{currentchecked == 2}}">会员卡支付</view>
+                <image src='/image/dont.png'></image>
+            </view>
+        </view>
+        <view class='setdiscount' style='margin-bottom:100rpx' wx:if="{{!cantUseCoun}}">
+            <image src='/image/triangle.png' class='img'></image>
+            <view class='left'>优惠</view>
+            <view class='right' bindtap='optionDiscount'>
+                <view class="showChoosed" wx:if="{{choosedCoupon.price <= 0 && choosedCoupon.type == 1}}">不使用优惠</view>
+                <view class="showChoosed" wx:if="{{choosedCoupon.price > 0 && choosedCoupon.type == 1}}">{{choosedCoupon.price}}元优惠券</view>
+                <view class="showChoosed" wx:if="{{choosedCoupon.price >= 0 && choosedCoupon.type == 2}}">团购券</view>
+                <image src='/image/dont.png'></image>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{orderInfo.ft_order}}">
+        <view class='title'>
+            <image src='/image/storeone.png'></image>
+            <view>
+                {{orderInfo.ft_order.info.store_name}}
+            </view>
+        </view>
+        <view class="content-item">
+            <view class="orderInfo">
+                <view class="orderFilmInfo" style="{{orderInfo.status == 4 ? loseStyle : ''}}">
+                    <view class="orderFilmInfoLeft">
+                        <image class="filmImg" src="{{orderInfo.film_image}}" wx:if="{{orderInfo.film_image}}"></image>
+                        <image class="filmImg" src="{{orderInfo.image}}" wx:if="{{orderInfo.image}}"></image>
+                        <image class="filmImg" src="{{orderInfo.order_goods[0].cover_url}}" wx:if="{{orderInfo.order_goods.length > 0}}"></image>
+                    </view>
+                    <view class="orderFilmInfoRight">
+                    <view class="filmName" wx:if="{{orderInfo.ft_order.info.film_name}}">
+                        {{orderInfo.ft_order.info.film_name}}
+                        <view class='orderPrice'>￥ {{orderInfo.price}}</view>
+                    </view>
+                    <view class="orderFilmInfoP roomName">{{orderInfo.ft_order.info.room_name}}（包间）</view>
+                    <view class="orderFilmInfoP orderTime">{{orderInfo.ft_order.info.date}} {{orderInfo.ft_order.info.duration_time}}</view>
+                    <view class="orderFilmInfoP adress">{{orderInfo.ft_order.info.address}}</view>
+                    <view class="orderFilmInfoP adress" wx:if="orderInfo.order_goods.length > 0">
+                        <block wx:for="{{orderInfo.order_goods}}" wx:for-item="items">{{items.name}}<block wx:if="{{(index + 1) < orderInfo.order_goods.length}}">+</block></block>等{{orderInfo.order_goods.length}}件商品
+                    </view>
+                </view>
+            </view>
+            </view> 
+        </view>
+        <view class='setbackg'></view>
+        <view class='triangleWrap overHidden' wx:if="{{comboList.length > 0 && !cantUserComb && fromPage != 'fullorder'}}">
+            <view class='setdiscount'>
+                <image src='/image/triangle.png' class='img'></image>
+                <view class='left'>推荐套餐</view>
+                <view class='right moreTriangleText' bindtap='morePackages'>
+                    更多
+                    <image src='/image/dont.png'></image>
+                </view>
+            </view>
+            <view class='triangleList overHidden'>
+                <view class='triangleInfo' wx:for="{{orderInfo.ft_order.info.combo_info_list}}" wx:key="key">
+                    <view class='chooseIcon'>
+                        <image src='/image/notselect.png' class='icon' wx:if="{{!item.num || item.num <= 0}}"></image>
+                        <image src='/image/package/selected.png' class='icon' wx:if="{{item.num > 0}}"></image>
+                    </view>
+                    <view class='triangleInfoLeft'>
+                        <view class='triangleName'>
+                            {{item.name}}
+                        </view>
+                        <view class='triangleDes'>
+                            {{item.goodsString}}
+                        </view>
+                    </view>
+                    <view class='triangleInfoRight'>
+                        <view>
+                            <view class='realPrice'>￥{{item.pay_price}}</view>
+                        </view>
+                        <view>
+                            <view class='showPrice'> 原价￥{{item.total_price}} </view>
+                        </view>
+                        <!-- <view class="addTriangleCountBtn" bindtap='addTriangleNum' data-comboList='{{comboList}}' data-index='{{index}}'>
+                            +
+                        </view>
+                        <view  class="addTriangleCountBtn triangleCountNum" wx:if="{{item.num > 0}}">
+                            {{item.num}}
+                        </view>
+                        <view class="addTriangleCountBtn" wx:if="{{item.num > 0}}" bindtap='reduceTriangleNum' data-index='{{index}}'>
+                            -
+                        </view> -->
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='triangleWrap overHidden'>
+            <view wx:if="{{orderInfo.goods_order.order_goods.length > 0}}">
+                <view class='setdiscount'>
+                    <image src='/image/triangle.png' class='img'></image>
+                    <view class='left'>订单套餐</view>
+                </view>
+                <view class='triangleList overHidden'>
+                    <view class='triangleInfo' wx:for="{{orderInfo.goods_order.ft_order.info.combo_info_list}}" wx:key="key">
+                        <view class='chooseIcon'>
+                            <image src='/image/notselect.png' class='icon' wx:if="{{!item.num || item.num <= 0}}"></image>
+                            <image src='/image/package/selected.png' class='icon' wx:if="{{item.num > 0}}"></image>
+                        </view>
+                        <view class='triangleInfoLeft'>
+                            <view class='triangleName'>
+                                {{item.combo_name}}
+                            </view>
+                            <view class='triangleDes'>
+                                {{item.goodsString}}
+                            </view>
+                        </view>
+                        <view class='triangleInfoRight'>
+                            <view>
+                                <view class='showPrice'> 原价￥{{item.total_price}} </view>
+                                <view class='realPrice'>￥{{item.pay_price}}</view>
+                            </view>
+                            <view class="addTriangleCountBtn">
+                                +
+                            </view>
+                            <view  class="addTriangleCountBtn triangleCountNum" wx:if="{{item.num > 0}}">
+                                {{item.total_amount}}
+                            </view>
+                            <view class="addTriangleCountBtn" wx:if="{{item.num > 0}}">
+                                -
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='setbackg'></view>
+        <view class='setdiscount' bindtap='showPayType'>
+            <image src='/image/triangle.png' class='img'></image>
+            <view class='left'>支付方式</view>
+            <view class='right' bindtap='displaypayment'>
+                <view class="showChoosed" wx:if="{{currentchecked == 1}}">微信支付</view>
+                <view class="showChoosed" wx:if="{{currentchecked == 2}}">会员卡支付</view>
+                <image src='/image/dont.png'></image>
+            </view>
+        </view>
+        <view class='setdiscount' style='margin-bottom:100rpx'>
+            <image src='/image/triangle.png' class='img'></image>
+            <view class='left'>优惠</view>
+            <view class='right' bindtap='optionDiscount'>
+                <view class="showChoosed" wx:if="{{choosedCoupon.price <= 0 && choosedCoupon.type == 1}}">不使用优惠</view>
+                <view class="showChoosed" wx:if="{{choosedCoupon.price > 0 && choosedCoupon.type == 1}}">{{choosedCoupon.price}}元优惠券</view>
+                <view class="showChoosed" wx:if="{{choosedCoupon.price >= 0 && choosedCoupon.type == 2}}">团购券</view>
+                <image src='/image/dont.png'></image>
+            </view>
+        </view>
+    </view>
+    <view class='footer'>
+        <view class='pay' wx:if="{{!cantUseComb}}">
+            <text>待支付</text>
+            <block style="color:#FFCD2B" wx:if="{{choosedCoupon.type == 1}}">
+                ￥{{((orderInfo.price*100  - choosedCoupon.price*100 + comboPrice*100)/100) > 0 ? ((orderInfo.price*100  - choosedCoupon.price*100 + comboPrice*100)/100) : 0}}
+            </block>
+            <block style="color:#FFCD2B" wx:if="{{choosedCoupon.type == 2}}">
+                 ￥{{((orderInfo.price*10*choosedCoupon.price  - choosedCoupon.price*100 + comboPrice*100)/100) > 0 ? ((orderInfo.price*10*choosedCoupon.price  - choosedCoupon.price*100 + comboPrice*100)/100) : 0}} 
+            </block>
+        </view>
+        <view class='pay' wx:if="{{cantUseComb}}">
+            <text>待支付</text>
+            <block style="color:#FFCD2B">
+            ￥{{orderInfo.goods_order.ft_order ? ((orderInfo.price - 0) + (orderInfo.goods_order.ft_order.price - 0)) : orderInfo.price}}
+            </block>
+        </view>
+        <!-- <view class='footerone'>优惠 ￥1000</view> -->
+        <button class='submit' type="primary" bindtap='createOrderSub' loading="{{forbid}}" disabled="{{forbid}}" wx:if="{{!cantUseComb}}">提交订单</button>
+        <button class='submit' type="primary" bindtap='createOrderSub' loading="{{forbid}}" disabled="{{forbid}}" wx:if="{{cantUseComb}}">立即支付</button>
+    </view>
+</view>
+  <!-- 支付方式弹窗 -->
+<view class='mask' wx:if="{{maskdisplay==1}}">
+    <view class='masktop' bindtap='hiddenpayment'></view> 
+    <view class='maskcontent'>
+        <view class='maskcontentone'>
+            <view class='left'>微信支付</view>
+            <view bindtap='clickimg' data-id='1' class='right'>
+                <image src='/image/notselect.png' wx:if="{{currentchecked!=1}}" class='icon'></image>
+                <image src='/image/selectcl.png' wx:if="{{currentchecked==1}}" class='icon'></image>
+            </view>
+        </view>
+        <view class='maskcontenttwo' wx:if="{{cardBlance > 0}}">
+            <view class='left'>
+                <view>会员卡支付</view>
+                <view class='leftone'> 余额:{{cardBlance}} 持卡人:{{cardUserName}}</view>
+            </view>
+            <view bindtap='clickimg' data-id='2' class='right'>
+                <image src='/image/notselect.png' wx:if="{{currentchecked!=2}}" class='icon'></image>
+                <image src='/image/selectcl.png' wx:if="{{currentchecked==2}}" class='icon'></image>
+            </view>
+        </view>
+        <view class='maskfooter' bindtap='hiddenpayment'></view>
+    </view>
+</view>

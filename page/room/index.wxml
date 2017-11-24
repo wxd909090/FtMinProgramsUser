@@ -1,0 +1,104 @@
+<view class="container">
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="page-body">
+    <view class="head">
+      <view class="room_info_wrap">
+        <view class="room_name_box"> {{roomChoosed.room_name}} </view>
+        <view class="room_num_box">{{current+1+"/"+roomList.length}}</view>
+      </view>
+      <swiper class="room-swiper" indicator-dots="{{indicatorDots}}" bindchange="changeImg" current="{{current}}" circular="true">
+        <block wx:for="{{roomList}}" wx:for-index="index" wx:key="key">
+          <swiper-item>
+            <!--<image  src="{{imageUrl + item.picture}}" 
+          class="slide-image room" data-url="{{imageUrl + item.picture}}" bindtap="previewImage"/>-->
+            <image src="{{imageUrl + item.picture}}" class="slide-image room" data-url="{{imageUrl + item.picture}}" />
+          </swiper-item>
+        </block>
+      </swiper>
+      <!--<view class="floor">-->
+      <view class="left" bindtap="clickLeft">
+        <image src="/image/swiper_left.png" class="swiper-floor-img"></image>
+      </view>
+      <view class="right" bindtap="clickRight">
+        <image src="/image/swiper_right.png" class="swiper-floor-img"></image>
+      </view>
+      <!--</view>-->
+      <!--<view class="roomInfo">
+      <text class="roomName">{{roomChoosed.room_name}}</text>
+    </view>-->
+
+      <scroll-view class="date_box" scroll-x="true">
+        <block wx:for="{{dateList}}" item="{{item}}" wx:key="key" wx:for-index="idx">
+          <view wx:if="{{item.status == 1}}" class="date_cell date_cell_choosed">
+            {{item.m}}月{{item.d}}日-{{item.week}}
+          </view>
+          <view wx:if="{{item.status == 0}}" class="date_cell" bindtap="chooseDate" data-x="{{idx}}" data-choosed="{{item.status}}">
+            {{item.m}}月{{item.d}}日-{{item.week}}
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class="timeauto">
+      <!--<block wx:if="{{timeautoHeight==50}}">
+          <view class="noData">暂无数据...</view>
+      </block>-->
+      <block wx:for="{{timeList}}" wx:for-index="idx" wx:key="key">
+        <view class="duration_box time_nomal" wx:if="{{item.order_status == 0}}" data-idx="{{idx}}">
+          <view class="duration">
+            <view class="show_begin_time">{{item.show_begin_time}}</view>
+            <view class="show_end_time">({{item.show_end_time}}结束)</view>
+          </view>
+          <text class="longTimeText" wx:if="{{item.longTimeStatus}}">夜猫场</text>
+          <view class="duration_price">￥{{item.price}}</view>
+          <view class="order_btn" data-idx="{{idx}}" data-status="{{item.longTimeStatus}}" wx:if="{{!item.mobile}}" bindtap="orderSubmit">
+            预 约
+          </view>
+          <view class="order_btn lock_btn" data-idx="{{idx}}" data-status="{{item.longTimeStatus}}" wx:if="{{item.mobile && mobile != item.mobile}}">
+            预 约
+          </view>
+          <view class="order_btn" style="background:#FDB928" data-idx="{{idx}}" data-status="{{item.longTimeStatus}}" wx:if="{{item.mobile && mobile == item.mobile}}" bindtap="orderSubmit">
+            付 款
+          </view>
+        </view>
+
+        <view class="duration_box time_lock" wx:if="{{item.order_status == 1}}">
+          <view class="duration">
+            <view class="show_begin_time">{{item.show_begin_time}}</view>
+            <view class="show_end_time">({{item.show_end_time}}结束)</view>
+          </view>
+          <text class="longTimeText" wx:if="{{item.longTimeStatus}}">夜猫场</text>
+          <view class="duration_price">￥{{item.price}}</view>
+          <view class="order_btn lock_btn">
+            预 约
+          </view>
+        </view>
+
+        <!--<view class="use_duration_box" wx:if="{{item.order_status == 2}}">
+          <view class="duration">{{item.duration_time}}</view>
+          <view class="duration_price whiteColor">￥{{item.price}}</view>
+        </view>-->
+
+        <view class="duration_box time_choosed" wx:if="{{item.order_status == 3}}">
+          <view class="duration">{{item.duration_time}}</view>
+          <view class="duration_price">￥{{item.price}}</view>
+          <view class="order_btn">
+            选 中
+          </view>
+        </view>
+
+      </block>
+    </view>
+    <view class="check" style="display:none">
+      <block wx:if="{{timeautoHeight == 50}}">
+        <button class="btn" type="primary" bindtap="goOrder" disabled="true">立即预定</button>
+      </block>
+
+      <block wx:if="{{timeautoHeight >50}}">
+        <button class="btn" type="primary" bindtap="goOrder">立即预定</button>
+      </block>
+
+    </view>
+  </view>
+</view>

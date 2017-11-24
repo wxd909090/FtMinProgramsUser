@@ -1,0 +1,613 @@
+@import "../common/lib/weui.wxss";
+@import "../common/index.wxss";
+
+page{
+    background: #fff;
+}
+.container{
+   font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+   padding: 0px;
+}
+
+.content-item{
+    width: 100%;
+    background-color: #ffffff;
+    padding: 0.6em;
+}
+.warning_title{
+    font-size: 1em;
+}
+.warning_item{
+    font-size: 0.9em;
+    line-height: 1.5em;
+}
+.reviews-content{
+    width: 98%;
+}
+/*.fileName{
+    font-size: 1.25em;
+}*/
+.film_name{
+    font-size: 1.25em;
+}
+/*.fileName,.storeName,.address,.room,.date,.orderPrice,.payType{
+    font-size: 0.95em;
+    line-height: 1.8em;
+}*/
+.rows{
+  width: 100%;
+  overflow: hidden;
+  font-size: 0.95em;
+  line-height: 1.9em;
+  height: 1.8em;
+}
+.lab ,.val{
+  float: left;
+}
+.lab{
+  width: 20%;
+  height: 1.8em;
+  color: #696969;
+  font-size: 0.9em;
+}
+.val{
+  width: 75%;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #696969;
+
+}
+.address{
+  width: 70%;
+  overflow: visible;
+  word-wrap: break-word;
+  word-break: normal;
+  height: auto
+}
+.height_auto{
+  height: auto;
+}
+.orderPrice{
+    /*font-size: 1.25em;*/
+    /*color: red;*/
+    float: left;
+}
+
+
+.times{
+    color: red;
+}
+.payType{
+    line-height: 1.5em;
+}
+.sub{
+    margin-top: 100px;
+    width: 100%;
+    height: 60px;
+    background-color: red;
+    position: fixed; /*or前面的是absolute就可以用*/  
+    bottom: 0px;  
+    /*border:2px solid #1AAD19;*/
+}
+.price{
+    width: 60%;
+    line-height: 60px;
+    padding-left: 5%;
+    background-color: #000000;
+    float: left;
+    color: #ffffff;
+    font-size: 24px;
+}
+.btn{
+    width: 35%;
+    height: 100%;
+    float: left;
+    line-height: 60px;
+     font-size: 20px;
+     text-align: center;
+     color: #ffffff;
+    background-color: #1AAD19;
+}
+.btn button{
+    width: 100%;
+    line-height: 60px;
+    font-size: 20px;
+
+}
+button{
+    margin: 0px;
+    padding: 0px;
+}
+
+.compensationInfo{
+    font-size: 14px;
+}
+.compensationImage{
+ text-align: center;
+ margin: 10px auto;
+}
+.img_cols1{
+    width: 100%;
+    height: 170px;
+    /*background-color: red;*/
+}
+.img_cols1 image{
+    width: 250px;
+    height: 150px;
+}
+.img_cols2{
+    width: 100%;
+    height: 100px;
+    margin: 5px auto;
+    /*background-color:#1AAD19;*/
+}
+.img_cols2 image{
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 110px;
+    height: 100px;
+}
+.compensationTel{
+    margin-top: 30px;
+}
+.pay{
+    margin:40px auto;
+    width: 80%;
+    margin-top: 40px;
+    /*padding-left: 10%;
+    padding-right: 10%;*/
+    /*font-size: 24px;*/
+    text-align: center;
+}
+.pay button{
+    font-size: 20px;
+}
+.time{
+    text-align: center;
+    height: 1.8em;
+}
+.img{
+    float: left;
+    width: 1.8em;
+    height: 1.8em;
+}
+.time_view{
+    float: left;
+    height: 1.8em;
+    line-height: 1.8em;
+    font-size: 0.9em;
+    /*padding-left: 10px;*/
+}
+.payTime{
+    padding-left: 10px;
+    color: red;
+    font-size: 1.2em;
+    height: 1.8em;
+    line-height: 1.8em;
+}
+.overTimeTxt{
+    font-size: 0.9em;
+    color: #696969
+}
+.placeholder_class{
+    color: red;
+    font-size: 30rpx;
+    /*padding-right: 5%;*/
+}
+.code{
+    width: 250rpx;
+    line-height: 1.5em;
+    height: 1.5em;
+    border: 0.1em solid #ffcc33;
+    padding-left: 0.1em;
+    font-size: 1.2em;
+    float: left;
+}
+.my_code{
+  float: left;
+  height:2.0em;
+  line-height: 2.0em;
+  margin-left: 1em;
+  font-size: 0.9em;
+  text-decoration: underline;
+  color: #0000CD
+}
+
+/*reviews*/
+.reviewsStarTitle{
+  margin:5px 2px;
+  font-family: "微软雅黑";
+  font-weight: 600;
+}
+.reviewsInfoTitle{
+  margin:5px 2px;
+  font-family: "微软雅黑";
+  font-weight: 600;
+}
+.reviewsStarText{
+  /* text-indent: 5px;
+  font-size: 14px */
+}
+.reviewsInfoText{
+}
+.reviewsLeft{
+  width:230rpx;
+  height: 50rpx;
+  font-size: 32rpx;
+  line-height: 50rpx;
+  text-align: left;
+  display: inline-block;
+}
+.reviewsRight{
+  width:60%;
+  text-align: left;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.reviewsDate{
+  text-align: left;
+  font-size:24rpx;
+  color: #afafaf;
+}
+.starNum{
+  display: inline-block;
+  color:red;
+  font-weight: 600;
+  font-size:16px;
+}
+.damage-wrap{
+  margin-top:0.625em;
+  padding:0.6em 0.6em;
+  background: #ffffff;
+}
+.damage-imgs-wrap{
+  margin-top: 50rpx;
+  font-size: 0;
+}
+.damage-imgs{
+  width:200rpx;
+  height:170rpx;
+  margin-left:28rpx
+}
+.damage-info{
+  text-indent:2em
+}
+.pay-real-damage{
+  margin: 50rpx 0;
+}
+
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+.commodity_attr_box {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding: 10rpx 0 40rpx 0;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.mycode_title{
+  font-size: 1em;
+  margin: auto 0px;
+  text-align: center;
+}
+.mycode_list{
+  margin-top:20rpx;
+}
+.tr,.th{
+  width: 100%;
+}
+.th{
+ font-weight: bold;
+ line-height: 70rpx;
+}
+.tr{
+  font-size: 0.9em;
+  line-height: 60rpx;
+}
+.mycode,.mycode_time,.mycode_btn{
+  float: left;
+  width: 33.3%;
+  text-align: center;
+}
+.mycode_btn_color{
+  text-decoration: underline;
+  color: #0000CD
+}
+input{
+  width: 100%;
+}
+.no_code_data{
+  padding-top: 20px;
+  text-align: center;
+}
+.coupon-title{
+  overflow:hidden;
+  background:#fff;
+  margin-top:20rpx;
+  border-bottom:2rpx solid #D9D9D9;
+}
+.coupon-left{
+    height:80rpx;
+    float:left;
+    line-height:80rpx;
+    margin-left:36rpx
+}
+.coupon-right{
+    float:right;
+    height:80rpx;
+    line-height:80rpx;
+    margin-right:36rpx;
+    font-size:26rpx;
+    color:#8f8f8f;
+}
+.coupon-info{
+    margin: 0;
+    border-bottom: 2rpx solid #D9D9D9;
+    color: #A9A9A9;
+    font-size: 30rpx;
+}
+.title_img{
+    width:30rpx;
+    height:30rpx;
+    vertical-align:text-top;
+}
+.choose_img{
+    width:40rpx;
+    height:40rpx;
+    vertical-align:text-top;
+}
+.priceTitle{
+    text-align: right;
+    font-size: 30rpx;
+    color: #3f3f3f;
+    padding-right: 10rpx;
+    margin-top: 20rpx;
+}
+.coupon-hot{
+    color: red;
+    text-indent: 10rpx;
+}
+.coupon_icon{
+    width:30rpx;
+    height:30rpx;
+    display:block;
+    float:left;
+    margin-top:23rpx;
+    font-size:0;
+}
+.price_text{
+    color: #ECB685
+}
+
+
+.orderInfo{
+    background: #fff;
+    overflow: hidden;
+    padding: 0 2%;
+}
+.storeNameWrap{
+    overflow: hidden;
+    padding: 2% 0;
+    height: 50rpx;
+    line-height: 50rpx;
+    border-bottom: 4rpx solid #eeeeee;
+}
+.storeImgWrap{
+    float: left;
+    margin-right: 10rpx;
+    font-size: 0;
+}
+.storeImg{
+    margin-top: 12rpx;
+    width: 30rpx;
+    height: 30rpx;
+}
+.storeName{
+  float: left;
+  font-family: "微软雅黑";
+  font-weight: 600;
+}
+.orderFilmInfo{
+    clear: both;
+    overflow: hidden;
+}
+/* .lose_order_bg{
+    background: url('http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/lose_order_icon.png') no-repeat; 
+    background-position:100% 60%;
+    background-size: 150rpx 150rpx;
+    color: red;
+} */
+.orderFilmInfoLeft{
+  float: left;
+  font-size: 0;
+  margin: 40rpx 0;
+}
+.orderFilmInfoRight{
+  float: left;
+  margin: 40rpx 0 40rpx 10rpx;
+  font-size: 28rpx;
+  font-family: "微软雅黑"
+}
+.filmImg{
+  width: 195rpx;
+  height: 286rpx;
+}
+.filmName{
+    height: 60rpx;
+    font-family: "微软雅黑";
+    line-height: 60rpx;
+    font-size: 30rpx;
+    font-weight: 600;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    width: 400rpx;
+    overflow: hidden;
+}
+.orderFilmInfoP{
+  height: 56.5rpx;
+  line-height: 56.5rpx;
+  color: #7e7e7e;
+  font-weight: 500;
+}
+.reviewBtn{
+  width: 80%;
+  margin: 0 auto;
+}
+.adress{
+    width: 450rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.starWrap{
+  display: inline-block;
+  font-size: 0;
+  margin-top: 3rpx;
+}
+.starImg{
+  width: 30rpx;
+  height: 30rpx;
+}
+.reviewsWrap{
+  margin-top: 20rpx;
+}
+.reviewsStarTextWrap{
+  padding: 15rpx 0;
+  border-top: 2rpx solid #E4E4E4;
+}
+.reviewsInfoWrap{
+  padding-top: 15rpx;
+  border-top: 2rpx solid #e4e4e4;
+  min-height: 260rpx;
+}
+.reviewsInfoBox{
+  background: #fff;
+}
+.storeReplay{
+  padding:2%;
+  background:#f7f7f7;
+  width:90%;
+  font-size:24rpx;
+  line-height: 44rpx;
+}
+.addReviewsOpen{
+  display:block;
+  float:right;
+  margin-right:1.6em;
+  color:#8eba87;
+}
+.addReviewsBtnImg{
+  width:36rpx;
+  height:36rpx;
+  vertical-align:top;
+  margin-top:4rpx;
+}
+.infoContent{
+  margin-top: 20rpx;
+}
+.textAreaBox{
+  min-height:300rpx;
+  height:36rpx;
+  border:0.5px solid rgb(221, 221, 221);
+  background: #f3f3f3;
+  padding: 20rpx;
+  margin-left: 3.5%;
+  font-size: 26rpx;
+}
+.addReviewsBtn{
+  width: 100%;
+  margin-left: -0.6em;
+  margin-top: 20rpx
+}
+.reviewsInfoWrapBox{
+  margin: 20rpx 0;
+}
+.desInfo{
+  display: inline-block;
+  font-size: 26rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.reviewsBox{
+  height: 100%;
+}
+.loseOrderText{
+  color: black
+}
+
+
+/* time */
+.timeOver{
+    padding: 10rpx 0;
+    background: #fff8b2;
+}
+.timeOverText{
+    display: block;
+    width: 100%;
+    color: #5fbe51;
+    text-align: center;
+    font-size: 32rpx;
+}
+.timeHasOver{
+    color: red;
+}
+.orderInfoWrap{
+    padding-top: 0;
+}
+.refundOrder{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 50rpx;
+}
+
+.setdiscount{
+    height: 100rpx;
+    line-height: 100rpx;
+    position: relative;
+    border-bottom:2rpx solid #EBEBEB;
+}
+.setdiscount .img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28rpx;
+    height: 28rpx;
+}
+.setdiscount view{
+    display: inline-block;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 30rpx;
+}
+.setdiscount .left{
+    color: #343434;
+    margin-left: 18rpx;
+}
+.setdiscount .right{
+    color: #969595;
+    float: right;
+    margin-right: 18rpx;
+}
+.setdiscount .right image{
+    width: 12rpx;
+    height: 23rpx;
+}

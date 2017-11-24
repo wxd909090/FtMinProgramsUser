@@ -1,0 +1,22 @@
+<!--playControList.wxml-->
+<view class="playControListWrap">
+  <navigator class="playing-wrap" url="/page/personal/pages/playContro/playContro?order_sn={{item.order_sn}}" wx:for="{{playingData}}" wx:key="{{item.room_name}}">
+    <view class="play-film-list">
+      <view class="play-film">
+        <view class="play-film-l">
+          <view class="top">
+            <image src="/image/room_icon.png" class="room_icon"></image>
+            <view class="room-name">{{item.room_name}}房间</view>
+          </view>
+          <view class="middle"></view>
+          <view class="bottom">
+            正在播放: {{item.film_name}}
+          </view>
+        </view>
+        <view class="play-film-r">
+          <image src="/image/contro_icon.png" class="play_icon"></image>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>

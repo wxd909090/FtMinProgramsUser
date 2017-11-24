@@ -1,0 +1,61 @@
+@import "../../../common/lib/weui.wxss";
+@import "../../../common/index.wxss";
+.container{
+   font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+   padding: 0px;
+}
+
+.content-item{
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px 10px 20px 10px;
+
+}
+.head{
+    width: 100%;
+    height: 9.5em;
+    line-height: 9em;
+    /*line-height: 80px;*/
+    background-color: #000;
+    margin: 0;
+    padding: 0
+
+}
+.guide_image{
+  width: 100%;
+  height: 100%;
+}
+
+
+.pay{
+    margin:50px auto;
+    width: 80%;
+    margin-top: 20%;
+    /*padding-left: 10%;
+    padding-right: 10%;*/
+    /*font-size: 24px;*/
+    text-align: center;
+}
+.pay button{
+    font-size: 20px;
+}
+.recharge{
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    
+}
+.recharge text{
+    font-size: 80px;
+    font-weight: bold;
+}
+.title{
+    width: 100%;
+    height: 4em;
+    line-height: 4em;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    font-size: 0.9em;
+    color: #696969;
+}

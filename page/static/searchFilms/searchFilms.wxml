@@ -1,0 +1,23 @@
+
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+
+  <!-- 热映 -->
+  <view class="hit-movies">
+      <block wx:for="{{hotFilms}}" wx:for-index="key">
+        <view data-film_info="{{item}}"  bindtap="gotoDetailFilm" class="bottom-hit-movies-box-view" style="position:relative;" >
+           <view class="little_score_box" style="position:absolute;top:275rpx;left:0rpx;width:60rpx;height:40rpx;background:rgba(0,0,0,0.4);line-height:40rpx;text-align:center;font-size:24rpx;color:#ffa71d">{{item.grade}}</view> 
+          <image binderror="gethotFilmsPic"  data-pic="{{item.image}}"  id="{{key}}"  src="{{item.image}}" class="bottom-hit-movies-view-img" style="background-image:url({{baseMap}});background-size:230rpx 305rpx;"></image>
+          <text class="bottom-hit-movies-view-txt" style="text-align:left;">{{item.special_name?item.special_name:item.film_name}}</text>
+        </view>
+      </block>
+  </view> 
+  <!-- <view style="display:{{loadMore}}; text-align:center;">没有更多了...</view> -->
+
+  
+
+   
+
+
+  

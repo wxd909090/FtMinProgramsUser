@@ -1,0 +1,57 @@
+<view class="container">
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="head">
+    <view class="headbackground"></view>
+    <view class="wrap">
+      <image class="logo_image" src="/image/logo.png"></image>
+      <text class="logo_text">欢迎登录青柠影咖</text>
+    </view>
+  </view>
+  <view class="page-body">
+    <view class="page-section">
+      <view class="weui-cell__bd">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input mobile">
+            <input class="weui-input inputLine number"  type="number" placeholder="手机号码" bindinput="userNameInput" />
+          </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <block wx:if="{{login_type == 0}}">
+              <input class="weui-input inputLine" type="number" id="code" placeholder="验证码" bindinput="codeInput" />
+              <button wx:if="{{!isSendCode}}" id="sendCode" bindtap="sendCode" class="mini-btn" type="primary" size="mini">发送验证码</button>
+              <button wx:if="{{isSendCode}}" disabled="true" id="sendCode" bindtap="sendCode" class="mini-btn" type="default" size="mini">{{second}} s</button>
+            </block>
+            <block wx:if="{{login_type == 1}}">
+              <input class="weui-input inputLine number" type="password" placeholder="密码" bindinput="passWdInput" />
+            </block>
+          </view>
+        </view>
+      </view>
+
+      <!--<view class="phone">
+         <view class="title">手机号</view>
+         <input class="phone_input" placeholder="请输入手机号码" />
+      </view>
+
+      <view class="pwd">
+         <view class="title">验证码</view>
+         <input class="code_input" placeholder="请输入验证码" />
+         <view class="code_send">发送验证码</view>
+      </view>-->
+      <view class="changeLoginTypeBox">
+        <text wx:if="{{login_type == 1}}" bindtap="changeLoginType" class="loginText">使用短信登陆</text>
+        <text wx:if="{{login_type == 0}}" bindtap="changeLoginType" class="loginText">使用密码登陆</text>
+      </view>
+      <view class="check_login">
+        <button class="primary" type="primary" bindtap="login">登录</button>
+      </view>
+      <view class="titleText">提示：首次请用短信登录，登陆后请设置密码</view>
+        <view class="loginTipWrap">
+                点击登录，即代表已阅读并同意<text class="protocal" bindtap="userArgument">《用户注册协议》</text>
+        </view>
+    </view>
+  </view>
+</view>

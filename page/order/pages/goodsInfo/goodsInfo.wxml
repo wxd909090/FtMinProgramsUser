@@ -1,0 +1,114 @@
+<!--page/merchandiseOrder/merchandiseOrder.wxml-->
+<view class='merchandiseOrder'>
+    <view class='top'>
+        <view class='topmiddle'>
+            <image src='/image/storeone.png' class='topleft'></image>
+            <block>
+                {{goodsInfo.ft_order.info.store_name}}
+            </block>
+        </view>
+        <!-- 全部订单 -->
+        <!-- 0:未支付，1:已预约，2:使用中，3:已完成，4:已退款，5:已作废,6:超时未观影,7:超时未打扫' -->
+        <view class='topright' wx:if="{{goodsInfo.status == 1}}">未支付</view>
+        <view class='topright' wx:if="{{goodsInfo.status == 2}}">支付中</view>
+        <view class='topright' wx:if="{{goodsInfo.status == 3}}">已支付</view>
+        <view class='topright' wx:if="{{goodsInfo.status == 4}}">出库</view>
+        <view class='topright' wx:if="{{goodsInfo.status == 5}}">已完成</view>
+        <view class='topright' wx:if="{{goodsInfo.status == 6}}">已取消</view>
+        <view class='topright' wx:if="{{goodsInfo.status == 7}}">退单中</view>
+        <view class='topright' wx:if="{{goodsInfo.status == 8}}">已退款</view>
+    </view>
+    <view class='form'>
+        <view class='settop'>
+        <view class='setfloat'>
+            <image src='/image/storetwo.png'></image>/
+            <view>配送包间</view>
+        </view>
+        <view class='setheight setfloat'>
+                <view class='setcolor' bindtap="chooseSendRoom">{{goodsInfo.ft_order.info.room_name}}</view>
+                <image src='/image/selectbutton.png' class='selectbutton'></image>
+        </view>
+        </view>
+        <view class='settop'>
+        <view class='setfloat'>
+            <image src='/image/storefour.png'></image>/
+            <view>到店时间</view>
+        </view>
+        <view class='setheight setfloat' bindtap="chooseSendTime">
+                <view class='setcolor setfloat sendTime' >{{goodsInfo.ft_order.turnReserve_time}}   {{goodsInfo.ft_order.turnDuration_time}}</view>
+                <image src='/image/selectbutton.png' class='selectbutton'></image>
+        </view>
+        </view>
+        <view class='settop setborder'>
+        <view class='setfloat'>
+            <image src='/image/storethree.png'></image>/
+            <view>服务方式</view>
+        </view>
+        <view class='setfloat' style='margin-left:31rpx;color:#393939'>
+            <radio-group class="radio-group" bindchange="radioChange">
+            <label class="radio" wx:for="{{items}}" wx:key="key" >
+                <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+            </label>
+            </radio-group>
+        </view>
+        </view>
+    </view>
+    <view class='cartlist' wx:if="{{goodsInfo.order_goods.length > 0}}" wx:for="{{goodsInfo.order_goods}}" wx:key="{{item}}" wx:for-item="item">
+        <view class='rows'>
+            <view class='settitle'>{{item.name}}</view>
+            <view class='setnum'>×{{item.total_amount}}</view>
+            <view class='setprice'>￥{{item.price}}</view>
+        </view>
+    </view>
+    <view class='cartlist'>
+        <view class='rows'>
+            <view class='settitle'>优惠</view>
+            <view class='setnum'></view>
+            <view class='setprice'>-
+                <text style="color:#FCCD25">￥{{(allPrice*1000-(goodsInfo.price)*1000)/1000}}</text> 
+            </view>
+        </view>        
+    </view>
+    <view class='setbackg'></view>
+    <!-- <view class='setdiscount'>
+        <image src='/image/triangle.png' class='img'></image>
+        <view class='left'>支付方式</view>
+        <view class='right'>
+        <block>微信支付</block>
+         <block wx:if="{{currentchecked==2}}">会员卡支付</block> 
+        <image src='/image/dont.png'></image>
+        </view>
+    </view>
+    <view class='setdiscount'>
+        <image src='/image/triangle.png' class='img'></image>
+        <view class='left'>优惠</view>
+        <view class='right' bindtap='optionDiscount'>
+        不使用优惠
+        <image src='/image/dont.png'></image>
+        </view>
+        <view class='right'>
+        优惠￥{{myCoupon}}
+        <image src='/image/dont.png'></image>
+        </view>
+    </view> -->
+    
+    <view class="payPriceRow">
+        <view>
+            实付
+            <text>￥{{goodsInfo.price}}</text>
+        </view>
+    </view>
+    <!-- <view class='footer'>
+        <view class='pay'>
+        待支付
+        <text>￥{{count-myCoupon}}</text>
+        </view>
+        <view class='footerone'>优惠 ￥{{myCoupon}}</view>
+        <view class='submit' bindtap='submit'>提交订单</view>
+    </view> -->
+    <view>
+        <button class='refundOrder' wx:if="{{(goodsInfo.status == 3 || goodsInfo.status == 4 || goodsInfo.status == 5) && !goodsInfo.ft_order.showReBtn}}" disabled="{{true}}" type="primary" bindtap='refundGoodsOrder' plain="true">申请退单</button>
+        <button class='refundOrder' wx:if="{{(goodsInfo.status == 3 || goodsInfo.status == 4 || goodsInfo.status == 5) && goodsInfo.ft_order.showReBtn}}" loading="{{forbid}}" display="{{forbid}}" type="primary" bindtap='refundGoodsOrder' plain="true">申请退单</button>
+        <button class='refundOrder' type="primary" loading="{{forbid}}" display="{{forbid}}" wx:if="{{goodsInfo.status == 7}}" bindtap='refundRollback' plain="true">撤销退单</button>
+    </view>
+</view>

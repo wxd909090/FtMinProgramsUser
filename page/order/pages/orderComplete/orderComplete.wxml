@@ -1,0 +1,31 @@
+<view class="wrap">
+    <view class="header">
+        <icon type="success" size="50" class="icon"/>
+        <view>订单支付成功</view>
+    </view>
+    <view class="body">
+        <view class="order-text">
+            <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/order_complete_top2.png" class="icon_img"></image> 
+            <text class="dec_text">支付方式：<text class="pay_type">{{payType == 1 ?'微信支付':'会员卡支付'}}</text> </text>
+        </view>    
+        <view class="order-text">
+            <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/order_complete_bottom2.png" class="icon_img"></image> 
+            <text class="dec_text">支付金额：<text class="pay_price">￥{{payPrice > 0 ? payPrice : 0}}</text></text>
+        </view>
+        <view class="btns-wrap">
+            <button type="primary" plain="true" class="btn"  bindtap="checkOrder">查看订单</button>
+            <button type="primary" plain="true" class="btn"  bindtap="returnFilm" wx:if="{{!orderInfo}}">回到首页</button>
+            <button type="primary" plain="false" class="btn"  bindtap="buyGoods" wx:if="{{orderInfo}}">购买商品</button>
+        </view>    
+    </view>
+    <view class='footer' wx:if="{{orderInfo}}">
+        <view>温馨提示：</view>
+        <view>请在"我的订单"  查看订单信息，</view>
+        <view>请于观影前5分钟扫码进厅。</view>
+    </view>
+    <view class='footer'wx:if="{{!orderInfo}}">
+        <view>温馨提示：</view>
+        <view>请到店后,和店家确认订单,</view>
+        <view>并领取购买商品</view>
+    </view>
+</view>

@@ -1,0 +1,12 @@
+<template name="alertcoupon">
+  <block>
+    <view class='containercl' wx:if="{{alertShow}}">
+      <view class="alertInfoWrap">
+        <view class="alertTitle">{{alertTitle}}</view>
+        <view class="alertCloseWrap">
+          <button class="primary closeBtn" type="primary" bindtap="closeAlert">确 定</button>
+        </view>
+      </view>
+    </view>
+  </block>
+</template>

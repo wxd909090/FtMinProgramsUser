@@ -1,0 +1,17 @@
+<view class="wrapper">
+    <block wx:for="{{roomList}}" wx:for-index="index" wx:key="key">
+        <view class="box" bindtap="goToRoomInfo" data-room="{{item}}">
+            <view>
+                <image src="{{baseUrl + item.picture}}"></image>
+                <view class="roomName">{{item.room_name}}</view>
+                <view  class="roomDes">
+                    <view class="orderNumber">
+                        <text wx:if="{{item.reserve_count}}">{{item.reserve_count}}</text>
+                        <text wx:if="{{!item.reserve_count}}">{{0}}</text>
+                    人预约</view>
+                    <view class="surpNumber">剩{{item.can_reserve_num}}场</view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view> 

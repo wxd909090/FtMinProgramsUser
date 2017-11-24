@@ -1,0 +1,85 @@
+<!--page/merchandiseOrder/merchandiseOrder.wxml-->
+<view class='orderInfoWrap'>
+    <view class='title'>
+        <image src='/image/storeone.png'></image>
+        <view wx:if="{{!orderInfo.ft_order}}">
+            {{orderInfo.store_name}}
+        </view>
+        <view wx:if="{{orderInfo.ft_order}}">
+            {{orderInfo.ft_order.info.store_name}}
+        </view>
+    </view>
+    <!-- 只有电影的电影单 -->
+    <view wx:if="{{!orderInfo.ft_order}}">
+        <view class="content-item">
+            <view class="orderInfo">
+                <view class="orderFilmInfo" style="{{orderInfo.status == 4 ? loseStyle : ''}}">
+                    <view class="orderFilmInfoLeft">
+                        <image class="filmImg" src="{{orderInfo.image}}"></image>
+                    </view>
+                    <view class="orderFilmInfoRight">
+                    <view class="filmName">
+                        {{orderInfo.film_name}}
+                    </view>
+                    <view class="orderFilmInfoP roomName">{{orderInfo.room_name}}（包间）</view>
+                    <view class="orderFilmInfoP orderTime">{{orderInfo.date}} {{orderInfo.duration_time}}</view>
+                    <view class="orderFilmInfoP adress">{{orderInfo.address}}</view>
+                    <view class='orderFilmInfoP'>支付金额   ￥{{orderInfo.price}} （微信支付）</view>
+                </view>
+            </view>
+            </view> 
+        </view>
+    </view>
+    <!-- 只有商品的商品单 -->
+    <view wx:if="{{orderInfo.ft_order}}" class='showOrderInfoBox'>
+        <view class='form'>
+            <view class='settop'>
+                <view class='setfloat'>
+                    <image src='/image/storetwo.png'></image>/
+                    <view>配送包间</view>
+                </view>
+                <view class='setheight setfloat'>
+                        <view class='setcolor' bindtap="chooseSendRoom">{{orderInfo.ft_order.info.room_name}}</view>
+                        <image src='/image/selectbutton.png' class='selectbutton'></image>
+                </view>
+            </view>
+            <view class='settop'>
+                <view class='setfloat'>
+                    <image src='/image/storefour.png'></image>/
+                    <view>到店时间</view>
+                </view>
+                <view class='setheight setfloat' bindtap="chooseSendTime">
+                        <view class='setcolor setfloat sendTime'>{{orderInfo.ft_order.reserve_time}}</view>
+                        <view class='setcolor setfloat sendTime'>{{orderInfo.ft_order.info.duration_time}}</view>
+                        <image src='/image/selectbutton.png' class='selectbutton'></image>
+                </view>
+            </view>
+            <view class='settop setborder'>
+                <view class='setfloat'>
+                    <image src='/image/storethree.png'></image>/
+                    <view>服务方式</view>
+                </view>
+                <view class='setfloat sendType'>
+                    <radio-group class="radio-group">
+                        <radio value="{{item.name}}" checked="true" />店家配送
+                    </radio-group>
+                </view>
+            </view>
+        </view>
+        <view class='cartlist'>
+            <block wx:for="{{orderInfo.order_goods}}">
+                <view class='rows'>
+                    <view class='settitle'>{{item.name}}</view>
+                    <view class='setnum'>×{{item.total_amount}}</view>
+                    <view class='setprice'>￥{{item.price}}</view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class='realPrice'>
+        支付金额 <view class='inline'>￥{{orderInfo.price}}</view>
+    </view>
+    <button type="primary" bindtap="refundOrder" class='optionsBtn' wx:if="{{orderInfo.status == 1 && orderInfo.pay_type == 0 && orderInfo.pay_price > 0}}" data-order_info="{{orderInfo}}" bindtap="refundOrder">我要退单</button>
+    <button type="primary" bindtap="refundOrder" class='optionsBtn' wx:if="{{orderInfo.status == 0}}">立即支付</button>
+    <button type="primary" class='optionsBtn' wx:if="{{!orderInfo.ft_order && (orderInfo.status == 3 || orderInfo.status == 7 || orderInfo.status == 2) && orderInfo.reviews == null}}" bindtap="gotoReviews">我要评论</button>
+</view>

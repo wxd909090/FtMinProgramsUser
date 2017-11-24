@@ -1,0 +1,112 @@
+<view class="page">
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{currentTab == index ? 'on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title ">{{item}}
+            <view class="isShowRed" wx:if="{{index == 0 && isShowRed.noPay == true}}"></view>
+            <view class="isShowRed" wx:if="{{index == 1 && (isShowRed.noReviews == true || isShowRed.noFine == true) }}"></view>
+            </view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{currentTab != 0}}">
+          <block wx:for="{{orderNoPay}}" wx:key="key" wx:for-index="idx" wx:for-item="item">
+            <view class="order_cell">
+              <view class="order_cell_clos1">
+                <view class="storeName">
+                  {{item.store_name}}
+                </view>
+                <view wx:if="{{item.status==0}}" class="payTime">
+                  {{item.timer}}
+                </view>
+                <view wx:if="{{item.status==5}}" class="payTimeOver">
+                  支付超时
+                </view>
+              </view>
+              <view class="order_cell_clos2" bindtap="goOrder" data-order_info="{{item}}">
+                <view class="filmImg">
+                  <image src="{{item.image}}"></image>
+                </view>
+                <view class="orderTxt">
+                  <view>{{item.film_name}}</view>
+                  <view>{{item.room_name}}</view>
+                  <view>{{item.date}} {{item.duration_time}}</view>
+                  <view>{{item.address}}</view>
+                </view>
+              </view>
+              <view class="order_cell_clos3">
+                <view class="orderPriceNum">￥{{item.price}}</view>
+                <view class="btn_view">
+
+                  <!--<button wx:if="{{item.status=='0'}}" type="primary" size="mini" plain="true" 
+                data-order_info="{{item}}" data-index="{{idx}}" bindtap="gotoPay">立即支付 </button>-->
+                  <button wx:if="{{item.status=='0'}}" type="primary" size="mini" plain="true" data-order_info="{{item}}" bindtap="closeOrder" data-order_info="{{item}}">取消支付 </button>
+
+                  <!--<button wx:if="{{item.status=='0'}}" type="warn" size="mini" plain="true" bindtap="warn">取消订单 </button>-->
+                  <button wx:if="{{item.status== 5}}" type="warn" size="mini" plain="true" data-order_sn="{{item.order_sn}}" bindtap="delOrder">删除订单 </button>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class="loadMore">{{loadText1[loadTextIndx1]}}</view>
+        </view>
+        <view class="weui-tab__content" hidden="{{currentTab != 1}}">
+          <block wx:for="{{orderPay}}" wx:key="key" wx:for-item="item">
+            <view class="order_cell">
+              <view class="order_cell_clos1">
+                <view class="storeName">
+                  {{item.store_name}}
+                </view>
+                <view wx:if="{{item.status == 1 }}" class=" payTimeOver payStatus"> 已支付 </view>
+                <view wx:if="{{item.status == 2 }}" class=" payTimeOver usingStatus"> 正消费 </view>
+                <view wx:if="{{item.status == 6 }}" class=" payTimeOver useTimeOut"> 已过期 </view>
+                <block wx:if="{{item.status == 3 || item.status == 7 }}">
+                    <view wx:if="{{item.reviews == null }}" class="payTimeOver usedStatus"> 未评价
+                      <view class="isShowRed m-l-2"></view>
+                     </view>
+                    <view wx:if="{{item.reviews != null }}" class="payTimeOver usedStatus"> 已评价 </view>
+                </block>
+                <!--<view wx:if="{{item.status == 3 || item.status == 7 }}" class="payTimeOver usedStatus"> 已消费 </view>-->
+              </view>
+              <view class="order_cell_clos2" bindtap="goOrder" data-order_info="{{item}}">
+                <view class="filmImg">
+                  <image src="{{item.image}}"></image>
+                </view>
+                <view class="orderTxt">
+                  <view>{{item.film_name}}</view>
+                  <view>{{item.room_name}}</view>
+                  <view>{{item.date}} {{item.duration_time}}</view>
+                  <view>{{item.address}}</view>
+                </view>
+              </view>
+              <view class="order_cell_clos3">
+                <view class="orderPriceNum">￥{{item.price}}</view>
+                <view class="btn_view">
+
+                  <!-- <button wx:if="{{item.status == 1 && item.pay_type == 0 && item.pay_price > 0}}" type="warn" size="mini" 
+                  plain="true" data-order_info="{{item}}" bindtap="refundOrder">取消预约 </button> -->
+
+                  <button wx:if="{{(item.status == 3 || item.status == 6 || item.status == 7) && !(item.real_damage != '0.00' && !item.c_order_sn)}}" type="warn" 
+                  size="mini" plain="true" data-order_sn="{{item.order_sn}}" bindtap="delOrder">删除订单</button>
+                  <button class="damageTitle" wx:if="{{(item.status == 3 || item.status == 6 || item.status == 7) && (item.real_damage != '0.00' && !item.c_order_sn)}}" type="text" 
+                  size="mini" plain="true">需缴纳罚金
+                  <view class="isShowRed m-l-2"></view>
+                  </button>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class="loadMore">{{loadText2[loadTextIndx2]}}</view>
+        </view>
+        <!--<view class="weui-tab__content" hidden="{{currentTab != 2}}">选项三的内容</view>-->
+      </view>
+    </view>
+  </view>
+</view>

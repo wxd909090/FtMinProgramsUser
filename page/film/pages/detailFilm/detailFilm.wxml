@@ -1,0 +1,259 @@
+
+<loading wx:if="{{b}}"  hidden="{{hidden}}">
+加载中...
+</loading>
+
+<!-- detail-banner -->
+<view class="detail-banner-wrap">
+    <view class="detail-banner detail-banner-bg"  style="background: url('{{film_info.image}}')">
+    </view>
+    <view class="detail-banner detail-banner-bg black-op"  style="">
+    </view>
+    <view class="detail-banner detail-banner-info">
+        <view class="detail-banner-up">
+            <view class="detail-banner-up-lef">
+            <image binderror="getfilmsListPic"  data-pic="{{film_info.image}}" src="{{film_info.image}}" class="film_img" style=""></image>
+            </view>
+            <view class="detail-banner-up-rig">
+            <text class="detail-banner-up-rig-one-txt">{{film_info.film_name}}</text>
+            <!-- <text class="detail-banner-up-rig-two-txt" wx:if="film_info.spell">{{film_info.spell}}</text> -->
+
+            <view class="detail-banner-up-rig-three-view">
+            
+                <image wx:if="{{film_info.grade >= 0 }}" class="detail-banner-up-rig-three-view-one" src="/image/star.png"></image>
+                <image wx:if="{{film_info.grade < 0 }}" class="detail-banner-up-rig-three-view-one" src="/image/star_white.png"></image>
+                <image wx:if="{{film_info.grade >= 2 }}" class="detail-banner-up-rig-three-view-one" src="/image/star.png"></image>
+                <image wx:if="{{film_info.grade < 2 }}" class="detail-banner-up-rig-three-view-one" src="/image/star_white.png"></image>
+                <image wx:if="{{film_info.grade >= 4 }}" class="detail-banner-up-rig-three-view-one" src="/image/star.png"></image>
+                <image wx:if="{{film_info.grade < 4 }}" class="detail-banner-up-rig-three-view-one" src="/image/star_white.png"></image>
+                <image wx:if="{{film_info.grade >= 6 }}" class="detail-banner-up-rig-three-view-one" src="/image/star.png"></image>
+                <image wx:if="{{film_info.grade < 6 }}" class="detail-banner-up-rig-three-view-one" src="/image/star_white.png"></image>
+                <image wx:if="{{film_info.grade >= 8 }}" class="detail-banner-up-rig-three-view-one" src="/image/star.png"></image>
+                <image wx:if="{{film_info.grade < 8 }}" class="detail-banner-up-rig-three-view-one" src="/image/star_white.png"></image>
+                <!-- <image wx:if="{{film_info.grade >= 0 }}" class="detail-banner-up-rig-three-view-one" src="/image/star.png"></image>
+                <image wx:if="{{film_info.grade >= 2 }}" class="detail-banner-up-rig-three-view-two" src="/image/star.png"></image>
+                <image wx:if="{{film_info.grade >= 4 }}" class="detail-banner-up-rig-three-view-three" src="/image/star.png"></image>
+                <image wx:if="{{film_info.grade >= 6 }}" class="detail-banner-up-rig-three-view-four" src="/image/star.png"></image>
+                <image wx:if="{{film_info.grade >= 8 }}" class="detail-banner-up-rig-three-view-five" src="/image/star.png"></image> -->
+                <text class="gradeNum" wx:if="{{film_info.grade != '0.0'}}">{{film_info.grade}}</text>
+                <text class="gradeNum" wx:if="{{film_info.grade == '0.0'}}">暂无评分</text>
+            </view>
+            <text class="detail-banner-up-rig-two-txt want-watch" wx:if="!film_info.spell">{{want_watch}}人想看</text>
+            <text class="detail-banner-up-rig-five-txt">类型：{{film_info.class_describe}}</text>
+            <text class="detail-banner-up-rig-five-txt">年份：{{film_info.screen_time}}年</text>
+            <text class="detail-banner-up-rig-five-txt">片长：{{film_info.time_length}}分钟</text>
+            <!-- <text class="detail-banner-up-rig-six-txt">
+
+            </text> -->
+            </view>
+        </view>
+        <view class="detail-banner-down">
+            <view class="detail-banner-down-lef-input" bindtap="filmReviews" wx:if="{{!hasReviews}}">评价</view>
+            <view class="detail-banner-down-lef-input" style="color:#ffb400" wx:if="{{hasReviews}}">已评价</view>
+            <view data-sign="{{collectionSign}}" class="detail-banner-down-rig-input" bindtap="collectionTap" style="color:{{wordsColor}}">{{collectionWords}}</view>
+        </view>
+    </view>
+</view>
+<!-- 介绍 -->
+<view class="introduce-view" style="height:{{introduce_view_height}}">
+    <text>{{film_info.info}}</text>
+    <view class="upDown-view" bindtap="upDown" data-sign="{{sign}}">
+        <image src="{{image_url}}"></image>
+    </view> 
+</view>
+<!-- 间隔 -->
+<view class="jian-view"></view>
+<!-- 演员 -->
+<view class="actor-view">
+    <view class="top-hit-movies">
+      <view class="top-hit-movies-text">
+        <view class="top-hit-movies-text-pic"></view>
+        <text class="top-hit-movies-text-txt" style="font-size:26rpx;">演职人员</text>
+      </view>
+    </view>
+    <view wx:if="{{celebrityList.length == 0}}" class="noActorTitle">
+        <text>暂无演职人员信息</text>
+    </view>
+    <scroll-view class="actor-view-scroll-view" scroll-x="true" style=" white-space: nowrap; display: block;flex-direction:row;" wx:if="{{celebrityList.length > 0}}">
+        <view class="actor-view-scroll-view-box" style="" wx:for="{{celebrityList}}" wx:for-index="idx" wx:for-item="item">
+        <image src="{{item.image}}" data-pic="{{item.image}}" binderror="getHotFilmPic" class="bottom-hit-movies-view-img"></image>
+        <text class="bottom-hit-movies-view-txt">{{item.name}}</text>
+        <text class="bottom-hit-movies-view-txt">{{item.type == 1? '演员' : '导演'}}</text>
+        </view>
+    </scroll-view>
+</view>
+<!-- 电影评价 -->
+    <view class="film-evaluation filmRev">
+        <view class="top-hit-movies">
+        <view class="top-hit-movies-text">
+            <view class="top-hit-movies-text-pic"></view>
+            <text class="top-hit-movies-text-txt" style="font-size:26rpx;">电影评价</text>
+        </view>
+        </view>
+        <view wx:if="{{reviewsList.length == 0}}" class="noActorTitle">
+            <text>暂无评价信息</text>
+        </view>
+        <view class="reviewsWrap">
+            <block wx:for="{{reviewsList}}" wx:for-index="index" wx:for-item="item">
+                <view class="reviewsUser">
+                    <view class="reviewsUserPhoto">
+                        <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/userDefPhotoe.png" class="userPhoto"></image>
+                    </view>
+                    <view class="reviewsUserName">{{item.nick_name}}</view>
+                </view>
+                <view class="reviewsMsg">
+                    <view class="starWrap" wx:if="{{item.grade >= 1}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                    </view>
+                    <view class="starWrap" wx:if="{{item.grade < 1}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                    </view>
+                    <view class="starWrap" wx:if="{{item.grade >= 2}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                    </view>
+                    <view class="starWrap" wx:if="{{item.grade < 2}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                    </view>
+                    <view class="starWrap" wx:if="{{item.grade >= 3}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                    </view>
+                    <view class="starWrap" wx:if="{{item.grade < 3}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                    </view>
+                    <view class="starWrap" wx:if="{{item.grade >= 4}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                    </view>
+                    <view class="starWrap" wx:if="{{item.grade < 4}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                    </view>
+                    <view class="starWrap" wx:if="{{item.grade >= 5}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_1.png"></image>
+                    </view>
+                    <view class="starWrap" wx:if="{{item.grade < 5}}">
+                    <image class="starImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/start_0.png"></image>
+                    </view>
+                </view>
+                <view class="reviewsInfo">{{item.info}}</view>
+                <view class="reviewBottom">
+                    <view class="reviewBottomLeft">
+                    {{item.create_time}} 
+                    <!-- · <text>查看回复</text>   -->
+                    </view>
+                    <view wx:if="{{!item.hasPraiseUp}}" class="reviewBottomRight" wx:for-index="index" wx: data-index="{{index}}"  data-reviewInfo="{{item}}" bindtap="filmReviewsUp">
+                    <image class="dzImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zan.png" ></image>
+                    <view class="dzNum"> {{item.praise}}</view>
+                    </view>
+                    <view wx:if="{{item.hasPraiseUp}}" class="reviewBottomRight" wx:for-index="index" wx: data-index="{{index}}"  data-reviewInfo="{{item}}"  bindtap="filmReviewsDown">
+                    <image class="dzImg" src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/wxMinApp/zan_up.png"></image>
+                    <view class="dzNum hasPraiseUp">{{item.praise}}</view>
+                    </view>
+                    <!-- <view class="message-btn">
+                        <image src="http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/message_icon.png"></image>
+                    </view> -->
+                </view>
+                <view style="height:2rpx;width:100%;background:#e8e8e8;margin:10rpx 0;margin-left:10%;"></view>
+            </block>
+        </view>
+    </view>
+ <!-- <view class="film-evaluation">
+  <text class="film-evaluation-text">电影评价</text>
+  <view class="film-evaluation-view">
+    <view class="film-evaluation-view-lef">
+      <image class="film-evaluation-lef" src="/image/userPhoto2.png"></image>
+    </view>
+    <view class="film-evaluation-view-rig">
+      <text>111111</text>
+      <view class="star-box">
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <text>(2222222)</text>
+      </view>
+      <text class="film-evaluation-view-rig-three-txt">33333333</text>
+      <view class="thumbs-up">
+        <text>4444444444</text>
+         <text>55</text>
+        <image src="/image/detail/2.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="film-evaluation-view">
+    <view class="film-evaluation-view-lef">
+      <image class="film-evaluation-lef" src="/image/userPhoto2.png"></image>
+    </view>
+    <view class="film-evaluation-view-rig">
+      <text>111111</text>
+      <view class="star-box">
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <text>(2222222)</text>
+      </view>
+      <text class="film-evaluation-view-rig-three-txt">33333333</text>
+      <view class="thumbs-up">
+        <text>4444444444</text>
+         <text>55</text>
+        <image src="/image/detail/2.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="film-evaluation-view">
+    <view class="film-evaluation-view-lef">
+      <image class="film-evaluation-lef" src="/image/userPhoto2.png"></image>
+    </view>
+    <view class="film-evaluation-view-rig">
+      <text>111111</text>
+      <view class="star-box">
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <text>(2222222)</text>
+      </view>
+      <text class="film-evaluation-view-rig-three-txt">33333333</text>
+      <view class="thumbs-up">
+        <text>4444444444</text>
+         <text>55</text>
+        <image src="/image/detail/2.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="film-evaluation-view">
+    <view class="film-evaluation-view-lef">
+      <image class="film-evaluation-lef" src="/image/userPhoto2.png"></image>
+    </view>
+    <view class="film-evaluation-view-rig">
+      <text>111111</text>
+      <view class="star-box">
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <image src="/image/star.png"></image>
+        <text>(2222222)</text>
+      </view>
+      <text class="film-evaluation-view-rig-three-txt">33333333</text>
+      <view class="thumbs-up">
+        <text>4444444444</text>
+         <text>55</text>
+        <image src="/image/detail/2.png"></image>
+      </view>
+    </view>
+  </view>
+</view>  -->
+<!-- 固定底部预约按钮 -->
+<view class="order-btn-wrap">
+    <button type="primary" bindtap="goToRoom">立即预约</button>
+</view>
+
+  
+
+   
+
+
+  

@@ -1,0 +1,194 @@
+@import "../../../common/lib/weui.wxss";
+@import "../../../common/index.wxss";
+
+.page-body{
+  padding-bottom:30rpx 
+}
+.container {
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+}
+
+.code_time_out{
+  color: #A9A9A9;
+}
+.code_can_use{
+  color: #0000CD;
+  text-decoration:underline;
+}
+.tr{
+  width: 100%;
+  display: block;
+}
+.notice_box{
+  margin-top: 20px;
+  width: 92%;
+  background-color: #fff;
+  font-size: 0.95em;
+  padding: 30rpx 20rpx;
+  clear: both;
+  display: block;
+  margin-left: 1.5%;
+  background:url('http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/coupon_notice_bg.png');
+  background-size:100% 100%;
+}
+.n_titile{
+  font-weight: 400;
+  font-size: 30rpx;
+  padding: 10rpx 0;
+  border-bottom:2rpx solid #F3F3F3;
+  margin-bottom: 20rpx;
+  text-indent: 4rpx
+}
+.n_content{
+  line-height: 50rpx;
+  width: 100%;
+  font-size: 0.85em;
+  text-indent: 2rpx
+}
+
+.no_data{
+  background-color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+.my_code_list{
+  width: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  text-align: center;
+  margin-top: 30rpx;
+  padding: 10px 0px 10px 0px;
+}
+.th{
+  width: 32%;
+  float: left;
+  font-size: 1em;
+  line-height: 50rpx;
+  height: 60rpx;
+}
+.td{
+  width: 32%;
+  float: left;
+  font-size: 0.95em;
+}
+.coupon_list{
+  width: 95%;
+  margin-left: 2.5%
+}
+.coupon_info{
+  position: relative;
+  width:100%;
+  height:220rpx;
+  margin-top: 30rpx;
+}
+.can_use_bg1{
+  background:url('http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/coupon_bg1.png');
+  background-size:100% 100%;
+  width:100%;
+  height:100%
+}
+.can_use_bg2{
+  background:url('http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/coupon_bg2.png');
+  background-size:100% 100%;
+  width:100%;
+  height:100%
+}
+.coupon_info_left{
+  float:left;
+  width:30%;
+  /* line-height:220rpx; */
+  text-align:center;
+  color:#fff;
+  font-size:66rpx;
+}
+.coupon_info_right{
+  width:70%;
+  float:left;
+  text-align:left;
+  text-indent:17%;
+}
+.m-30{
+  margin-top: 50rpx;
+  font-size: 32rpx;
+}
+.alert_time{
+  font-size: 24rpx;
+  color: #CFCFCF
+}
+.status_wrap{
+  position: absolute;
+  top: 0;
+  right: 4rpx;
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 80rpx;
+  font-size: 20rpx
+}
+.status_wrap_1{
+  background: url('http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/coupon_bg1_right.png');
+}
+.status_wrap_2{
+  background: url('http://qnbar.oss-cn-hangzhou.aliyuncs.com/ftang/public/coupon_bg2_right.png');
+}
+.status_text{
+  transform:rotate(50deg);
+  color:#fff;
+  float:right
+}
+.title_center{
+  text-align: center;
+  margin-top: 30rpx;
+}
+.inputTop{
+    float:left;
+    width:80%;
+    border:2rpx solid #5fbe51;
+    border-radius:8rpx;
+    margin-top:26rpx;
+    margin-left:2.5%;
+    height: 70rpx;
+    line-height: 70rpx;
+}
+.turnText{
+    float:right;
+    color:#5fbe51;
+    margin-top:26rpx;
+    margin-right:26rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+}
+.inputPlaceholder{
+    line-height: 70rpx;
+    text-align: 20rpx;
+    font-size: 26rpx;
+    text-indent: 10rpx;
+}
+.couponTitle{
+    width: 100rpx;
+    font-size:24rpx;
+    background:#f9e636;
+    color:#5fbe51;
+    margin:0 auto;
+    margin-top: 35rpx;
+    margin-bottom: 20rpx;
+    border-radius: 10rpx;
+}
+.couponPirce{
+    margin-top: 36rpx;
+    color: #5fbe51;
+}
+.useAll{
+    margin-top: 20rpx;
+    color: black;
+    font-size: 24rpx;
+}
+.tuan{
+    font-size:32rpx;
+    color:#f9e636;
+    margin:0;
+    padding:0;
+    font-weight: 600;
+}
+.tuanFirst{
+  margin-top: 33rpx;
+}

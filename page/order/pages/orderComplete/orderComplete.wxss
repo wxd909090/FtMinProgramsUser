@@ -1,0 +1,63 @@
+/* page/order/pages/orderComplete/orderComplete.wxss */
+.wrap{
+    overflow: hidden;
+}
+.header{
+    text-align: center
+}
+.body{
+    text-align: center
+}
+.footer{
+    padding:40rpx 50rpx;
+    border:2rpx dashed #a8a8a8;
+    width:465rpx;
+    margin:0 auto;
+    margin-top:60rpx;
+    border-radius:10px;
+    text-align: center;
+    color: #a8a8a8;
+    font-size: 28rpx;
+}
+.btns-wrap{
+    display: flex;
+    justify-content:space-around;
+}
+.btn{
+    width: 250rpx;
+    margin:0;
+    font-size: 14px !important;
+}
+.icon{
+    margin-bottom: 20rpx;
+}
+.header{
+    margin-top: 180rpx;
+    margin-bottom: 70rpx;
+    color: #8d8d8d;
+}
+.order-text{
+    display: flex;
+    height: 70rpx;
+    text-align: left;
+    font-size: 0;
+    align-items: center;
+    color: #a8a8a8;
+}
+.icon_img{
+    height: 36rpx;
+    width: 36rpx;
+    margin: 0 8rpx 0 200rpx;
+}
+.dec_text{
+    font-size: 32rpx;
+}
+.pay_type{
+    color: #EBBE61;
+}
+.pay_price{
+    color: #EBBE61;
+}
+.btns-wrap{
+    margin-top: 40rpx;
+}

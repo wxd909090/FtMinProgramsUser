@@ -1,0 +1,215 @@
+@import "../../../common/lib/weui.wxss";
+@import "../../../common/index.wxss";
+
+page, .page, .page__bd {
+  height: 100%;
+  font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  padding: 0px;
+  display: block;
+  background-color: #f0f0f0;
+  overflow: hidden
+}
+
+.page__bd {
+  padding-bottom: 0;
+}
+
+.weui-tab__content {
+  padding-top: 10px;
+  /*text-align: center;*/
+  overflow-y: scroll;
+
+}
+.weui-navbar__item {
+    color: #696969;
+}
+.on {
+  color: #3cc51f;
+}
+.weui-navbar {
+  background-color: #000;
+  height: 3em;
+}
+
+.weui-navbar__title {
+  color: #fff;
+}
+
+.weui-tab__panel{
+    overflow-x: hidden
+}
+
+.order_cell {
+  width: 100%;
+  margin: 0.625em 0em 1.5em 0px;
+  height: 12.4em;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.order_cell_clos1, .order_cell_clos2, order_cell_clos3 {
+  width: 100%;
+}
+
+.order_cell_clos1 {
+    width: 100%;
+  height: 2em;
+  line-height: 2em;
+}
+
+.order_cell_clos2 {
+  /*background-color: #696969;*/
+  background-color: #808080;
+  height: 7.4em;
+  color: #fff;
+}
+
+.order_cell_clos3 {
+  height: 2.75em;
+  line-height: 2.75em;
+}
+
+.time {
+  color: red;
+}
+
+.storeName {
+  width: 60%;
+  font-size: 1em;
+  margin-left: 0.625em;
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #000;
+}
+
+.payTime {
+  /*margin-right: 10px;*/
+  width: 36.5%;
+  font-size: 0.9em;
+  float: left;
+  text-align: center;
+  color: red;
+  overflow: hidden;
+  padding-right: 0.1em;
+  /*background: #3cc51f;*/
+}
+
+.payTimeOver {
+  font-size: 0.9em;
+  float: left;
+  overflow: hidden;
+  color: #6e6e6e;
+  width: 31.5%;
+  text-align: right
+}
+
+.filmImg {
+  display: block;
+  width: 6em;
+  height: 6em;
+  float: left;
+  padding: 0.625em;
+}
+
+.filmImg image {
+  width: 80%;
+  height: 100%;
+  border: 1px solid #fff;
+}
+
+.orderTxt {
+  width: 17.5em;
+  height: 6em;
+  float: left;
+  padding: 0.625em 0em 0.625em 0em;
+  font-size: 0.9em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.orderTxt view {
+  width: 100%;
+  line-height: 1.7em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.orderPriceNum {
+  float: left;
+  height: 2.5em;
+  width: 30%;
+  line-height: 2.5em;
+  text-align: left;
+  padding-left:0.2em;
+  font-size: 1.4em;
+  color: red;
+}
+
+.btn_view {
+  float: left;
+  height: 2.5em;
+  width: 66%;
+  text-align: right;
+  line-height: 2.5em;
+}
+
+.btn_view button {
+  margin-right: 0.7em;
+  padding: 0em;
+  width: 5em;
+  height: 2em;
+  line-height: 2em;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.used {
+  color: #3cc51f;
+}
+
+.loadMore {
+  width: 100%;
+  margin: auto 0;
+  height: 1.5em;
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 0.9em;
+  color: #696969;
+}
+
+.payStatus {
+  color: #3cc51f;
+}
+
+.usingStatus {
+  color: red;
+}
+
+.usedStatus {
+  color: #9acd32;
+}
+
+.useTimeOut {
+  color: #696969;
+}
+.isShowRed{
+  display: inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:red;
+}
+.m-l-2{
+  margin-left:2px
+}
+.damage-order{
+  outline: 2px solid red
+}
+.damageTitle{
+  width: 7em !important;
+  border:none !important;
+}

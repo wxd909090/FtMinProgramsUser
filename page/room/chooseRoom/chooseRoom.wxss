@@ -1,0 +1,70 @@
+/* page/room/chooseRoom/chooseRoom.wxss */
+page{
+    width: 100%;
+}
+.roomListWrap{
+
+}
+.roomList{
+    display: flex;
+    flex-wrap: wrap;
+}
+.roomList>view{
+    width: 300rpx;
+}
+.wrapper {
+    display: flex;
+    width: 750rpx;
+    height: auto;
+    padding-bottom: 10rpx;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+.box {
+    display: block;
+    flex: 0 0 calc((100% / 2) - 40rpx);
+    width: calc((100% / 2) - 40rpx);
+    height: 350rpx;
+    margin: 20rpx 15rpx 0 23rpx;
+    border: 2rpx solid #c6c6c6;
+    box-sizing: border-box;
+}
+.box image{
+    display: block;
+    margin-top: 20rpx;
+    margin-left: 20rpx;
+    width: 295rpx;
+    height: 211rpx;
+}
+.orderNumber{
+    float: left
+}
+.surpNumber{
+    float: right
+}
+.roomName{
+    height: 60rpx;
+    line-height: 60rpx;
+    text-indent: 20rpx;
+    font-size: 26rpx;
+}
+.roomDes{
+    font-size: 28rpx;
+}
+.orderNumber{
+    color: #75be6d;
+    text-indent: 20rpx;
+    font-size: 24rpx;
+}
+.surpNumber{
+    margin-right: 20rpx;
+    font-size: 24rpx;
+    color: #9a9a9a;
+}
+.noRoomDes{
+    display: block;
+    width:100%;
+    text-align: center;
+    margin-top: 450rpx;
+    color: #818181;
+}

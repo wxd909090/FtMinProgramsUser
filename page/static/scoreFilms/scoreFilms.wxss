@@ -1,0 +1,88 @@
+@import "../../common/lib/weui.wxss";
+@import "../../common/index.wxss";
+@import "../../../component/alert/alert.wxss";
+
+
+/* 热映 */
+.box{
+  width:100%;
+  overflow:hidden;
+  position:relative;
+}
+.box .box-title{
+  width:82.6%;
+  overflow:hidden;
+  height:86rpx;
+  margin-top:60rpx;
+  padding:0 8.8%;
+  text-align:center;
+  line-height:86rpx;
+  color:#F4AE18;
+  font-size:30rpx;
+}
+
+.box .box-stars{
+  width:65.34%;
+  height:145rpx;
+  margin-left:17.33%;
+}
+.box .box-stars{
+  width:65.34%;
+  height:145rpx;
+  margin-left:17.33%;
+  display:flex;
+  flex-direction:row;
+}
+.box .box-stars .box-stars-new{
+  display:inline-block;
+  width:80rpx;
+  height:145rpx;
+  margin-right:16.2625rpx;
+}
+.box .box-stars .box-stars-new image{
+  display:block;
+  width:80rpx;
+  height:80rpx;
+}
+.box .box-stars .box-stars-new text{
+  display:block;
+  width:80rpx;
+  height:60rpx;
+  line-height:60rpx;
+  text-align:center;
+  font-size:24rpx;
+}
+.box .box-textarea{
+  width:620rpx;
+  height:400rpx;
+  border-radius:15rpx;
+  background:#ededef;
+  margin-left:65rpx;
+  margin-top:20rpx;
+  text-align:left;
+  text-indent: 65rpx;
+}
+.box .box-textarea textarea{
+  font-size:30rpx;
+  text-align:left;
+}
+.box .box-input{
+  width:100%;
+  height:90rpx;
+  background:#5ebe50;
+  color:#fff;
+  text-align:center;
+  line-height:90rpx;
+  position:fixed;
+  bottom:0rpx;
+}
+.box .box-input input{
+  width:100%;
+  height:90rpx;
+  color:#fff;
+  text-align:center;
+  line-height:90rpx;
+}
+.filmReviewsSub{
+    margin-top: 0;
+}

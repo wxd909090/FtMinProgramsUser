@@ -1,0 +1,63 @@
+<view class="container">
+  <loading hidden="{{!loading}}">
+    加载中...
+  </loading>
+  <view class="page-body">
+    <view class="section" style="overflow:hidden;">
+        <input  type="text" placeholder="请输入兑换码" bindinput='getCode' class="inputTop" placeholder-class="inputPlaceholder" value="{{code}}"/>
+        <view class="turnText" bindtap='Exchange'>兑换</view>
+    </view>
+    <view class="coupon_list">
+        <!-- <view class="title_center" wx:if="{{couponList.length == 0}}">暂无红包抵用券</view> -->
+        <view class="coupon_info" wx:for="{{couponList}}" wx:key="item" wx:for-item="item" wx:if="{{item.is_used == 0}}">
+                <view wx:if="{{item.is_used == 0}}" class="can_use_bg1">
+                    <view class="coupon_info_left" wx:if="{{item.type == 1}}">
+                        <view class="couponTitle">代金券</view>
+                        ￥{{item.price}}
+                    </view>
+                    <view class="coupon_info_left" wx:if="{{item.type == 2}}">
+                        <view class="tuan tuanFirst">团</view>                
+                        <view class="tuan">购</view>                
+                        <view class="tuan">券</view>                
+                    </view>
+                    <view class="coupon_info_right">
+                        <view class="couponPirce" wx:if="{{item.type == 1}}">青柠微影{{item.price}}元代金券</view>
+                        <view class="couponPirce" wx:if="{{item.type == 2}}">青柠微影团购券</view>
+                        <view class="alert_time">有效期至{{item.timeString}}</view>
+                        <view class="alert_time useAll">
+                            部分门店通用
+                            <text style="color:#ccc;">(只抵用包间费用)</text>
+                        </view>
+                    </view>
+                    <view class="status_wrap status_wrap_1">
+                        <view class="status_text" wx:if="nowTime >= item.expire_time">未使用</view>
+                        <view class="status_text" wx:if="nowTime < item.expire_time">已过期</view>
+                    </view>
+                </view>
+                <view wx:if="{{item.is_used == 1}}" class="can_use_bg2">
+                    <view class="coupon_info_left" wx:if="{{item.type == 1}}">
+                        <view class="couponTitle">代金券</view>
+                        ￥{{item.price}}</view>
+                    <view class="coupon_info_left"wx:if="{{item.type == 2}}">
+                        <view class="tuan tuanFirst" style="color:#999" >团</view>                
+                        <view class="tuan" style="color:#999" >购</view>                
+                        <view class="tuan" style="color:#999" >券</view>                
+                    </view>
+                    <view class="coupon_info_right">
+                        <view class="m-30" wx:if="{{item.type == 1}}">青柠微影{{item.price}}元代金券</view>
+                        <view class="m-30" wx:if="{{item.type == 2}}">青柠微影团购券</view>
+                        <view class="alert_time">有效期至{{item.timeString}}</view>
+                        <view class="alert_time useAll">
+                            部分门店通用
+                            <text style="color:#ccc;">(只抵用包间费用)</text>
+                        </view>
+                    </view>
+                    <view class="status_wrap status_wrap_2">
+                        <view class="status_text">已使用</view>
+                    </view>
+                </view>
+        </view>
+    </view>
+  </view>
+
+</view>
